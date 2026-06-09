@@ -1,0 +1,5 @@
+# GitHub tracks system design only. Everything else is local customization.
+*
+!.gitignore
+!system/
+!system/**
