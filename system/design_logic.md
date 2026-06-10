@@ -29,6 +29,15 @@ Users do not only grow projects — they grow their **work/life model** by regis
 
 Bootstrap provides starter types; the principal owns them after init. Users may patch `base`, `project`, or any starter type.
 
+## Open structure
+
+Folder meaning is **declared**, not inferred. See `system/open_structure.md`.
+
+- **`open_fields`** defaults true on `type.base` — instances grow by adding fields.
+- **Type `fields`** on containers = minimal baseline; instances must scaffold from it.
+- **Instance `fields`** = baseline + grown fields — authoritative for that folder.
+- **Types improve** when durable patterns generalize from instances; propagation uses `patch.md`.
+
 ## Agent tooling
 
 Each AI tool (Cursor, Claude Code, etc.) may create root config (`.cursor/`, `.claude/`). Jah does not maintain an `agents/` folder. Portable guidance lives in `CLAUDE.md` and `system/`.

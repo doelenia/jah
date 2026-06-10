@@ -49,7 +49,14 @@ aliases: {}
 7. For each field in scope, repeat for the field's declared type
 8. Read child `instance.yaml` files for folder-based instances
 
-Do not infer behavior from folder names alone.
+Do not infer behavior from folder names alone. See `system/open_structure.md` for the open structure strategy.
+
+### Open structure
+
+- **`open_fields: true`** on `type.base` — container instances may add registry-resolvable fields beyond the type baseline (default; growth is normal).
+- **Container type `fields`** — minimal baseline every instance must scaffold from; not an exhaustive allow-list.
+- **Instance `fields`** — baseline + grown fields; authoritative shape for that living folder.
+- **Leaf type `fields`** — item schema (task, workflow, …); not instance field growth.
 
 ### Extends merge rules
 
@@ -65,7 +72,8 @@ Do not infer behavior from folder names alone.
 | **Extend** | New type with `extends: <parent>` in registry |
 | **Patch** | Edit owned `type.yaml` or README |
 | **Attach workflow** | Add `type.workflow` instance under a container or `types/<artifact>/workflows/` |
-| **Add container field** | Add `type.directory` field to personal/project type |
+| **Add container field** | Add field to instance `fields` (grown field) or extend type baseline via patch |
+| **Add type package** | Register type with `type: type_package` instance under `types/<name>/` |
 | **Deprecate** | Mark registry entry `status: deprecated` |
 
 Propose via session `patch.md`; apply after user approval (L4).
@@ -78,12 +86,16 @@ Every type has:
 id: type.<name>
 description: "..."
 extends: type.base
-fields:
+role: container          # container types only
+fields:                  # minimal baseline (containers) or item schema (leaves)
   <field_name>:
     type: type.<other> | scalar
     cardinality: one | many
     storage: <path>
     optional: true
+```
+
+Container instances declare baseline + optional grown fields in their own `instance.yaml`.
 ```
 
 ### Directory type (`type.directory`)
@@ -124,11 +136,16 @@ Bootstrap copies these into new principals — all editable after init:
 | `rule` | Scoped rule |
 | `source` | Reference material |
 | `workflow` | Callable procedure |
+| `task` | Planned work item with lifecycle |
+| `type_package` | Living type folder — schema + templates + workflows |
 
 See `system/bootstrap/registry.seed.yaml` for the full seed.
 
 ## Validation
 
-MVP has no schema engine. Optional: `users/<id>/tools/scripts/validate_registry.py` warns on broken extends chains or unknown instance types.
+Optional principal scripts:
+
+- `validate_registry.py` — broken extends chains or unknown instance types
+- `validate_structure.py` — baseline fields, grown fields, storage parity (`open_structure.md`)
 
 `compile_context.py` loads registry types into sessions at runtime.

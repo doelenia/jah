@@ -1,0 +1,39 @@
+id: type.task
+extends: type.base
+description: "Planned work item with lifecycle status. Leaf folders live under a type.directory tasks/ container."
+fields:
+  status:
+    type: scalar
+    cardinality: one
+    allowed_values: [pending, in_progress, done, cancelled]
+    description: "Lifecycle state. pending = backlog; in_progress = active work (link session when set)."
+  priority:
+    type: scalar
+    cardinality: one
+    optional: true
+    allowed_values: [low, medium, high]
+  scope:
+    type: scalar
+    cardinality: one
+    allowed_values: [project, personal]
+    description: "project = scoped to one project; personal = cross-project backlog."
+  project:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Project id when scope is project, e.g. project.jah."
+  session:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Linked session id when status is in_progress, e.g. session.2026-06-10-001."
+  description:
+    type: type.document
+    cardinality: one
+    storage: description.md
+agent_protocol:
+  - "Tasks live in a type.directory container (tasks/) — read tasks/instance.yaml first."
+  - "Each task is a folder with instance.yaml (type: task) and description.md."
+  - "Register new tasks in tasks/index.md and parent project instance.yaml fields.tasks when present."
+  - "When picking up a task, set status to in_progress and link the working session id."
+  - "Propose new tasks in session patch.md; apply only after user approval."

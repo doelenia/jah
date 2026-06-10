@@ -54,6 +54,14 @@ types:
     id: type.source
     path: types/source
     extends: base
+  task:
+    id: type.task
+    path: types/task
+    extends: base
+  type_package:
+    id: type.type_package
+    path: types/type_package
+    extends: base
   workflow:
     id: type.workflow
     path: types/workflow

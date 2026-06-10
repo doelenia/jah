@@ -102,6 +102,17 @@ content_type_layouts:
     forbidden_at_root:
       - "*.pdf"
       - "*.md"
+  task:
+    catalog: index.md
+    instances: "<name>/instance.yaml"
+    allowed_at_root:
+      - instance.yaml
+      - index.md
+      - README.md
+      - "<name>/"
+    forbidden_at_root:
+      - "*.pdf"
+      - "*.yaml"
   document:
     instances: "<name>.<ext>"
     allowed_at_root:

@@ -12,20 +12,24 @@ The shared design lives in `system/` (versioned on GitHub). Your principal — `
 
 1. Clone the repo (you get `system/` and `.gitignore`).
 2. Bootstrap a principal: `python3 system/scripts/init_jah.py <id>` (see `system/bootstrap/SETUP.md`).
-3. Install Python deps: `pip install -r requirements.txt` (local file).
-4. Read `design_logic.md`, then `jah.yaml` and the active principal's `registry.yaml`.
+3. Install Python deps in a virtualenv:
+   ```bash
+   python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt
+   ```
+4. Read `design_logic.md`, `open_structure.md`, then `jah.yaml` and the active principal's `registry.yaml`.
 
 ## How to work
 
-1. **Create or use a session** for every task.
-2. **Compile context** before execution.
-3. **Work inside the session folder** — outputs, evaluation, trace, patch.
-4. **Propose improvements** in session `patch.md`; apply to principal manually after review.
-5. **Be proactive** — gap-fill, capture, improve (`proactive_capture.md`).
-6. **Capture stable personal facts** via `patch.md` — never auto-write profile.
-7. **Cite sources** in session artifacts and stable-instance proposals.
-8. **Store reusable files** under `sources/files/` with catalog entries.
-9. **Change the system** only via GitHub PR on `system/`. Bump `system/VERSION` before every system commit (`versioning.md`).
+1. **Discover structure** — `ls` → read `instance.yaml` → resolve type → read `fields` → recurse (`open_structure.md`).
+2. **Create or use a session** for every task.
+3. **Compile context** before execution.
+4. **Work inside the session folder** — outputs, evaluation, trace, patch.
+5. **Propose improvements** in session `patch.md`; apply to principal manually after review.
+6. **Be proactive** — gap-fill, capture, improve (`proactive_capture.md`).
+7. **Capture stable personal facts** via `patch.md` — never auto-write profile.
+8. **Cite sources** in session artifacts and stable-instance proposals.
+9. **Store reusable files** under `sources/files/` with catalog entries.
+10. **Change the system** only via GitHub PR on `system/`. Bump `system/VERSION` before every system commit (`versioning.md`).
 
 ## Type resolution (required)
 
@@ -41,12 +45,13 @@ See `system/type_system.md`.
 
 1. `system/protocol.md` (this file)
 2. `system/design_logic.md`
-3. `system/storage_rules.md`
-4. `system/type_system.md`
-5. `users/<id>/registry.yaml`
-6. Relevant `instance.yaml` (principal, personal, project, or session)
-7. `types/<type>/README.md` for instance and each field in scope
-8. Session `compiled_context.md` after compilation
+3. `system/open_structure.md`
+4. `system/storage_rules.md`
+5. `system/type_system.md`
+6. `users/<id>/registry.yaml`
+7. Relevant `instance.yaml` (principal, personal, project, or session)
+8. `types/<type>/README.md` for instance and each field in scope
+9. Session `compiled_context.md` after compilation
 
 ## Scripts
 
@@ -64,6 +69,9 @@ python3 users/<id>/tools/scripts/list_instances.py
 
 # Validate registry
 python3 users/<id>/tools/scripts/validate_registry.py
+
+# Validate structure (baseline + disk parity)
+python3 users/<id>/tools/scripts/validate_structure.py
 ```
 
 **System release** (tracked in `system/scripts/`):

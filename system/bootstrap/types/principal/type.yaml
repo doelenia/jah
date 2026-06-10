@@ -1,6 +1,7 @@
 id: type.principal
 extends: type.base
 description: "Container for a principal's local world — registry, types, personal scope, projects, and tools."
+role: container
 fields:
   registry:
     type: scalar

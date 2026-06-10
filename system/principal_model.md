@@ -25,6 +25,7 @@ users/<id>/
       sources/
       workflows/
       sessions/
+      tasks/
   tools/
 ```
 
@@ -38,7 +39,7 @@ type: <type-name>
 name: <human name>
 ```
 
-Container instances declare typed child fields in a `fields:` block. Resolve each field's type through `registry.yaml` — see `system/type_system.md`.
+Container instances declare typed child fields in a `fields:` block — **baseline + grown fields** (`system/open_structure.md`). The type declares a minimal baseline; the instance is authoritative for shape. Resolve each field's type through `registry.yaml` — see `system/type_system.md`.
 
 ## Personal scope
 
@@ -63,6 +64,7 @@ Container instances declare typed child fields in a `fields:` block. Resolve eac
 - **Context** — what the project is
 - **Rules / sources** — project-specific references
 - **Workflows** — callable procedures; cataloged in `workflows/index.md` when present
+- **Tasks** — planned work backlog; cataloged in `tasks/index.md` when present
 - **Sessions** — temporary workspaces
 
 ### Sources
@@ -82,6 +84,15 @@ Workflow instances (`type.workflow`) may live:
 
 Resolution uses `workflow_id`, registry, and parent `fields` — not path assumptions alone.
 
+## Tasks
+
+Task instances (`type.task`) may live:
+
+- `users/<id>/personal/tasks/<name>/`
+- `users/<id>/projects/<project>/tasks/<name>/`
+
+Tasks track backlog lifecycle (`pending` → `in_progress` → `done`). Link a session when work starts.
+
 ## Git
 
 All of `users/` is local. Never committed to GitHub.
@@ -95,7 +106,7 @@ All of `users/` is local. Never committed to GitHub.
 
 ## Stable vs session
 
-- **Stable instances** — profile, preferences, rules, context, workflows, sources
+- **Stable instances** — profile, preferences, rules, context, workflows, tasks, sources
 - **Session workspace** — input, output, evaluation, trace, patch, compiled_context
 
 Modify stable instances only with explicit approval (`permission_model.md`).

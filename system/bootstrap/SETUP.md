@@ -33,9 +33,13 @@ The script:
 
 ```bash
 python3 users/<id>/tools/scripts/list_instances.py
+python3 users/<id>/tools/scripts/validate_registry.py
+python3 users/<id>/tools/scripts/validate_structure.py
 python3 users/<id>/tools/scripts/new_session.py users/<id>/projects/<project> "Smoke test goal"
 python3 users/<id>/tools/scripts/compile_context.py users/<id>/projects/<project>/sessions/YYYY-MM-DD-NNN
 ```
+
+New projects should scaffold **baseline fields** from `type.project` `fields` in `type.yaml`, then add grown fields in `instance.yaml` as needed (`system/open_structure.md`).
 
 ## Agent protocol on first load
 

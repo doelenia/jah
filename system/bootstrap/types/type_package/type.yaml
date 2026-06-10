@@ -1,0 +1,29 @@
+id: type.type_package
+extends: type.base
+description: "Living container for a registered type — schema, protocol, templates, and workflows."
+role: container
+fields:
+  type_schema:
+    type: scalar
+    cardinality: one
+    storage: type.yaml
+    description: "Leaf schema for items of this type."
+  readme:
+    type: scalar
+    cardinality: one
+    storage: README.md
+    description: "Agent protocol for this type."
+  templates:
+    type: type.directory
+    content_type: document
+    cardinality: one
+    optional: true
+    storage: templates/
+    description: "Copyable templates when instantiating items of this type."
+  workflows:
+    type: type.directory
+    content_type: workflow
+    cardinality: one
+    optional: true
+    storage: workflows/
+    description: "Optional workflow scaffolds for this type."

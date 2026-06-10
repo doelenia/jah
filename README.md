@@ -4,7 +4,7 @@ A local-first, AI-native personal OS. Jah turns repeated work into stable, prefe
 
 The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current system version: **0.1.1** (see [system/VERSION](system/VERSION)).
+Current system version: **0.2.0** (see [system/VERSION](system/VERSION)).
 
 ## What you get from GitHub
 
@@ -42,6 +42,10 @@ Full workflow: [system/protocol.md](system/protocol.md) · Session lifecycle: [s
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 0.2.0 (2026-06-10)
+- Open structure: declared folder meaning, baseline fields, default open growth (`system/open_structure.md`)
+- Type package and task starter types; structural parity validator
+
 ### 0.1.1 (2026-06-10)
 - Principal architecture: users/<id>/ layout with registry.yaml and bootstrap
 - Replace legacy memory/types/tools root paths; remove work_pattern

@@ -1,6 +1,7 @@
 id: type.project
 extends: type.base
 description: "Container for project context, rules, workflows, and sessions."
+role: container
 fields:
   context:
     type: type.context
@@ -10,6 +11,7 @@ fields:
     type: type.directory
     content_type: preference
     cardinality: one
+    optional: true
     storage: preferences/
   rules:
     type: type.directory
@@ -32,3 +34,10 @@ fields:
     content_type: session
     cardinality: one
     storage: sessions/
+  tasks:
+    type: type.directory
+    content_type: task
+    cardinality: one
+    optional: true
+    storage: tasks/
+    catalog: index.md

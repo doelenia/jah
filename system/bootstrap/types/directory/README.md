@@ -1,6 +1,6 @@
 # Directory Type
 
-Directory **containers** at stable memory boundaries — `sources/`, `rules/`, `preferences/`, `workflows/`, `sessions/`, `documents/`.
+Directory **containers** at stable memory boundaries — `sources/`, `rules/`, `preferences/`, `workflows/`, `sessions/`, `tasks/`, `documents/`.
 
 **Agents:** read `instance.yaml` in the directory before writing anything there. Schema: `users/<principal>/types/directory/type.yaml`. Scaffolds: `users/<principal>/types/directory/scaffold/`.
 
@@ -9,9 +9,11 @@ Directory **containers** at stable memory boundaries — `sources/`, `rules/`, `
 | Layer | Type | Example |
 |-------|------|---------|
 | Container | `directory` | `users/<principal>/projects/us-taxes/sources/instance.yaml` |
-| Item | `source`, `rule`, `preference`, `workflow`, `session`, `document` | Catalog entry in `index.md`, `rules/writing/foo.yaml`, `workflows/blog/`, `sessions/2026-06-09-001/` |
+| Item | `source`, `rule`, `preference`, `workflow`, `session`, `task`, `document` | Catalog entry in `index.md`, `rules/writing/foo.yaml`, `workflows/blog/`, `sessions/2026-06-09-001/`, `tasks/my-task/` |
 
-The container declares **what** is stored (`content_type`) and **how** (`catalog`, `binaries`, `instances`). The content type defines the **item schema**.
+The container declares **what** is stored (`content_type`) and **how** (`catalog`, `binaries`, `instances`). **Item layout is owned by the content type README** — resolve `content_type` via registry before write.
+
+`content_type` is any registered type — not a closed enum. `content_type_layouts` in `type.yaml` are **defaults/reference** only.
 
 ## Container instance format
 
@@ -28,16 +30,19 @@ protocol: users/<principal>/types/source/README.md
 requires_approval: true
 ```
 
-| content_type | Required fields | Item location |
-|--------------|-----------------|---------------|
-| `source` | `catalog`, `binaries`, `protocol` | `files/<group>/<name>.<ext>` + entry in `index.md` |
-| `rule` | `instances`, `protocol` | `<group>/<name>.yaml` |
-| `preference` | `instances`, `protocol` | `<name>/instance.yaml` + content file |
-| `workflow` | `catalog`, `instances`, `protocol` | `index.md` + `<name>/instance.yaml` + workflow markdown files |
-| `session` | `instances`, `protocol` | `YYYY-MM-DD-NNN/instance.yaml` + session artifacts |
-| `document` | `instances`, `protocol` | `<name>.<ext>` at directory root |
+**Reference layouts** (see content type README for authoritative rules):
 
-Layout defaults for each `content_type` are in `users/<principal>/types/directory/type.yaml` under `content_type_layouts`.
+| content_type | Typical container fields | See |
+|--------------|--------------------------|-----|
+| `source` | `catalog`, `binaries`, `protocol` | `types/source/README.md` |
+| `rule` | `instances`, `protocol` | `types/rule/README.md` |
+| `preference` | `instances`, `protocol` | `types/preference/README.md` |
+| `workflow` | `catalog`, `instances`, `protocol` | `types/workflow/README.md` |
+| `session` | `instances`, `protocol` | `types/session/README.md` |
+| `task` | `catalog`, `instances`, `protocol` | `types/task/README.md` |
+| `document` | `instances`, `protocol` | `types/document/README.md` |
+
+Defaults in `users/<principal>/types/directory/type.yaml` under `content_type_layouts` supplement READMEs — they do not restrict which `content_type` values are valid.
 
 ## Agent protocol
 

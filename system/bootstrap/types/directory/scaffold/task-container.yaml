@@ -1,0 +1,10 @@
+id: directory.tasks.{scope}
+type: directory
+name: "{Name} Tasks"
+description: "Planned work backlog and lifecycle for {name}."
+role: container
+content_type: task
+catalog: index.md
+instances: "<name>/instance.yaml"
+protocol: users/<principal>/types/task/README.md
+requires_approval: true

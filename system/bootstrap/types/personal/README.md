@@ -2,7 +2,11 @@
 
 Cross-project personal memory at `users/<principal>/personal/`.
 
-**Agents:** read this file before reading or modifying personal memory.
+**Agents:** read this file before reading or modifying personal memory. Open structure: `system/open_structure.md`.
+
+## Baseline and growth
+
+`type.personal` declares a minimal baseline in `type.yaml` `fields`. Instances must include non-optional baseline fields and may add grown fields beyond the baseline.
 
 ## Structure
 

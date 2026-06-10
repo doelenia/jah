@@ -1,6 +1,7 @@
 id: type.personal
 extends: type.base
 description: "Personal memory container for profile, preferences, rules, and cross-project sources."
+role: container
 fields:
   profile:
     type: type.profile

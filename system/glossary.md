@@ -37,6 +37,11 @@ Use this vocabulary consistently across Jah. **One term per concept** — do not
 | **Workflow** | Callable procedure (`type.workflow`); invoked by sessions via `workflow_id` |
 | **System version** | Semver in `system/VERSION` for tracked system releases on GitHub |
 | **Changelog** | Release history in `system/CHANGELOG.md` |
+| **Open structure** | Declared folder meaning via `instance.yaml` `fields`; default open growth (`system/open_structure.md`) |
+| **Baseline fields** | Minimal `fields` on a container type — every instance must scaffold from this |
+| **Grown fields** | Extra `fields` on an instance beyond the type baseline |
+| **Type package** | `types/<name>/` as living container + leaf schema (`type.type_package`) |
+| **Structural parity** | Declared `fields` match on-disk layout; checked by `validate_structure.py` |
 
 ## Layers
 

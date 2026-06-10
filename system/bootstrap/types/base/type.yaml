@@ -1,5 +1,6 @@
 id: type.base
 description: "Base type for all Jah types."
+open_fields: true
 required_fields:
   - id
   - type

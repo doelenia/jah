@@ -2,7 +2,11 @@
 
 A project in memory. Examples: `users/<principal>/projects/jah/`, `users/<principal>/projects/ausna/`.
 
-**Agents:** read this file before creating, reading, or modifying any project.
+**Agents:** read this file before creating, reading, or modifying any project. Open structure: `system/open_structure.md`.
+
+## Baseline and growth
+
+`type.project` declares a **minimal baseline** in `type.yaml` `fields` (context, sessions, rules, …). Every project instance must include non-optional baseline fields. Instances may **add** grown fields (e.g. `design/`, `website/`) without a new project subtype — `open_fields` defaults true on `type.base`.
 
 ## Structure
 
@@ -15,6 +19,8 @@ users/<principal>/projects/<project>/
   sources/            # type.directory container (optional)
   workflows/          # type.directory container (optional)
   sessions/           # type.directory container (content_type: session)
+  tasks/              # type.directory container (optional, content_type: task)
+  design/             # example grown field (content_type: document) — instance-specific
 ```
 
 ## Agent protocol
@@ -33,5 +39,5 @@ users/<principal>/projects/<project>/
 
 1. Create `users/<principal>/projects/<name>/instance.yaml` with `type: project`.
 2. Add `fields.context` pointing to `context.md`; write initial `context.md`.
-3. Scaffold directory containers (`rules/`, `sources/`, `workflows/`, `sessions/`) from `users/<principal>/types/directory/scaffold/` as needed.
+3. Scaffold directory containers (`rules/`, `sources/`, `workflows/`, `sessions/`, `tasks/`) from `users/<principal>/types/directory/scaffold/` as needed.
 4. Register each child instance in the `fields` block as it is created.

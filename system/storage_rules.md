@@ -19,6 +19,8 @@ active_principal: <id>
 
 Scripts and agents resolve `users/<active_principal>/` for all local work.
 
+Declared instance `fields` must match on-disk layout — run `validate_structure.py` (`system/open_structure.md`).
+
 ## Principal layout
 
 ```
