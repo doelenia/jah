@@ -7,6 +7,21 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.2.1] - 2026-06-10
+
+### Added
+
+- `system/discovery_protocol.md` — active search, discovery log, reference checklist, auto-update vs ask table
+- Goal-aware `compile_context.py`: scoped types, linked/related tasks and sessions, grown project fields, all preferences, project rules
+- Session `task_id` field; evaluation and trace templates with reference checklist and discovery log
+- Principal auto-update permission (L3): existing instances and types without approval; profile and new registry entries still require ask; system/ requires explicit request
+
+### Changed
+
+- `permission_model.md`, `proactive_capture.md`, `improvement_protocol.md`, `session_lifecycle.md`, `context_compilation.md`, `protocol.md` — aligned with discovery and auto-update model
+- `patch.md` scope narrowed to profile, new registry types, and system proposals
+
+
 ## [0.2.0] - 2026-06-10
 
 ### Added

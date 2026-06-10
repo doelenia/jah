@@ -30,6 +30,11 @@ fields:
     cardinality: one
     optional: true
     description: "Hint for auto resolution, e.g. type.blog_post."
+  task_id:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Linked task id, e.g. task.jah.my_task. Also resolved from task.session field."
   input:
     type: type.session_artifact
     cardinality: one

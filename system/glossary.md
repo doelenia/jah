@@ -32,7 +32,8 @@ Use this vocabulary consistently across Jah. **One term per concept** — do not
 | **Reference** | Citation of a source; internal = repo-relative path, external = full URL |
 | **Profile** | Canonical personal facts in `users/<id>/personal/profile.md`; updated via `patch.md` |
 | **Patch** | Local proposal for improvement (session `patch.md`; not auto-applied) |
-| **Context compilation** | Collecting types, preferences, rules, sources, and session input before work |
+| **Context compilation** | Collecting goal-matched types, preferences, rules, tasks, sessions, sources, and session input before work |
+| **Discovery protocol** | Active search, discovery log, and reference checklist — see `discovery_protocol.md` |
 | **Proactive capture** | Agent behavior: gap-fill, capture, improve — see `proactive_capture.md` |
 | **Workflow** | Callable procedure (`type.workflow`); invoked by sessions via `workflow_id` |
 | **System version** | Semver in `system/VERSION` for tracked system releases on GitHub |

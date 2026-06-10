@@ -23,13 +23,14 @@ The shared design lives in `system/` (versioned on GitHub). Your principal — `
 1. **Discover structure** — `ls` → read `instance.yaml` → resolve type → read `fields` → recurse (`open_structure.md`).
 2. **Create or use a session** for every task.
 3. **Compile context** before execution.
-4. **Work inside the session folder** — outputs, evaluation, trace, patch.
-5. **Propose improvements** in session `patch.md`; apply to principal manually after review.
-6. **Be proactive** — gap-fill, capture, improve (`proactive_capture.md`).
-7. **Capture stable personal facts** via `patch.md` — never auto-write profile.
-8. **Cite sources** in session artifacts and stable-instance proposals.
-9. **Store reusable files** under `sources/files/` with catalog entries.
-10. **Change the system** only via GitHub PR on `system/`. Bump `system/VERSION` before every system commit (`versioning.md`).
+4. **Run active discovery** after compile (`discovery_protocol.md`).
+5. **Work inside the session folder** — outputs, evaluation, trace, patch.
+6. **Auto-update existing principal instances and types** when capture is clear; log in `trace.md`.
+7. **Be proactive** — gap-fill, capture, improve (`proactive_capture.md`).
+8. **Ask before profile, new registry entries, or system changes.**
+9. **Cite sources** in session artifacts (`evaluation.md` reference checklist).
+10. **Store reusable files** under `sources/files/` with catalog entries.
+11. **Change the system** only when explicitly asked — GitHub PR on `system/`. Bump `system/VERSION` before every system commit (`versioning.md`).
 
 ## Type resolution (required)
 
@@ -46,12 +47,13 @@ See `system/type_system.md`.
 1. `system/protocol.md` (this file)
 2. `system/design_logic.md`
 3. `system/open_structure.md`
-4. `system/storage_rules.md`
-5. `system/type_system.md`
-6. `users/<id>/registry.yaml`
-7. Relevant `instance.yaml` (principal, personal, project, or session)
-8. `types/<type>/README.md` for instance and each field in scope
-9. Session `compiled_context.md` after compilation
+4. `system/discovery_protocol.md`
+5. `system/storage_rules.md`
+6. `system/type_system.md`
+7. `users/<id>/registry.yaml`
+8. Relevant `instance.yaml` (principal, personal, project, or session)
+9. `types/<type>/README.md` for instance and each field in scope
+10. Session `compiled_context.md` after compilation
 
 ## Scripts
 

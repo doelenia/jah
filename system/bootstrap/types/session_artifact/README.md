@@ -14,14 +14,25 @@ Each artifact path is declared in `types/session/type.yaml` and created by `new_
 2. Write freely inside the session folder (L2) for all session artifacts.
 3. End every session with complete `output.md`, `evaluation.md`, `trace.md`, and `patch.md`.
 4. Include **References** in `output.md`, `trace.md`, and `patch.md` when content drew on specific sources.
+5. Include **Discovery log** in `trace.md` and the **reference checklist** in `evaluation.md` (`system/discovery_protocol.md`).
 
 ## Required artifacts
 
 | File | Role |
 |------|------|
 | `input.md` | Session input and clarifications |
-| `compiled_context.md` | Compiled dependencies (via `compile_context.py`) |
-| `output.md` | Task deliverable |
-| `evaluation.md` | Did output meet requirements and rules? |
-| `trace.md` | What happened; capture offers deferred |
-| `patch.md` | Proposed stable-memory and type changes |
+| `compiled_context.md` | Goal-matched dependencies (via `compile_context.py`) |
+| `output.md` | Task deliverable; **References** |
+| `evaluation.md` | Requirements, rules, **References consulted**, **Stable updates**, **Open questions** |
+| `trace.md` | **Discovery log**, steps, **References** |
+| `patch.md` | Profile, new registry type, and system proposals only |
+
+## patch.md scope
+
+Use `patch.md` only for changes that require approval:
+
+- personal profile updates
+- new registry type registration
+- system change proposals (reference for PR)
+
+Existing principal instances and types may be updated directly during work; record in `trace.md`.

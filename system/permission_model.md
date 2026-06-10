@@ -6,8 +6,8 @@ Simple permission levels for Jah sessions and agents.
 L0 think
 L1 read approved files
 L2 write inside session folder
-L3 propose local change via session patch.md
-L4 modify principal after explicit approval
+L3 modify existing principal instances and types (auto allowed)
+L4 register new types or modify profile (explicit approval)
 L5 modify system/ via GitHub PR with explicit approval
 L6 use external service after approval
 L7 publish/send/delete/pay only with explicit approval
@@ -17,18 +17,38 @@ L7 publish/send/delete/pay only with explicit approval
 
 New sessions set:
 
-- **allowed_write:** session folder only
+- **allowed_write:** session folder; existing principal instances and types
 - **requires_approval:**
-  - modify stable principal instances (including profile)
-  - modify registry or type definitions
+  - modify personal profile
+  - register new types in registry
   - modify system/
   - use external tools
   - publish or send anything externally
 
-## Git boundary
+## Principal auto-update (L3)
 
-Changes to `system/` require L5 — explicit approval and a GitHub PR. Principal changes use L3–L4: propose in patch, apply manually after review.
+Agents may **update existing principal instances and type definitions without asking**, including:
 
-## Proactive offers
+- tasks, context, design docs, rules, preferences, sources, workflows
+- patches to `users/<id>/types/<name>/type.yaml` and README
+- principal tools under `users/<id>/tools/`
 
-Agents may **offer** L3–L5 changes during work (`proactive_capture.md`) but must not apply them until the user explicitly approves.
+Record what changed in session `trace.md` with source paths.
+
+**Still requires approval (L4):**
+
+- `users/<id>/personal/profile.md`
+- new entries in `registry.yaml` (registering a type that did not exist)
+
+## System boundary (L5)
+
+Changes to `system/` require explicit user request and a GitHub PR. Never auto-edit `system/` during ordinary work.
+
+## Proactive capture
+
+Agents gap-fill, capture, and improve during work (`proactive_capture.md`). Apply principal updates directly when the target is an existing instance or type; ask when unsure or when the target is profile, a new registry entry, or `system/`.
+
+## Related docs
+
+- `discovery_protocol.md` — active search and discovery log
+- `proactive_capture.md` — gap-fill, capture, improve

@@ -20,8 +20,9 @@ Customization stays private. The protocol stays portable via GitHub.
 - **Instances** — living data (personal, projects, workflows, sessions) under the principal.
 - **Tools** — executable capabilities under `users/<id>/tools/`.
 - **Sessions** — isolated workspaces for one task.
-- **Context compilation** — loads dependencies before work so improvements propagate automatically.
-- **Traces** — record what happened; **patch.md** proposes local changes for manual review.
+- **Context compilation** — loads goal-matched dependencies before work so improvements propagate automatically.
+- **Discovery protocol** — active search, discovery log, reference checklist (`discovery_protocol.md`).
+- **Traces** — record what happened; **patch.md** for profile, new types, and system proposals.
 
 ## Types as the growth engine
 
@@ -46,7 +47,7 @@ Each AI tool (Cursor, Claude Code, etc.) may create root config (`.cursor/`, `.c
 
 - **System (`system/`)** → edit, bump system version (`versioning.md`), commit, GitHub PR.
 - **Principal** → edit directly or via session `patch.md`; never auto-applied.
-- **Proactive capture** → agents ask for missing info and offer to promote reusable artifacts (`proactive_capture.md`).
+- **Proactive capture** → agents gap-fill, auto-update existing principal instances/types, ask for profile/system (`proactive_capture.md`).
 
 ## Key differentiation
 
