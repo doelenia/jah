@@ -13,13 +13,15 @@ Where things live and what not to move.
 
 ## Git policy
 
-GitHub tracks **`system/` only** (plus `.gitignore`). Everything else is local customization and must not be committed.
+GitHub tracks the **kernel and landing page**: `system/`, root `README.md`, and `.gitignore`. Everything else is local customization and must not be committed.
 
 ```
 .gitignore pattern:
   ignore *
-  except .gitignore and system/**
+  except .gitignore, README.md, and system/**
 ```
+
+Kernel version and history: `system/VERSION`, `system/CHANGELOG.md` (see `versioning.md`).
 
 Local-only paths include: `types/`, `memory/`, `tools/`, `CLAUDE.md`, `requirements.txt`, sessions, outputs, and agent-service folders.
 
@@ -43,6 +45,19 @@ Do not nest them under `types/`, `memory/`, or `tools/`.
 
 Sessions live under `memory/projects/<project>/sessions/YYYY-MM-DD-NNN/`. All session artifacts (input, output, trace, patch, compiled context) are local.
 
+## Reusable resources (files)
+
+PDFs, images, video, audio, and other binary assets that should persist across sessions live under **`sources/`**, not in session folders.
+
+| Scope | Path |
+|-------|------|
+| Project | `memory/projects/<project>/sources/files/` |
+| Personal (cross-project) | `memory/personal/sources/files/` |
+
+Every stored file must have a catalog entry in the matching `sources/index.md`. Full protocol: `types/source/README.md` and `system/memory_model.md` — Sources.
+
 ## Instance rule
 
 Every folder representing a living instance should contain `instance.yaml` with at least `id`, `type`, and `name`.
+
+Container instances (project, personal, session) should also declare child field instances in a `fields:` block. Each field must reference a type defined in `types/<name>/type.yaml`. Before creating or editing a field, read that type's `README.md` — see `system/type_system.md`.

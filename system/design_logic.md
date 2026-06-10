@@ -17,7 +17,7 @@ Customization stays private. The protocol stays portable via GitHub.
 
 ## Core concepts
 
-- **Types** define reusable forms (structure, defaults, permissions).
+- **Types** define reusable forms (structure, typed fields, agent protocols in READMEs).
 - **Memory** stores living instances; every instance folder has `instance.yaml`.
 - **Tools** provide capabilities (MVP: local Python scripts).
 - **Sessions** create isolated workspaces for one task.
@@ -30,10 +30,13 @@ Each AI tool (Cursor, Claude Code, OpenCode, etc.) may create its own root confi
 
 ## Improvement
 
-- **Kernel (`system/`)** → edit, commit, GitHub PR.
+- **Kernel (`system/`)** → edit, bump version (`versioning.md`), commit, GitHub PR.
 - **Local layers** → edit directly or via session `patch.md`; never auto-applied.
+- **Proactive capture** → agents ask for missing info and offer to promote reusable artifacts during use (`proactive_capture.md`).
 - No central patch queue. No `patches/` folder.
 
 ## Key differentiation
 
-Stable workflow improvement through dependency-aware context compilation. When you add a global writing rule, blog and social-post sessions compile it automatically because work patterns depend on preferences and active rules.
+Stable workflow improvement through dependency-aware context compilation. Sessions invoke workflows by `workflow_id` or auto-resolution; only resolved workflow bodies load at compile time. When you add a global writing rule, blog and social-post sessions compile it automatically because workflows declare dependencies on preferences and active rules.
+
+**Workflows as functions:** types define schema and scaffolds (`types/workflow/`, `types/<artifact_type>/workflows/`); memory holds callable instances (`scope: personal`, `type`, or `project`).

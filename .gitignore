@@ -1,5 +1,6 @@
-# GitHub tracks system design only. Everything else is local customization.
+# GitHub tracks the kernel and open-source landing page. Everything else is local.
 *
 !.gitignore
+!README.md
 !system/
 !system/**
