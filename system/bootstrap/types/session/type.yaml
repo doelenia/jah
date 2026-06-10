@@ -1,0 +1,56 @@
+id: type.session
+extends: type.base
+description: "Temporary working instance for one task."
+fields:
+  goal:
+    type: scalar
+    cardinality: one
+    description: "One-line session objective."
+  main_instance:
+    type: type.project
+    cardinality: one
+    storage: instance_ref
+    description: "Parent project path (e.g. users/<principal>/projects/jah)."
+  status:
+    type: scalar
+    cardinality: one
+    allowed_values: [created, in_progress, completed]
+  workflow_id:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Explicit workflow id to invoke, e.g. workflow.us_taxes.tax_filing."
+  workflow:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Workflow path relative to project, or auto for compile-time resolution."
+  target_type:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Hint for auto resolution, e.g. type.blog_post."
+  input:
+    type: type.session_artifact
+    cardinality: one
+    storage: input.md
+  compiled_context:
+    type: type.session_artifact
+    cardinality: one
+    storage: compiled_context.md
+  output:
+    type: type.session_artifact
+    cardinality: one
+    storage: output.md
+  evaluation:
+    type: type.session_artifact
+    cardinality: one
+    storage: evaluation.md
+  trace:
+    type: type.session_artifact
+    cardinality: one
+    storage: trace.md
+  patch:
+    type: type.session_artifact
+    cardinality: one
+    storage: patch.md

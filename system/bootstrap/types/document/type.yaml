@@ -1,0 +1,12 @@
+id: type.document
+extends: type.base
+description: "Single markdown content file stored at a fixed path relative to its parent instance."
+fields:
+  content:
+    type: scalar
+    cardinality: one
+    storage: "{filename}"
+    description: "Markdown body; filename declared in parent instance fields block."
+agent_protocol:
+  - "Read parent instance.yaml and this type's README before editing."
+  - "Create or edit only the declared storage path; do not invent alternate filenames."

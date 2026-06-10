@@ -1,0 +1,9 @@
+id: type.profile
+extends: type.document
+description: "Canonical stable personal facts compiled into every session."
+fields:
+  content:
+    type: scalar
+    cardinality: one
+    storage: profile.md
+    description: "Identity, nationality, addresses, tax residency, legal names, contact info."

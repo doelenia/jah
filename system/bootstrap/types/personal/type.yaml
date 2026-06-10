@@ -1,0 +1,29 @@
+id: type.personal
+extends: type.base
+description: "Personal memory container for profile, preferences, rules, and cross-project sources."
+fields:
+  profile:
+    type: type.profile
+    cardinality: one
+    storage: profile.md
+  preferences:
+    type: type.directory
+    content_type: preference
+    cardinality: one
+    storage: preferences/
+  rules:
+    type: type.directory
+    content_type: rule
+    cardinality: one
+    storage: rules/
+  sources:
+    type: type.directory
+    content_type: source
+    cardinality: one
+    storage: sources/
+    catalog: index.md
+  documents:
+    type: type.directory
+    content_type: document
+    cardinality: one
+    storage: documents/

@@ -4,39 +4,38 @@ Primary entry point for working in Jah.
 
 ## What Jah is
 
-Jah is a local-first, AI-native personal OS. It turns repeated work into stable, preference-aware automation through typed memory, context compilation, sessions, traces, and local improvement proposals.
+Jah is a local-first, AI-native personal OS. It turns repeated work into stable, preference-aware automation through typed instances, context compilation, sessions, traces, and local improvement proposals.
 
-The shared design lives in `system/` (versioned on GitHub). Your living world — types, memory, tools — stays local and private.
+The shared design lives in `system/` (versioned on GitHub). Your principal — `users/<id>/` — stays local and private.
 
 ## Setup
 
 1. Clone the repo (you get `system/` and `.gitignore`).
-2. Scaffold local layers: `types/`, `memory/`, `tools/` (see `storage_rules.md`).
+2. Bootstrap a principal: `python3 system/scripts/init_jah.py <id>` (see `system/bootstrap/SETUP.md`).
 3. Install Python deps: `pip install -r requirements.txt` (local file).
-4. Read `design_logic.md`, then relevant `instance.yaml` files before work.
+4. Read `design_logic.md`, then `jah.yaml` and the active principal's `registry.yaml`.
 
 ## How to work
 
 1. **Create or use a session** for every task.
-2. **Compile context** before execution: `python tools/scripts/compile_context.py <session-path>`.
+2. **Compile context** before execution.
 3. **Work inside the session folder** — outputs, evaluation, trace, patch.
-4. **Propose improvements** in session `patch.md`; apply to local memory/types/tools manually after review.
-5. **Be proactive** — ask for missing info, and offer to capture reusable facts, types, tools, or kernel improvements when you detect them (`proactive_capture.md`).
-6. **Capture stable personal facts** in `memory/personal/profile.md` via `patch.md` proposals — never auto-write profile during a session.
-7. **Cite sources** when creating content from internal files (repo-relative path) or external links (full URL). Record references in session artifacts and stable-memory proposals.
-8. **Store reusable files** (PDF, image, video, etc.) under `sources/files/` with a catalog entry in `sources/index.md` — see `types/source/README.md`.
-8. **Change the kernel** only via GitHub PR on `system/`. Bump `system/VERSION` and add a `system/CHANGELOG.md` entry before every kernel commit (`versioning.md`).
+4. **Propose improvements** in session `patch.md`; apply to principal manually after review.
+5. **Be proactive** — gap-fill, capture, improve (`proactive_capture.md`).
+6. **Capture stable personal facts** via `patch.md` — never auto-write profile.
+7. **Cite sources** in session artifacts and stable-instance proposals.
+8. **Store reusable files** under `sources/files/` with catalog entries.
+9. **Change the system** only via GitHub PR on `system/`. Bump `system/VERSION` before every system commit (`versioning.md`).
 
 ## Type resolution (required)
 
-Before working with any instance or field, resolve its type:
+1. Read `jah.yaml` → active principal.
+2. Read `registry.yaml` → resolve instance `type`.
+3. Read `types/<type>/type.yaml` and README (with extends chain).
+4. For each field in scope, repeat.
+5. Read child `instance.yaml` files for folder-based instances.
 
-1. Read the `instance.yaml` → get `type`.
-2. Read `types/<type>/type.yaml` and `types/<type>/README.md`.
-3. For each field in scope, repeat for that field's declared type.
-4. Read child `instance.yaml` files for folder-based instances.
-
-See `system/type_system.md` for field typing and instance creation rules.
+See `system/type_system.md`.
 
 ## Read order
 
@@ -44,34 +43,36 @@ See `system/type_system.md` for field typing and instance creation rules.
 2. `system/design_logic.md`
 3. `system/storage_rules.md`
 4. `system/type_system.md`
-5. Relevant `instance.yaml` for the project, personal scope, or session
-6. `types/<type>/README.md` for the instance and each field being touched
-7. Session `compiled_context.md` after compilation
-
-Deeper reference: `system/session_lifecycle.md`, `system/context_compilation.md`, `system/permission_model.md`, `system/improvement_protocol.md`, `system/proactive_capture.md`, `system/versioning.md`.
+5. `users/<id>/registry.yaml`
+6. Relevant `instance.yaml` (principal, personal, project, or session)
+7. `types/<type>/README.md` for instance and each field in scope
+8. Session `compiled_context.md` after compilation
 
 ## Scripts
 
-**Local** (in your `tools/scripts/`):
+**Principal** (under `users/<id>/tools/scripts/`):
 
 ```bash
 # Create a session
-python3 tools/scripts/new_session.py memory/projects/jah "Your goal here"
+python3 users/<id>/tools/scripts/new_session.py users/<id>/projects/jah "Your goal here"
 
-# Compile context for a session
-python3 tools/scripts/compile_context.py memory/projects/jah/sessions/YYYY-MM-DD-001
+# Compile context
+python3 users/<id>/tools/scripts/compile_context.py users/<id>/projects/jah/sessions/YYYY-MM-DD-001
 
-# List all instance.yaml paths
-python3 tools/scripts/list_instances.py
+# List instance.yaml paths
+python3 users/<id>/tools/scripts/list_instances.py
+
+# Validate registry
+python3 users/<id>/tools/scripts/validate_registry.py
 ```
 
-**Kernel release** (tracked in `system/scripts/`, run before GitHub commit):
+**System release** (tracked in `system/scripts/`):
 
 ```bash
-python3 system/scripts/bump_release.py --bump patch -m "Summary of kernel change"
-python3 system/scripts/check_release.py   # optional: verify version bump present
+python3 system/scripts/bump_release.py --bump patch -m "Summary of system change"
+python3 system/scripts/check_release.py
 ```
 
 ## MVP philosophy
 
-Boring, inspectable, durable. No black-box memory. Dependencies are explicit and recorded in compiled context.
+Boring, inspectable, durable. No black-box state. Dependencies are explicit and recorded in compiled context.

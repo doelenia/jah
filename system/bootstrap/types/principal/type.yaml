@@ -1,0 +1,28 @@
+id: type.principal
+extends: type.base
+description: "Container for a principal's local world — registry, types, personal scope, projects, and tools."
+fields:
+  registry:
+    type: scalar
+    cardinality: one
+    storage: registry.yaml
+    description: "Authoritative type index for this principal."
+  types:
+    type: scalar
+    cardinality: one
+    storage: types/
+    description: "Registered type definitions (type.yaml + README.md per type)."
+  personal:
+    type: type.personal
+    cardinality: one
+    storage: personal/
+  projects:
+    type: type.directory
+    content_type: project
+    cardinality: one
+    storage: projects/
+  tools:
+    type: scalar
+    cardinality: one
+    storage: tools/
+    description: "Executable scripts and integrations for this principal."

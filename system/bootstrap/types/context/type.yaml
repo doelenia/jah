@@ -1,0 +1,9 @@
+id: type.context
+extends: type.document
+description: "Stable background context for a project or scoped container."
+fields:
+  content:
+    type: scalar
+    cardinality: one
+    storage: context.md
+    description: "Project goals, constraints, stakeholders, and background."

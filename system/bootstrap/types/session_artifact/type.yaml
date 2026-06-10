@@ -1,0 +1,9 @@
+id: type.session_artifact
+extends: type.document
+description: "Session working file with a required role in the session lifecycle."
+fields:
+  content:
+    type: scalar
+    cardinality: one
+    storage: "{filename}"
+    description: "Session artifact body; filename fixed by type.session field storage pattern."

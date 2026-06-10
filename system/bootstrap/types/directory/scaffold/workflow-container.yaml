@@ -1,0 +1,10 @@
+id: directory.workflows.{scope}
+type: directory
+name: "{Name} Workflows"
+description: "Callable workflow templates for {name}."
+role: container
+content_type: workflow
+catalog: index.md
+instances: "<name>/instance.yaml"
+protocol: users/<principal>/types/workflow/README.md
+requires_approval: true

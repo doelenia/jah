@@ -1,0 +1,70 @@
+id: type.workflow
+extends: type.base
+description: "Callable repeatable procedure. Leaf folders live under a type.directory workflows/ container."
+fields:
+  scope:
+    type: scalar
+    cardinality: one
+    allowed_values: [personal, type, project]
+    description: "personal = cross-project; type = operates on artifact type; project = project-specific."
+  operates_on:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Type id this workflow acts on, e.g. type.blog_post. Omit for project-only workflows."
+  project:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Project id when scope is project, e.g. project.us_taxes."
+  applies_to:
+    type: scalar
+    cardinality: many
+    optional: true
+    description: "Project or type ids this personal workflow applies to."
+  inputs:
+    type: scalar
+    cardinality: many
+    optional: true
+    description: "Optional input signature (parameter names)."
+  outputs:
+    type: scalar
+    cardinality: many
+    optional: true
+    description: "Optional output signature (result names)."
+  status:
+    type: scalar
+    cardinality: one
+    allowed_values: [active, draft, deprecated]
+    description: "Only active workflows are resolved by default."
+  dependencies:
+    type: scalar
+    cardinality: many
+    optional: true
+    description: "Paths or instance ids this workflow depends on."
+  requirements:
+    type: type.document
+    cardinality: one
+    storage: requirements.md
+  workflow:
+    type: type.document
+    cardinality: one
+    storage: workflow.md
+  evaluation:
+    type: type.document
+    cardinality: one
+    storage: evaluation.md
+  examples:
+    type: type.document
+    cardinality: one
+    storage: examples.md
+  common_failures:
+    type: type.document
+    cardinality: one
+    storage: common_failures.md
+    optional: true
+agent_protocol:
+  - "Workflows live in a type.directory container (workflows/) — read workflows/instance.yaml first."
+  - "Each workflow is a folder with instance.yaml (type: workflow) and core markdown files."
+  - "Register new workflows in parent project or personal instance.yaml fields.workflows."
+  - "Sessions invoke workflows via workflow_id, workflow path, or auto-resolution at compile time."

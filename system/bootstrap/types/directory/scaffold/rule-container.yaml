@@ -1,0 +1,9 @@
+id: directory.rules.{scope}
+type: directory
+name: "{Name} Rules"
+description: "Scoped rules and constraints for {name}."
+role: container
+content_type: rule
+instances: "<group>/<name>.yaml"
+protocol: types/rule/README.md
+requires_approval: true

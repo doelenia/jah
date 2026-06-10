@@ -1,0 +1,25 @@
+id: type.preference
+extends: type.base
+description: "Scoped preference with content path. Leaf folders live under a type.directory preferences/ container."
+fields:
+  scope:
+    type: scalar
+    cardinality: one
+    description: "e.g. global, project"
+  priority:
+    type: scalar
+    cardinality: one
+    optional: true
+  applies_to:
+    type: scalar
+    cardinality: many
+    optional: true
+  content:
+    type: type.document
+    cardinality: one
+    storage: "{content_path}"
+    description: "Markdown preference body; path set in instance.yaml as content_path."
+agent_protocol:
+  - "Preferences live in a type.directory container (preferences/) — read preferences/instance.yaml first."
+  - "Each preference is a folder with instance.yaml (type: preference) and a content markdown file."
+  - "Register new preferences in parent instance.yaml fields.preferences."

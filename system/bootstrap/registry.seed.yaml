@@ -1,0 +1,61 @@
+id: registry.seed
+version: 1
+description: "Starter type registry — copied to users/<id>/registry.yaml on bootstrap."
+types:
+  base:
+    id: type.base
+    path: types/base
+    extends: null
+  directory:
+    id: type.directory
+    path: types/directory
+    extends: base
+  document:
+    id: type.document
+    path: types/document
+    extends: base
+  context:
+    id: type.context
+    path: types/context
+    extends: document
+  profile:
+    id: type.profile
+    path: types/profile
+    extends: document
+  personal:
+    id: type.personal
+    path: types/personal
+    extends: base
+  principal:
+    id: type.principal
+    path: types/principal
+    extends: base
+  session:
+    id: type.session
+    path: types/session
+    extends: base
+  session_artifact:
+    id: type.session_artifact
+    path: types/session_artifact
+    extends: document
+  project:
+    id: type.project
+    path: types/project
+    extends: base
+  preference:
+    id: type.preference
+    path: types/preference
+    extends: base
+  rule:
+    id: type.rule
+    path: types/rule
+    extends: base
+  source:
+    id: type.source
+    path: types/source
+    extends: base
+  workflow:
+    id: type.workflow
+    path: types/workflow
+    extends: base
+aliases: {}

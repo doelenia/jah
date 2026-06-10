@@ -1,0 +1,9 @@
+id: directory.sessions.{scope}
+type: directory
+name: "{Name} Sessions"
+description: "Temporary working sessions for {name} tasks."
+role: container
+content_type: session
+instances: "YYYY-MM-DD-NNN/instance.yaml"
+protocol: types/session/README.md
+requires_approval: true

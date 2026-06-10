@@ -1,0 +1,9 @@
+id: directory.preferences.{scope}
+type: directory
+name: "{Name} Preferences"
+description: "Personal or project preferences for {name}."
+role: container
+content_type: preference
+instances: "<name>/instance.yaml"
+protocol: types/preference/README.md
+requires_approval: true

@@ -1,0 +1,10 @@
+id: directory.sources.{scope}
+type: directory
+name: "{Name} Sources"
+description: "Reusable reference files and catalog for {name}."
+role: container
+content_type: source
+catalog: index.md
+binaries: files/
+protocol: users/<principal>/types/source/README.md
+requires_approval: true

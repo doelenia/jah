@@ -1,0 +1,8 @@
+# Default signature for type scaffold: users/<principal>/types/<artifact_type>/workflows/<name>/signature.template.yaml
+# Copy into memory workflow instance.yaml when instantiating.
+
+operates_on: type.example
+inputs:
+  - topic
+outputs:
+  - draft

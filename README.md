@@ -1,48 +1,52 @@
 # Jah
 
-A local-first, AI-native personal OS. Jah turns repeated work into stable, preference-aware automation through typed memory, context compilation, sessions, traces, and local improvement proposals.
+A local-first, AI-native personal OS. Jah turns repeated work into stable, preference-aware automation through typed instances, context compilation, sessions, traces, and local improvement proposals.
 
-The **kernel** in `system/` is shared and versioned on GitHub. Your living world — types, memory, tools — stays on your machine and private.
+The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current kernel version: **0.1.0** (see [system/VERSION](system/VERSION)).
+Current system version: **1.0.0** (see [system/VERSION](system/VERSION)).
 
 ## What you get from GitHub
 
-- `system/` — protocol, design docs, release scripts
-- `.gitignore` — keeps local layers out of git
+- `system/` — protocol, bootstrap starter kit, design docs, release scripts
+- `.gitignore` — keeps principals local
 - This `README.md`
-
-Everything else (`types/`, `memory/`, `tools/`, agent config) you scaffold locally.
 
 ## Quick start
 
 1. **Clone** this repository.
-2. **Scaffold** local layers at the repo root:
-   - `types/`
-   - `memory/` (e.g. `memory/personal/`, `memory/projects/`)
-   - `tools/` (e.g. `tools/scripts/`)
-3. **Install** Python dependencies: `pip install -r requirements.txt` (create this file locally as needed).
-4. **Read** [system/protocol.md](system/protocol.md), then [system/design_logic.md](system/design_logic.md).
+2. **Bootstrap** a principal:
+   ```bash
+   python3 system/scripts/init_jah.py <your-id>
+   ```
+   Copy `users/<id>/tools/scripts/` from an existing setup or add scripts after bootstrap (see `system/bootstrap/SETUP.md`).
+3. **Install** Python deps: `pip install -r requirements.txt` in a virtualenv.
+4. **Read** [system/protocol.md](system/protocol.md) and [system/bootstrap/SETUP.md](system/bootstrap/SETUP.md).
 
 ## How to use Jah
 
-Every task runs in a **session** — an isolated folder under a project.
+Every task runs in a **session** under a project.
 
 ```bash
 # Create a session
-python3 tools/scripts/new_session.py memory/projects/<project> "Your goal"
+python3 users/<id>/tools/scripts/new_session.py users/<id>/projects/<project> "Your goal"
 
-# Compile context (loads types, preferences, rules, workflows)
-python3 tools/scripts/compile_context.py memory/projects/<project>/sessions/YYYY-MM-DD-NNN
+# Compile context
+python3 users/<id>/tools/scripts/compile_context.py users/<id>/projects/<project>/sessions/YYYY-MM-DD-NNN
 ```
 
-Work inside the session folder. End with `output.md`, `evaluation.md`, `trace.md`, and `patch.md`. Propose stable-memory changes in `patch.md`; apply them manually after review.
+Work inside the session folder. End with `output.md`, `evaluation.md`, `trace.md`, and `patch.md`.
 
 Full workflow: [system/protocol.md](system/protocol.md) · Session lifecycle: [system/session_lifecycle.md](system/session_lifecycle.md)
 
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 1.0.0 (2026-06-10)
+- Principal architecture: users/<id>/ layout with registry.yaml and bootstrap
+- Replace legacy memory/types/tools root paths; remove work_pattern
+- Unify terminology: system (not kernel), principal (not top-level memory)
+
 ### 0.1.0 (2026-06-09)
 - Kernel versioning with `system/VERSION` and `system/CHANGELOG.md`
 - Root `README.md` for open-source discovery (intro, quick start, recent updates)
@@ -53,11 +57,11 @@ Full workflow: [system/protocol.md](system/protocol.md) · Session lifecycle: [s
 
 Full history: [system/CHANGELOG.md](system/CHANGELOG.md).
 
-## Contributing to the kernel
+## Contributing to the system
 
-Kernel changes live in `system/` and ship via GitHub PR.
+System changes live in `system/` and ship via GitHub PR.
 
-**Before every commit** that changes tracked kernel files, bump the version and add a changelog entry:
+**Before every commit** that changes tracked system files, bump the version and add a changelog entry:
 
 ```bash
 python3 system/scripts/bump_release.py --bump patch -m "Short summary of the change"

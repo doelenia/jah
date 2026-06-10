@@ -1,0 +1,16 @@
+id: type.base
+description: "Base type for all Jah types."
+required_fields:
+  - id
+  - type
+  - name
+optional_fields:
+  - extends
+  - sensitivity
+  - dependencies
+  - capabilities
+  - allowed_read
+  - allowed_write
+  - requires_approval
+  - memory_paths
+  - tool_access

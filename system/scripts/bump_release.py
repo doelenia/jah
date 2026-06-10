@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bump kernel version and sync CHANGELOG + README recent updates."""
+"""Bump system version and sync CHANGELOG + README recent updates."""
 
 from __future__ import annotations
 
@@ -145,13 +145,13 @@ def sync_readme_recent_updates(readme_path: Path, changelog_path: Path) -> None:
     updated = pattern.sub(replacement, readme)
 
     version_line = re.search(
-        r"^Current kernel version: \*\*[\d.]+\*\*",
+        r"^Current system version: \*\*[\d.]+\*\*",
         updated,
         re.MULTILINE,
     )
     if version_line:
         current = read_version(repo_root() / "system" / "VERSION")
-        new_line = f"Current kernel version: **{format_version(current)}**"
+        new_line = f"Current system version: **{format_version(current)}**"
         updated = updated[: version_line.start()] + new_line + updated[version_line.end() :]
 
     readme_path.write_text(updated, encoding="utf-8")
@@ -159,7 +159,7 @@ def sync_readme_recent_updates(readme_path: Path, changelog_path: Path) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Bump Jah kernel version and update CHANGELOG + README."
+        description="Bump Jah system version and update CHANGELOG + README."
     )
     parser.add_argument(
         "--bump",
@@ -204,7 +204,7 @@ def main() -> int:
         print(f"Error: {exc}", file=sys.stderr)
         return 1
 
-    print(f"Bumped kernel to {new_version}")
+    print(f"Bumped system to {new_version}")
     print(f"  {version_path.relative_to(root)}")
     print(f"  {changelog_path.relative_to(root)}")
     print(f"  {readme_path.relative_to(root)}")

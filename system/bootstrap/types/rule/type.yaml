@@ -1,0 +1,34 @@
+id: type.rule
+extends: type.base
+description: "Scoped rule with priority and applies_to. Stored as YAML file instances under a type.directory rules/ container."
+fields:
+  scope:
+    type: scalar
+    cardinality: one
+    description: "e.g. global, project"
+  priority:
+    type: scalar
+    cardinality: one
+    optional: true
+  applies_to:
+    type: scalar
+    cardinality: many
+    optional: true
+    description: "Work pattern or project ids this rule applies to."
+  conflicts_with:
+    type: scalar
+    cardinality: many
+    optional: true
+  status:
+    type: scalar
+    cardinality: one
+    allowed_values: [active, inactive, draft]
+  rule:
+    type: scalar
+    cardinality: one
+    description: "Rule text or constraint."
+agent_protocol:
+  - "Rules live in a type.directory container (rules/) — read rules/instance.yaml first."
+  - "Each rule is a YAML file at rules/<group>/<name>.yaml with type: rule."
+  - "Every rule file must include id, type: rule, name, scope, status, and rule."
+  - "Propose new rules in session patch.md; apply only after user approval."

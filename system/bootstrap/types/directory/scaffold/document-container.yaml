@@ -1,0 +1,9 @@
+id: directory.documents.{scope}
+type: directory
+name: "{Name} Documents"
+description: "Stable document files for {name}."
+role: container
+content_type: document
+instances: "<name>.<ext>"
+protocol: types/document/README.md
+requires_approval: true

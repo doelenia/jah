@@ -1,0 +1,123 @@
+id: type.directory
+extends: type.base
+description: >
+  Directory container at a stable memory boundary. Declares what content type
+  lives here and how to lay it out. Read instance.yaml at the write boundary
+  before storing anything. Full protocol: users/<principal>/types/directory/README.md
+role_default: container
+requires_approval: true
+fields:
+  description:
+    type: scalar
+    cardinality: one
+    description: "What this directory holds and when agents should use it."
+  role:
+    type: scalar
+    cardinality: one
+    allowed_values: [container]
+    description: "Directory instances are containers; item types use leaf or file roles."
+  content_type:
+    type: scalar
+    cardinality: one
+    description: "Registry type id for items in this directory (e.g. source, workflow, project). Resolve via registry.yaml before write."
+  catalog:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Catalog file when content_type is source (e.g. index.md)."
+  binaries:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Binary root when content_type is source (e.g. files/)."
+  instances:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: "Instance path pattern (e.g. <name>/instance.yaml or <group>/<name>.yaml)."
+  protocol:
+    type: scalar
+    cardinality: one
+    description: "Path to content-type README (e.g. users/<principal>/types/source/README.md)."
+content_type_layouts:
+  source:
+    catalog: index.md
+    binaries: "files/<group>/..."
+    naming: "kebab-case.<ext>"
+    allowed_at_root:
+      - instance.yaml
+      - index.md
+      - README.md
+      - files/
+    forbidden_at_root:
+      - "*.pdf"
+      - "*.jpg"
+      - "*.jpeg"
+      - "*.png"
+      - "*.gif"
+      - "*.webp"
+      - "*.heic"
+      - "*.mp4"
+      - "*.mov"
+      - "*.webm"
+      - "*.mp3"
+      - "*.m4a"
+      - "*.wav"
+  rule:
+    instances: "<group>/<name>.yaml"
+    allowed_at_root:
+      - instance.yaml
+      - README.md
+      - "<group>/"
+    forbidden_at_root:
+      - "*.pdf"
+      - "*.md"
+      - "*.jpg"
+  preference:
+    instances: "<name>/instance.yaml"
+    allowed_at_root:
+      - instance.yaml
+      - README.md
+      - "<name>/"
+    forbidden_at_root:
+      - "*.pdf"
+      - "*.yaml"
+  workflow:
+    catalog: index.md
+    instances: "<name>/instance.yaml"
+    allowed_at_root:
+      - instance.yaml
+      - index.md
+      - README.md
+      - "<name>/"
+    forbidden_at_root:
+      - "*.pdf"
+      - "*.yaml"
+  session:
+    instances: "YYYY-MM-DD-NNN/instance.yaml"
+    allowed_at_root:
+      - instance.yaml
+      - README.md
+      - "YYYY-MM-DD-NNN/"
+    forbidden_at_root:
+      - "*.pdf"
+      - "*.md"
+  document:
+    instances: "<name>.<ext>"
+    allowed_at_root:
+      - instance.yaml
+      - README.md
+      - "*.pdf"
+      - "*.jpg"
+      - "*.jpeg"
+      - "*.png"
+      - "*.gif"
+      - "*.webp"
+      - "*.heic"
+    forbidden_at_root:
+      - "*.yaml"
+agent_protocol:
+  - "Read instance.yaml in the directory before any write."
+  - "Resolve content_type → read users/<principal>/types/<content_type>/README.md for item schema and steps."
+  - "Never store item files at the directory root unless allowed_at_root permits it."
+  - "Ask user approval before writing in a default session (L3–L4)."

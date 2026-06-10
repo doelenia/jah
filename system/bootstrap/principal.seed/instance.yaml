@@ -1,0 +1,19 @@
+id: principal.seed
+type: principal
+name: Principal
+fields:
+  registry:
+    storage: registry.yaml
+  types:
+    storage: types/
+  personal:
+    id: personal.main
+    type: personal
+    storage: personal/
+  projects:
+    id: directory.projects
+    type: directory
+    content_type: project
+    storage: projects/
+  tools:
+    storage: tools/

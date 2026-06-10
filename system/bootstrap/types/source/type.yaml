@@ -1,0 +1,47 @@
+id: type.source
+extends: type.base
+description: >
+  A single reusable reference — PDF, image, video, audio, markdown note, or
+  external URL. Items are cataloged in sources/index.md; binaries live under
+  sources/files/. The sources/ folder is a type.directory container with
+  content_type: source. Full protocol: users/<principal>/types/source/README.md
+requires_approval: true
+fields:
+  media_type:
+    type: scalar
+    cardinality: one
+    allowed_values: [pdf, image, video, audio, markdown, other]
+  source_type:
+    type: scalar
+    cardinality: one
+    allowed_values: [internal_file, external_url]
+  path_or_url:
+    type: scalar
+    cardinality: one
+    description: "Relative to sources/ or full URL."
+  summary:
+    type: scalar
+    cardinality: one
+  sensitivity:
+    type: scalar
+    cardinality: one
+    allowed_values: [low, medium, high]
+  tags:
+    type: scalar
+    cardinality: many
+    optional: true
+  added:
+    type: scalar
+    cardinality: one
+    description: "YYYY-MM-DD"
+allowed_values:
+  media_type: [pdf, image, video, audio, markdown, other]
+  source_type: [internal_file, external_url]
+  sensitivity: [low, medium, high]
+agent_protocol:
+  - "Sources live in a type.directory container (sources/) — read sources/instance.yaml first."
+  - "Save binaries to sources/files/<group>/<descriptive-name>.<ext> — never at sources/ root."
+  - "Add a catalog entry to sources/index.md for every reusable file or URL."
+  - "Ask user approval before writing to sources/ in a default session."
+  - "Cite path_or_url in session output.md, trace.md, or patch.md when the resource informed work."
+  - "Session-only drafts stay in the session folder until user approves promotion."

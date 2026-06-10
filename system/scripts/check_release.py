@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify kernel changes include a VERSION / CHANGELOG update."""
+"""Verify system changes include a VERSION / CHANGELOG update."""
 
 from __future__ import annotations
 
@@ -81,18 +81,18 @@ def main() -> int:
     changed = changed_tracked_files()
 
     if not changed:
-        print("No tracked kernel changes detected.")
+        print("No tracked system changes detected.")
         return 0
 
     release_files = {"system/VERSION", "system/CHANGELOG.md"}
     only_release = set(changed).issubset(release_files)
-    kernel_changed = any(
+    system_changed = any(
         f.startswith("system/") and f not in release_files for f in changed
     ) or any(f in changed for f in ("README.md", ".gitignore"))
 
-    if kernel_changed and not version_changelog_touched(changed):
+    if system_changed and not version_changelog_touched(changed):
         print(
-            "Error: kernel files changed but system/VERSION and system/CHANGELOG.md "
+            "Error: system files changed but system/VERSION and system/CHANGELOG.md "
             "were not updated.\n"
             "Run: python3 system/scripts/bump_release.py --bump patch -m \"Your summary\"",
             file=sys.stderr,
@@ -100,7 +100,7 @@ def main() -> int:
         print("Changed tracked files:", ", ".join(changed), file=sys.stderr)
         return 1
 
-    if version_changelog_touched(changed) and not only_release and kernel_changed:
+    if version_changelog_touched(changed) and not only_release and system_changed:
         version = read_version(root / "system" / "VERSION")
         if not version:
             print("Error: system/VERSION is missing or invalid.", file=sys.stderr)
