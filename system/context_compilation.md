@@ -4,7 +4,7 @@
 
 Sessions should not rely on vague recall. Before work starts, Jah collects **goal-matched** type definitions, preferences, rules, tasks, sessions, sources, and project context into `compiled_context.md`.
 
-After compilation, agents **gap-fill** and run **active discovery** (`discovery_protocol.md`, `proactive_capture.md`) before executing work.
+After compilation, agents **orient and plan** before any implementation writes (`discovery_protocol.md` § Scope expansion), then **gap-fill** and run active discovery (`proactive_capture.md`).
 
 ## How to compile
 
@@ -14,7 +14,7 @@ python3 users/<id>/tools/scripts/compile_context.py users/<id>/projects/<project
 
 The script loads (via active principal from `jah.yaml`):
 
-1. **Agent protocol** — `discovery_protocol.md`, `proactive_capture.md`, `open_structure.md`
+1. **Agent protocol** — `discovery_protocol.md`, `knowledge_base.md`, `proactive_capture.md`, `open_structure.md`
 2. **System principles** — glossary, protocol, type_system
 3. **Scoped types** — types referenced by the project, session, workflows, and linked task (not the full registry)
 4. Personal profile and **all** personal preferences
@@ -22,11 +22,18 @@ The script loads (via active principal from `jah.yaml`):
 6. Project `context.md`, `instance.yaml`, and **grown fields** matched to the goal (e.g. `design/`)
 7. **Linked task** — from session `task_id` or task `session` field
 8. **Related tasks** and **related sessions** — goal keyword match
-9. Directory container boundaries (`sources/index.md`, `workflows/index.md`, `tasks/index.md` when present)
-10. **Resolved workflows** — selective (see below)
-11. Session `input.md`
+9. **Matched knowledge** — goal keyword match against `knowledge-base/` entries (topic, summary, `applies_to`)
+10. Directory container boundaries (`knowledge-base/`, `sources/index.md`, `workflows/index.md`, `tasks/index.md` when present)
+11. **Resolved workflows** — selective (see below)
+12. Session `input.md`
 
-Output sections: Session Goal, Agent Protocol, System Principles, Scoped Types, Personal Profile, Personal Preferences, Active Rules, Project Context, Project Instance, Grown Project Fields, Linked Task, Related Tasks, Related Sessions, Directory Boundaries, Resolved Workflows, Available Workflows, Session Input, Required Output Files, Approval Boundaries.
+Output sections: Session Goal, **Operation Checklist**, Agent Protocol, System Principles, Scoped Types, Personal Profile, Personal Preferences, Active Rules, Project Context, Project Instance, Grown Project Fields, Linked Task, Related Tasks, Related Sessions, Matched Knowledge, Directory Boundaries, Resolved Workflows, Available Workflows, Session Input, Required Output Files, Approval Boundaries.
+
+## Operation Checklist
+
+The first section after Session Goal in every `compiled_context.md` restates the default operation model:
+
+**Orient → Plan → Act → Capture** — no implementation writes until Orient and Plan are complete. See `system/protocol.md` § Operation model.
 
 ## Task linking
 
@@ -78,7 +85,19 @@ Workflow discovery searches:
 
 Global rules under `users/<id>/personal/rules/` compile into every session. Project rules compile when the project has a `rules/` container. Workflows declare `dependencies` on preferences and rules; `evaluation.md` checks compliance.
 
+## Matched Knowledge
+
+`compile_context.py` loads knowledge entries whose `summary`, `topic`, or `applies_to` match the session goal or project name. Summaries and metadata only — resolve full entries with:
+
+```bash
+python3 users/<id>/tools/scripts/resolve_knowledge.py <knowledge-id>
+```
+
+Only cite entries with `audit: reviewed` or `audit: endorsed` as authoritative. See `knowledge_base.md`.
+
 ## Related docs
+
+- `knowledge_base.md` — entry schema and agent protocol
 
 - `discovery_protocol.md` — active search after compile
 - `session_lifecycle.md` — session checkpoints

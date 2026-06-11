@@ -30,6 +30,7 @@ users/<id>/
   types/              # registered type definitions
   personal/           # cross-project instances
   projects/           # project instances
+  knowledge-base/     # curated knowledge index (see knowledge_base.md)
   tools/              # scripts and integrations
 ```
 

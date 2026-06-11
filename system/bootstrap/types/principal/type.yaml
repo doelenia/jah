@@ -27,3 +27,9 @@ fields:
     cardinality: one
     storage: tools/
     description: "Executable scripts and integrations for this principal."
+  knowledge_base:
+    type: scalar
+    cardinality: one
+    optional: true
+    storage: knowledge-base/
+    description: "Curated knowledge index — see system/knowledge_base.md"

@@ -29,7 +29,7 @@ New sessions set:
 
 Agents may **update existing principal instances and type definitions without asking**, including:
 
-- tasks, context, design docs, rules, preferences, sources, workflows
+- tasks, context, design docs, rules, preferences, sources, workflows, knowledge-base
 - patches to `users/<id>/types/<name>/type.yaml` and README
 - principal tools under `users/<id>/tools/`
 

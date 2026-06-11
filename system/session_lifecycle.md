@@ -27,9 +27,10 @@ Populates `compiled_context.md` with goal-matched dependencies. Work should not 
 
 After compilation:
 
-1. Resolve types for the session, project, and resolved workflows (`system/type_system.md`).
-2. Run a **gap-fill scan** (`proactive_capture.md`).
-3. Start the **discovery log** in `trace.md` (`discovery_protocol.md`).
+1. **Orient** — read Operation Checklist and compiled context; run scope expansion (`discovery_protocol.md`).
+2. **Plan** — write Session plan in `trace.md` (files to read, likely updates, open questions) **before implementation writes**.
+3. Resolve types for the session, project, and resolved workflows (`system/type_system.md`).
+4. Start the **discovery log** in `trace.md` as you read.
 
 ## 3. Worked
 
@@ -37,8 +38,8 @@ Agent or human executes the task using compiled context. Writes stay inside the 
 
 During work:
 
-- **Watch for capture signals** — stable facts, workflows, type shapes, tool opportunities, or system friction.
-- **Auto-update existing principal instances and types** when capture targets are clear; log in `trace.md`.
+- **Watch for capture signals** — stable facts, audited wisdom, workflows, type shapes, tool opportunities, or system friction.
+- **Auto-update existing principal instances and types** when capture targets are clear (including `knowledge-base/`); log in `trace.md`.
 - **Ask** before profile updates, new registry entries, or `system/` changes.
 
 ## 4. Evaluated
@@ -46,17 +47,20 @@ During work:
 Fill `evaluation.md`:
 
 - Success criteria
-- **References consulted** (checklist)
+- **References consulted** (checklist — include `knowledge.<id>` when cited)
 - **Stable updates** applied or offered
 - **Open questions** for the user
+- Unpromoted session IP that should become knowledge entries
 
 ## 5. Traced
 
 Fill `trace.md`:
 
+- **Session plan** — files to read, likely updates, open questions (written before implementation)
 - **Discovery log** — paths searched/read and whether used
 - Steps taken
 - **References** behind key decisions
+- Plan vs outcome at session end
 
 ## 6. Patched (optional)
 

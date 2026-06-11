@@ -33,6 +33,7 @@ One system commit = one semver entry in `system/CHANGELOG.md`.
 | Rules | `users/<id>/personal/rules/` | Auto (existing) |
 | Project context | `users/<id>/projects/<name>/context.md` | Auto (existing) |
 | Workflows | project/personal `workflows/` or `types/<artifact>/workflows/` | Auto |
+| Knowledge entries | `users/<id>/knowledge-base/` | Auto (existing) |
 | Registry / types | `users/<id>/registry.yaml`, `users/<id>/types/` | New registry entry = ask; patch existing = auto |
 | Tools | `users/<id>/tools/` | Auto |
 

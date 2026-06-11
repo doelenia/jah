@@ -17,6 +17,7 @@ users/<id>/
     workflows/        # optional cross-project workflows
     sources/
     documents/
+  knowledge-base/     # curated IP index — see system/knowledge_base.md
   projects/
     <project>/
       instance.yaml
@@ -58,6 +59,18 @@ Container instances declare typed child fields in a `fields:` block — **baseli
 1. Context compilation includes the current profile.
 2. Agents **must propose** profile updates in session `patch.md` — not write `profile.md` directly.
 3. Apply profile changes manually after review (L4).
+
+## Knowledge base
+
+Principal-level curated wisdom at `users/<id>/knowledge-base/`:
+
+| Path | Purpose |
+|------|---------|
+| `topics.yaml` | OECD FORD field taxonomy (`domain.field`) |
+| `index.yaml` | `knowledge.<id>` → entry file lookup |
+| `entries/` | Curated IP entry YAML files |
+
+Source files remain in scope `sources/files/`. Knowledge entries link via `grounded_in` and `canonical_path`. Protocol: `system/knowledge_base.md`.
 
 ## Project scope
 

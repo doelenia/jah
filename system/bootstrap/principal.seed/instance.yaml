@@ -17,3 +17,5 @@ fields:
     storage: projects/
   tools:
     storage: tools/
+  knowledge_base:
+    storage: knowledge-base/

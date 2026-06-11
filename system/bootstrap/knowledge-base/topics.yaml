@@ -1,0 +1,174 @@
+id: knowledge_topics.seed
+framework: OECD-FORD-2015
+framework_url: https://unstats.un.org/unsd/classifications/Family/Detail/1039
+version: 1
+max_depth: 2
+facet: field
+
+aliases: {}
+
+deprecated: {}
+
+topics:
+  natural_sciences:
+    label: Natural sciences
+    ford_code: "1"
+    children:
+      mathematics:
+        label: Mathematics
+        ford_code: "1.1"
+      computer_information_sciences:
+        label: Computer and information sciences
+        ford_code: "1.2"
+      physical_sciences:
+        label: Physical sciences
+        ford_code: "1.3"
+      chemical_sciences:
+        label: Chemical sciences
+        ford_code: "1.4"
+      earth_environmental_sciences:
+        label: Earth and related environmental sciences
+        ford_code: "1.5"
+      biological_sciences:
+        label: Biological sciences
+        ford_code: "1.6"
+      other_natural_sciences:
+        label: Other natural sciences
+        ford_code: "1.7"
+
+  engineering_technology:
+    label: Engineering and technology
+    ford_code: "2"
+    children:
+      civil_engineering:
+        label: Civil engineering
+        ford_code: "2.1"
+      electrical_electronic_engineering:
+        label: Electrical engineering, electronic engineering, information engineering
+        ford_code: "2.2"
+      mechanical_engineering:
+        label: Mechanical engineering
+        ford_code: "2.3"
+      chemical_engineering:
+        label: Chemical engineering
+        ford_code: "2.4"
+      materials_engineering:
+        label: Materials engineering
+        ford_code: "2.5"
+      medical_engineering:
+        label: Medical engineering
+        ford_code: "2.6"
+      environmental_engineering:
+        label: Environmental engineering
+        ford_code: "2.7"
+      environmental_biotechnology:
+        label: Environmental biotechnology
+        ford_code: "2.8"
+      industrial_biotechnology:
+        label: Industrial biotechnology
+        ford_code: "2.9"
+      nanotechnology:
+        label: Nano-technology
+        ford_code: "2.10"
+      other_engineering:
+        label: Other engineering and technologies
+        ford_code: "2.11"
+
+  medical_health_sciences:
+    label: Medical and health sciences
+    ford_code: "3"
+    children:
+      basic_medicine:
+        label: Basic medicine
+        ford_code: "3.1"
+      clinical_medicine:
+        label: Clinical medicine
+        ford_code: "3.2"
+      health_sciences:
+        label: Health sciences
+        ford_code: "3.3"
+      medical_biotechnology:
+        label: Medical biotechnology
+        ford_code: "3.4"
+      other_medical_sciences:
+        label: Other medical sciences
+        ford_code: "3.5"
+
+  agricultural_veterinary_sciences:
+    label: Agricultural and veterinary sciences
+    ford_code: "4"
+    children:
+      agriculture_forestry_fisheries:
+        label: Agriculture, forestry, and fisheries
+        ford_code: "4.1"
+      animal_dairy_science:
+        label: Animal and dairy science
+        ford_code: "4.2"
+      veterinary_science:
+        label: Veterinary science
+        ford_code: "4.3"
+      agricultural_biotechnology:
+        label: Agricultural biotechnology
+        ford_code: "4.4"
+      other_agricultural_sciences:
+        label: Other agricultural sciences
+        ford_code: "4.5"
+
+  social_sciences:
+    label: Social sciences
+    ford_code: "5"
+    children:
+      psychology_cognitive_sciences:
+        label: Psychology and cognitive sciences
+        ford_code: "5.1"
+      economics_business:
+        label: Economics and business
+        ford_code: "5.2"
+      education:
+        label: Education
+        ford_code: "5.3"
+      sociology:
+        label: Sociology
+        ford_code: "5.4"
+      law:
+        label: Law
+        ford_code: "5.5"
+      political_science:
+        label: Political science
+        ford_code: "5.6"
+      social_economic_geography:
+        label: Social and economic geography
+        ford_code: "5.7"
+      media_communications:
+        label: Media and communications
+        ford_code: "5.8"
+      other_social_sciences:
+        label: Other social sciences
+        ford_code: "5.9"
+
+  humanities_arts:
+    label: Humanities and the arts
+    ford_code: "6"
+    children:
+      history_archaeology:
+        label: History and archaeology
+        ford_code: "6.1"
+      languages_literature:
+        label: Languages and literature
+        ford_code: "6.2"
+      philosophy_ethics_religion:
+        label: Philosophy, ethics and religion
+        ford_code: "6.3"
+      arts:
+        label: Arts (arts, history of arts, performing arts, music)
+        ford_code: "6.4"
+      other_humanities:
+        label: Other humanities
+        ford_code: "6.5"
+
+  general:
+    label: General (Jah extension)
+    description: Staging and cross-cutting topics not yet classified.
+    children:
+      uncategorized:
+        label: Uncategorized

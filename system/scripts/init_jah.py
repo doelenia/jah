@@ -15,6 +15,24 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parents[2]
 
 
+def rewrite_yaml_ids(path: Path, principal_id: str) -> None:
+    if not path.is_file():
+        return
+    data = yaml.safe_load(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        return
+    file_id = str(data.get("id") or "")
+    if file_id.endswith(".seed"):
+        data["id"] = file_id.replace(".seed", f".{principal_id}")
+    path.write_text(yaml.dump(data, sort_keys=False, allow_unicode=True), encoding="utf-8")
+
+
+def copy_tree(src: Path, dst: Path) -> None:
+    if dst.exists():
+        shutil.rmtree(dst)
+    shutil.copytree(src, dst)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Bootstrap a Jah principal.")
     parser.add_argument("principal_id", help="e.g. katakuchi")
@@ -66,17 +84,31 @@ def main() -> int:
         )
 
     (principal_dir / "projects").mkdir(exist_ok=True)
+
+    kb_src = bootstrap / "knowledge-base"
+    kb_dst = principal_dir / "knowledge-base"
+    if kb_src.is_dir():
+        copy_tree(kb_src, kb_dst)
+        rewrite_yaml_ids(kb_dst / "topics.yaml", principal_id)
+        rewrite_yaml_ids(kb_dst / "index.yaml", principal_id)
+        rewrite_yaml_ids(kb_dst / "instance.yaml", principal_id)
+
     tools_dir = principal_dir / "tools"
     tools_dir.mkdir(exist_ok=True)
     scripts_dir = tools_dir / "scripts"
     scripts_dir.mkdir(exist_ok=True)
+    bootstrap_scripts = bootstrap / "tools" / "scripts"
+    if bootstrap_scripts.is_dir():
+        for script in bootstrap_scripts.iterdir():
+            if script.is_file() and script.suffix == ".py":
+                shutil.copy2(script, scripts_dir / script.name)
 
     jah_yaml = root / "jah.yaml"
     jah_yaml.write_text(f"active_principal: {principal_id}\n", encoding="utf-8")
 
     print(f"Initialized principal: users/{principal_id}/")
     print(f"Wrote jah.yaml with active_principal: {principal_id}")
-    print("Next: copy tools/scripts into users/<id>/tools/scripts/ and create a project.")
+    print("Next: create a project and run validate_knowledge.py.")
     return 0
 
 

@@ -26,7 +26,7 @@ The script:
 1. Copies `system/bootstrap/types/` → `users/<id>/types/`
 2. Copies `system/bootstrap/registry.seed.yaml` → `users/<id>/registry.yaml` (rewrites id)
 3. Creates `users/<id>/instance.yaml` (type: principal)
-4. Scaffolds `users/<id>/personal/instance.yaml` and empty `projects/`, `tools/`
+4. Scaffolds `users/<id>/personal/instance.yaml`, `knowledge-base/`, empty `projects/`, and copies `tools/scripts/` from bootstrap
 5. Writes `jah.yaml` with `active_principal: <id>`
 
 ## Post-init verification
@@ -35,6 +35,7 @@ The script:
 python3 users/<id>/tools/scripts/list_instances.py
 python3 users/<id>/tools/scripts/validate_registry.py
 python3 users/<id>/tools/scripts/validate_structure.py
+python3 users/<id>/tools/scripts/validate_knowledge.py
 python3 users/<id>/tools/scripts/new_session.py users/<id>/projects/<project> "Smoke test goal"
 python3 users/<id>/tools/scripts/compile_context.py users/<id>/projects/<project>/sessions/YYYY-MM-DD-NNN
 ```

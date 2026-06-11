@@ -7,6 +7,34 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.3.1] - 2026-06-10
+
+### Added
+
+- **Operation model** (Orient → Plan → Act → Capture) as top-priority default in `protocol.md`
+- **Operation Checklist** preamble in `compile_context.py` — first section after Session Goal in every compiled context
+- **Scope expansion** mandatory step in `discovery_protocol.md` — enumerate relevant paths before implementation; Session plan in `trace.md`
+
+### Changed
+
+- `session_lifecycle.md`, `context_compilation.md`, `CLAUDE.md`, `.cursor/rules/jah-system.mdc` — align with orient/plan before act
+
+## [0.3.0] - 2026-06-10
+
+### Added
+
+- `system/knowledge_base.md` — curated IP engine: OECD FORD field topics, entry schema, facet separation, agent create/update/find/audit protocol
+- `system/bootstrap/knowledge-base/` — topics.yaml (full FORD L1+L2 + `general.uncategorized`), index.yaml, instance.yaml scaffold
+- Bootstrap tool scripts: `knowledge_lib.py`, `resolve_knowledge.py`, `validate_knowledge.py`
+- `compile_context.py` — **Matched Knowledge** section; loads `knowledge_base.md` in agent protocol
+- Principal `knowledge_base` field on `type.principal`; init copies `knowledge-base/` and tool scripts
+
+### Changed
+
+- Read order includes `knowledge_base.md` after `discovery_protocol.md`
+- `proactive_capture.md`, `discovery_protocol.md`, `context_compilation.md`, `permission_model.md`, `principal_model.md`, `glossary.md`, `session_lifecycle.md`, `improvement_protocol.md`, `protocol.md`, `storage_rules.md`, `design_logic.md`, `CLAUDE.md`, bootstrap `SETUP.md` — knowledge-base integration
+- `init_jah.py` — scaffolds knowledge-base and copies bootstrap scripts
+
 ## [0.2.1] - 2026-06-10
 
 ### Added

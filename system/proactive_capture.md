@@ -18,7 +18,7 @@ Jah improves through everyday use. Agents are active curators: gap-fill, capture
 
 | Target | Action |
 |--------|--------|
-| Existing principal instances (tasks, context, design, rules, prefs, sources, workflows) | Update directly; log in `trace.md` |
+| Existing principal instances (tasks, context, design, rules, prefs, sources, workflows, knowledge-base) | Update directly; log in `trace.md` |
 | Existing principal types (`users/<id>/types/`) | Patch directly; log in `trace.md` |
 | Principal tools | Update directly when improving automation |
 | Personal profile | Propose in `patch.md`; ask user |
@@ -45,6 +45,7 @@ After compilation, scan for gaps that would block or weaken the task. Run **acti
 | Project background | `users/<id>/projects/<name>/context.md` |
 | Repeatable workflow | personal or project `workflows/`, or `types/<artifact>/workflows/` |
 | Reference material | `sources/` (catalog + `files/`) |
+| Curated wisdom (audited IP) | `users/<id>/knowledge-base/` (entry + `index.yaml`; see `knowledge_base.md`) |
 | Reusable schema | `registry.yaml` + `users/<id>/types/` (new = ask; patch existing = auto) |
 | Automation | `users/<id>/tools/` |
 | System gap | `system/` (via PR; ask first) |
@@ -59,7 +60,7 @@ Flag protocol friction. Apply principal workarounds directly when safe. Offer sy
 |------------|---------|
 | After compilation | Gap-fill scan; start discovery log in `trace.md` |
 | During work | Capture signals; auto-update principal when target is existing instance/type |
-| Before session end | Complete evaluation reference checklist; summarize profile/system offers in `patch.md` |
+| Before session end | Complete evaluation reference checklist; check unpromoted audited IP for knowledge-base; summarize profile/system offers in `patch.md` |
 
 ## Do not
 
@@ -71,6 +72,7 @@ Flag protocol friction. Apply principal workarounds directly when safe. Offer sy
 
 ## Related docs
 
+- `knowledge_base.md`
 - `discovery_protocol.md`
 - `improvement_protocol.md`
 - `permission_model.md`

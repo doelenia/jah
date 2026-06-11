@@ -22,6 +22,7 @@ Customization stays private. The protocol stays portable via GitHub.
 - **Sessions** — isolated workspaces for one task.
 - **Context compilation** — loads goal-matched dependencies before work so improvements propagate automatically.
 - **Discovery protocol** — active search, discovery log, reference checklist (`discovery_protocol.md`).
+- **Knowledge base** — curated IP index with OECD FORD field topics (`knowledge_base.md`).
 - **Traces** — record what happened; **patch.md** for profile, new types, and system proposals.
 
 ## Types as the growth engine

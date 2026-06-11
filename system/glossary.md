@@ -31,9 +31,14 @@ Use this vocabulary consistently across Jah. **One term per concept** — do not
 | **Trace** | Record of what happened during a session |
 | **Reference** | Citation of a source; internal = repo-relative path, external = full URL |
 | **Profile** | Canonical personal facts in `users/<id>/personal/profile.md`; updated via `patch.md` |
-| **Patch** | Local proposal for improvement (session `patch.md`; not auto-applied) |
+| **Operation model** | Default agent phases: Orient → Plan → Act → Capture (`protocol.md`) |
+| **Session plan** | Pre-implementation scope in `trace.md` — files to read, likely updates, open questions |
 | **Context compilation** | Collecting goal-matched types, preferences, rules, tasks, sessions, sources, and session input before work |
 | **Discovery protocol** | Active search, discovery log, and reference checklist — see `discovery_protocol.md` |
+| **Knowledge base** | Curated IP index at `knowledge-base/` — see `knowledge_base.md` |
+| **Knowledge entry** | One audited wisdom item in `knowledge-base/entries/` registered in `index.yaml` |
+| **Topic** | FORD field facet on an entry: `domain.field` from `topics.yaml` |
+| **Context facet** | Where wisdom applies: `applies_to` refs (project, type, workflow, rule) |
 | **Proactive capture** | Agent behavior: gap-fill, capture, improve — see `proactive_capture.md` |
 | **Workflow** | Callable procedure (`type.workflow`); invoked by sessions via `workflow_id` |
 | **System version** | Semver in `system/VERSION` for tracked system releases on GitHub |

@@ -4,7 +4,7 @@ A local-first, AI-native personal OS. Jah turns repeated work into stable, prefe
 
 The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current system version: **0.2.1** (see [system/VERSION](system/VERSION)).
+Current system version: **0.3.1** (see [system/VERSION](system/VERSION)).
 
 ## What you get from GitHub
 
@@ -20,6 +20,7 @@ Current system version: **0.2.1** (see [system/VERSION](system/VERSION)).
    python3 system/scripts/init_jah.py <your-id>
    ```
    Copy `users/<id>/tools/scripts/` from an existing setup or add scripts after bootstrap (see `system/bootstrap/SETUP.md`).
+   Init now copies bootstrap scripts and scaffolds `knowledge-base/` automatically.
 3. **Install** Python deps: `pip install -r requirements.txt` in a virtualenv.
 4. **Read** [system/protocol.md](system/protocol.md) and [system/bootstrap/SETUP.md](system/bootstrap/SETUP.md).
 
@@ -42,6 +43,12 @@ Full workflow: [system/protocol.md](system/protocol.md) · Session lifecycle: [s
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 0.3.1 (2026-06-10)
+- Operation model (Orient → Plan → Act → Capture): protocol default, compile preamble, discovery scope expansion
+
+### 0.3.0 (2026-06-10)
+- Knowledge base engine: OECD FORD field topics, curated IP registry, resolve/validate scripts, Matched Knowledge in compile
+
 ### 0.2.1 (2026-06-10)
 - Goal-aware context compilation, discovery protocol, and principal auto-update permissions
 
