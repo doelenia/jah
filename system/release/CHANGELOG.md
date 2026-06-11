@@ -7,6 +7,13 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-06-11
+
+### Added
+
+- Document connector access methods (MCP vs native CLI) and compile connectors index
+
+
 ## [0.4.1] - 2026-06-10
 
 ### Changed

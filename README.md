@@ -4,7 +4,7 @@ A local-first, AI-native personal OS. Jah turns repeated work into stable, prefe
 
 The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current system version: **0.4.1** (see [system/release/VERSION](system/release/VERSION)).
+Current system version: **0.4.2** (see [system/release/VERSION](system/release/VERSION)).
 
 ## What you get from GitHub
 
@@ -42,8 +42,12 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 0.4.2 (2026-06-11)
+- Document connector access methods (MCP vs native CLI) and compile connectors index
+
 ### 0.4.1 (2026-06-10)
-- Rename principal tools to connectors
+- Rename principal `tools` field and folder to `connectors` — external services, devices, MCP, custom glue (`type.principal`, agent docs, engines)
+- Add `system/release/scripts/migrate_tools_to_connectors.py` for local principal migration
 
 ### 0.4.0 (2026-06-10)
 - `system/instance.yaml` — declared system layers (agent, bootstrap, engines, release, interface)
@@ -63,12 +67,6 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 - Bootstrap tool scripts: `knowledge_lib.py`, `resolve_knowledge.py`, `validate_knowledge.py`
 - `compile_context.py` — **Matched Knowledge** section; loads `knowledge_base.md` in agent protocol
 - …and 1 more (see changelog)
-
-### 0.2.1 (2026-06-10)
-- `system/discovery_protocol.md` — active search, discovery log, reference checklist, auto-update vs ask table
-- Goal-aware `compile_context.py`: scoped types, linked/related tasks and sessions, grown project fields, all preferences, project rules
-- Session `task_id` field; evaluation and trace templates with reference checklist and discovery log
-- Principal auto-update permission (L3): existing instances and types without approval; profile and new registry entries still require ask; system/ requires explicit request
 <!-- recent-updates:end -->
 
 Full history: [system/release/CHANGELOG.md](system/release/CHANGELOG.md).

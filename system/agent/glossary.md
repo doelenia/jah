@@ -28,7 +28,9 @@ Use this vocabulary consistently across Jah. **One term per concept** — do not
 | **Registry** | `users/<id>/registry.yaml` — maps type names to paths and `extends` chains |
 | **Bootstrap** | First-time copy from `system/bootstrap/` into a new principal |
 | **Stable instances** | Long-lived instances (profile, context, workflows, sources) — vs session workspace |
-| **Connector** | Optional principal-specific wiring under `users/<id>/connectors/` (external services, devices, MCP, custom glue) |
+| **Connector** | Optional principal-specific wiring under `users/<id>/connectors/` — documents access method (MCP or native CLI); see `connectors.md` |
+| **Connector access (MCP)** | External service via Model Context Protocol — requires per-agent MCP config documented in connector README |
+| **Connector access (native CLI)** | External service via principal script/shell — agent-agnostic; no MCP setup |
 | **Engine** | System protocol runtime under `system/engines/` |
 | **Session** | Temporary working instance under a project |
 | **Trace** | Record of what happened during a session |

@@ -618,6 +618,23 @@ def compile_matched_knowledge(
     return "\n".join(parts) + "\n"
 
 
+def compile_connectors(principal: Path) -> str:
+    connectors_dir = principal / "connectors"
+    if not connectors_dir.is_dir():
+        return "*No connectors configured for this principal.*\n"
+    parts = [
+        "Read connector docs before external service calls. MCP config is per-agent; these docs are canonical.",
+        "",
+        load_md_block(agent_dir() / "connectors.md", "Connector Protocol"),
+    ]
+    index = connectors_dir / "README.md"
+    if index.is_file():
+        parts.append(load_md_block(index, "Connectors Index"))
+    else:
+        parts.append("*Missing connectors index: `users/<id>/connectors/README.md`*\n")
+    return "\n".join(parts)
+
+
 def compile_operation_preamble(project_path: Path, goal: str) -> str:
     project_name = project_path.name
     goal_line = goal.strip() if goal.strip() else "(see Session Goal below)"
@@ -703,6 +720,7 @@ def main() -> int:
         load_md_block(agent_dir() / "knowledge_base.md", "Knowledge Base"),
         load_md_block(agent_dir() / "proactive_capture.md", "Proactive Capture"),
         load_md_block(agent_dir() / "open_structure.md", "Open Structure"),
+        load_md_block(agent_dir() / "connectors.md", "Connectors"),
         "## System Principles",
         "",
         load_md_block(agent_dir() / "glossary.md", "Glossary"),
@@ -757,6 +775,9 @@ def main() -> int:
         f"Active principal: `{pid}`. Read each container's `instance.yaml` before writing.",
         "",
         compile_directory_boundaries(principal, project_path),
+        "## Principal Connectors",
+        "",
+        compile_connectors(principal),
         "## Resolved Workflows",
         "",
         compile_resolved_workflows(invoked),

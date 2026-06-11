@@ -80,6 +80,8 @@ Scope expansion answers: *"What else might be relevant?"* — not *"What did the
 | Existing principal instances (tasks, context, design, rules, prefs, sources, workflows, knowledge-base) | Yes | — |
 | Existing principal type definitions (`users/<id>/types/`) | Yes | — |
 | Principal connectors (`users/<id>/connectors/`) | Yes | — |
+
+When a task uses an external service, orient on `users/<id>/connectors/README.md` and the connector's `README.md` before acting. MCP config is per-agent — connector docs are canonical (`connectors.md`).
 | New registry type registration | — | Yes |
 | Personal profile | — | Yes |
 | `system/` | — | Yes (explicit request + PR) |

@@ -14,7 +14,7 @@ python3 system/engines/cli.py compile-context users/<id>/projects/<project>/sess
 
 The script loads (via active principal from `jah.yaml`):
 
-1. **Agent protocol** — `discovery_protocol.md`, `knowledge_base.md`, `proactive_capture.md`, `open_structure.md`
+1. **Agent protocol** — `discovery_protocol.md`, `knowledge_base.md`, `proactive_capture.md`, `open_structure.md`, `connectors.md`
 2. **System principles** — glossary, protocol, type_system
 3. **Scoped types** — types referenced by the project, session, workflows, and linked task (not the full registry)
 4. Personal profile and **all** personal preferences
@@ -24,10 +24,11 @@ The script loads (via active principal from `jah.yaml`):
 8. **Related tasks** and **related sessions** — goal keyword match
 9. **Matched knowledge** — goal keyword match against `knowledge-base/` entries (topic, summary, `applies_to`)
 10. Directory container boundaries (`knowledge-base/`, `sources/index.md`, `workflows/index.md`, `tasks/index.md` when present)
-11. **Resolved workflows** — selective (see below)
-12. Session `input.md`
+11. **Principal connectors** — `connectors.md` protocol + `users/<id>/connectors/README.md` index when present
+12. **Resolved workflows** — selective (see below)
+13. Session `input.md`
 
-Output sections: Session Goal, **Operation Checklist**, Agent Protocol, System Principles, Scoped Types, Personal Profile, Personal Preferences, Active Rules, Project Context, Project Instance, Grown Project Fields, Linked Task, Related Tasks, Related Sessions, Matched Knowledge, Directory Boundaries, Resolved Workflows, Available Workflows, Session Input, Required Output Files, Approval Boundaries.
+Output sections: Session Goal, **Operation Checklist**, Agent Protocol, System Principles, Scoped Types, Personal Profile, Personal Preferences, Active Rules, Project Context, Project Instance, Grown Project Fields, Linked Task, Related Tasks, Related Sessions, Matched Knowledge, Directory Boundaries, **Principal Connectors**, Resolved Workflows, Available Workflows, Session Input, Required Output Files, Approval Boundaries.
 
 ## Operation Checklist
 

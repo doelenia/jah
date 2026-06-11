@@ -14,7 +14,7 @@ users/<id>/
   personal/           # type: personal — cross-project instances
   projects/           # project instances
   knowledge-base/     # curated knowledge index — see system/agent/knowledge_base.md
-  connectors/         # optional — external services, devices, MCP configs
+  connectors/         # optional — how external services are accessed (MCP + CLI); see system/agent/connectors.md
 ```
 
 ## Agent protocol

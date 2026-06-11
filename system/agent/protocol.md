@@ -44,11 +44,12 @@ Do **not** add per-feature sync checklists (e.g. "if system changed, update desi
 5. **Act** — work inside the session folder; auto-update principal when the plan and capture say so; log in `trace.md`.
 6. **Capture** — session end: evaluation, discovery log, plan vs outcome (`proactive_capture.md`).
 7. **Discover structure** when touching new folders — `ls` → `instance.yaml` → type → `fields` → recurse (`open_structure.md`).
-8. **Ask before profile, new registry entries, or system changes.**
-9. **Cite sources** in session artifacts (`evaluation.md` reference checklist).
-10. **Store reusable files** under `sources/files/` with catalog entries.
-11. **Curate knowledge** — audited wisdom in `users/<id>/knowledge-base/` (`knowledge_base.md`).
-12. **Change the system** only when explicitly asked — GitHub PR on `system/`. Bump `system/release/VERSION` before every system commit (`../release/versioning.md`).
+8. **External services** — read `users/<id>/connectors/README.md` and `connectors.md`; MCP config is per-agent, connector docs are canonical (`connectors.md`).
+9. **Ask before profile, new registry entries, or system changes.**
+10. **Cite sources** in session artifacts (`evaluation.md` reference checklist).
+11. **Store reusable files** under `sources/files/` with catalog entries.
+12. **Curate knowledge** — audited wisdom in `users/<id>/knowledge-base/` (`knowledge_base.md`).
+13. **Change the system** only when explicitly asked — GitHub PR on `system/`. Bump `system/release/VERSION` before every system commit (`../release/versioning.md`).
 
 ## Type resolution (required)
 
@@ -68,11 +69,13 @@ See `type_system.md`.
 4. `system/agent/discovery_protocol.md`
 5. `system/agent/knowledge_base.md`
 6. `system/agent/storage_rules.md`
-7. `system/agent/type_system.md`
-8. `users/<id>/registry.yaml`
-9. Relevant `instance.yaml` (principal, personal, project, or session)
-10. `types/<type>/README.md` for instance and each field in scope
-11. Session `compiled_context.md` after compilation
+7. `system/agent/connectors.md` (when task uses external services)
+8. `system/agent/type_system.md`
+9. `users/<id>/registry.yaml`
+10. `users/<id>/connectors/README.md` (when task uses external services)
+11. Relevant `instance.yaml` (principal, personal, project, or session)
+12. `types/<type>/README.md` for instance and each field in scope
+13. Session `compiled_context.md` after compilation
 
 ## CLI
 

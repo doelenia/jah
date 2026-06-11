@@ -34,7 +34,7 @@ Customization stays private. The protocol stays portable via GitHub.
 - **Registry** — authoritative type index per principal (`registry.yaml`).
 - **Types** — growable schemas and agent protocols; even starter types are user-editable after bootstrap.
 - **Instances** — living data (personal, projects, workflows, sessions) under the principal.
-- **Connectors** — optional principal-specific wiring under `users/<id>/connectors/` (external services, devices, MCP, custom glue).
+- **Connectors** — optional principal-specific wiring under `users/<id>/connectors/` — canonical docs for external access (MCP per agent, or native CLI). See `connectors.md`.
 - **Sessions** — isolated workspaces for one task.
 - **Context compilation** — loads goal-matched dependencies before work so improvements propagate automatically.
 - **Discovery protocol** — active search, discovery log, reference checklist (`discovery_protocol.md`).
