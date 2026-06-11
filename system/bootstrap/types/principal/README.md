@@ -13,8 +13,8 @@ users/<id>/
   types/              # registered type definitions
   personal/           # type: personal — cross-project instances
   projects/           # project instances
-  knowledge-base/     # curated knowledge index — see system/knowledge_base.md
-  tools/              # scripts and integrations
+  knowledge-base/     # curated knowledge index — see system/agent/knowledge_base.md
+  connectors/         # optional — external services, devices, MCP configs
 ```
 
 ## Agent protocol

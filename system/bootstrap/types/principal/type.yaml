@@ -1,6 +1,6 @@
 id: type.principal
 extends: type.base
-description: "Container for a principal's local world — registry, types, personal scope, projects, and tools."
+description: "Container for a principal's local world — registry, types, personal scope, projects, and connectors."
 role: container
 fields:
   registry:
@@ -22,14 +22,15 @@ fields:
     content_type: project
     cardinality: one
     storage: projects/
-  tools:
+  connectors:
     type: scalar
     cardinality: one
-    storage: tools/
-    description: "Executable scripts and integrations for this principal."
+    optional: true
+    storage: connectors/
+    description: "Optional connectors — external services, devices, MCP configs, and personal automations (not Jah protocol code)."
   knowledge_base:
     type: scalar
     cardinality: one
     optional: true
     storage: knowledge-base/
-    description: "Curated knowledge index — see system/knowledge_base.md"
+    description: "Curated knowledge index — see system/agent/knowledge_base.md"

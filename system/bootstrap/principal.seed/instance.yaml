@@ -15,7 +15,5 @@ fields:
     type: directory
     content_type: project
     storage: projects/
-  tools:
-    storage: tools/
   knowledge_base:
     storage: knowledge-base/

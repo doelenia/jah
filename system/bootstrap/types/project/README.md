@@ -2,7 +2,7 @@
 
 A project in memory. Examples: `users/<principal>/projects/jah/`, `users/<principal>/projects/ausna/`.
 
-**Agents:** read this file before creating, reading, or modifying any project. Open structure: `system/open_structure.md`.
+**Agents:** read this file before creating, reading, or modifying any project. Open structure: `system/agent/open_structure.md`.
 
 ## Baseline and growth
 

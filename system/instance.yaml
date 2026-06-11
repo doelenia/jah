@@ -1,0 +1,21 @@
+id: system.jah
+type: system
+name: Jah System
+open_fields: true
+fields:
+  agent:
+    storage: agent/
+    description: Behavioral protocol — how agents orient, plan, act, and capture
+  bootstrap:
+    storage: bootstrap/
+    description: Copy-once starter kit for new principals
+  engines:
+    storage: engines/
+    description: Protocol runtime — reads principal data, executes Jah behavior
+  release:
+    storage: release/
+    description: Versioning, changelog, and repo lifecycle scripts
+  interface:
+    optional: true
+    storage: interface/
+    description: Human-facing apps and CLIs (future)

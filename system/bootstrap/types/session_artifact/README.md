@@ -14,7 +14,7 @@ Each artifact path is declared in `types/session/type.yaml` and created by `new_
 2. Write freely inside the session folder (L2) for all session artifacts.
 3. End every session with complete `output.md`, `evaluation.md`, `trace.md`, and `patch.md`.
 4. Include **References** in `output.md`, `trace.md`, and `patch.md` when content drew on specific sources.
-5. Include **Discovery log** in `trace.md` and the **reference checklist** in `evaluation.md` (`system/discovery_protocol.md`).
+5. Include **Discovery log** in `trace.md` and the **reference checklist** in `evaluation.md` (`system/agent/discovery_protocol.md`).
 
 ## Required artifacts
 

@@ -2,7 +2,7 @@
 
 Cross-project personal memory at `users/<principal>/personal/`.
 
-**Agents:** read this file before reading or modifying personal memory. Open structure: `system/open_structure.md`.
+**Agents:** read this file before reading or modifying personal memory. Open structure: `system/agent/open_structure.md`.
 
 ## Baseline and growth
 

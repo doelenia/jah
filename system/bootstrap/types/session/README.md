@@ -22,9 +22,9 @@ users/<principal>/projects/<project>/sessions/
 ## Agent protocol
 
 1. Read `users/<principal>/types/session/type.yaml` and this README.
-2. Create sessions with `python3 users/<id>/tools/scripts/new_session.py <project> "Goal"` (optional `--workflow-id`).
-3. Compile context before work: `python3 users/<id>/tools/scripts/compile_context.py <session-path>`.
-4. Read `compiled_context.md` and run **active discovery** (`system/discovery_protocol.md`).
+2. Create sessions with `python3 system/engines/cli.py new-session <project> "Goal"` (optional `--workflow-id`).
+3. Compile context before work: `python3 system/engines/cli.py compile-context <session-path>`.
+4. Read `compiled_context.md` and run **active discovery** (`system/agent/discovery_protocol.md`).
 5. Resolve `main_instance` → read parent project `instance.yaml` and relevant field type READMEs.
 6. Link tasks: set `task_id` on the session or `session` on the task when work starts.
 7. Write session artifacts freely (L2). Update existing principal instances/types directly when capture is clear (L3).
