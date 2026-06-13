@@ -17,6 +17,8 @@ python3 system/engines/cli.py <command> [args...]
 | `validate-structure` | Check declared fields vs disk |
 | `validate-knowledge` | Check knowledge-base index and entries |
 | `resolve-knowledge` | Look up knowledge entries |
+| `resolve-rules` | Resolve active rules for a session trigger |
+| `check-write` | Advisory L4+ write check (optional `--strict`) |
 
 ## Layout
 
@@ -26,6 +28,7 @@ engines/
   cli.py           # unified entry point
   knowledge/       # pairs with agent/knowledge_base.md
   context/         # pairs with agent/context_compilation.md
+  rules/           # pairs with agent/constitution.md, context_compilation.md
   registry/        # pairs with agent/type_system.md
   structure/       # pairs with agent/open_structure.md
   session/         # pairs with agent/session_lifecycle.md

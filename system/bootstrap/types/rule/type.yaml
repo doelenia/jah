@@ -15,6 +15,11 @@ fields:
     cardinality: many
     optional: true
     description: "Work pattern or project ids this rule applies to."
+  activation_trigger:
+    type: scalar
+    cardinality: many
+    optional: true
+    description: "When rule applies: session_start, pre_write, topic_shift, pre_approval. Default session_start."
   conflicts_with:
     type: scalar
     cardinality: many

@@ -57,6 +57,7 @@ Do not infer behavior from folder names alone. See `open_structure.md` for the o
 - **Container type `fields`** — minimal baseline every instance must scaffold from; not an exhaustive allow-list.
 - **Instance `fields`** — baseline + grown fields; authoritative shape for that living folder.
 - **Leaf type `fields`** — item schema (task, workflow, …); not instance field growth.
+- **Project directory** — when extending `type.project`, prefer typed subdirectories over a flat `documents/` repo (`types/project/README.md`).
 
 ### Extends merge rules
 

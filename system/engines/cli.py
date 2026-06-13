@@ -19,6 +19,8 @@ COMMANDS: dict[str, tuple[str, str]] = {
     "validate-structure": ("structure.validate", "main"),
     "validate-knowledge": ("knowledge.validate", "main"),
     "resolve-knowledge": ("knowledge.resolve", "main"),
+    "resolve-rules": ("rules.resolve", "main"),
+    "check-write": ("rules.check_write_cli", "main"),
 }
 
 

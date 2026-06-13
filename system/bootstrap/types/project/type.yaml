@@ -1,6 +1,6 @@
 id: type.project
 extends: type.base
-description: "Container for project context, rules, workflows, and sessions."
+description: "Container for project context, rules, workflows, sessions, and grown project-directory parts."
 role: container
 fields:
   context:

@@ -18,6 +18,17 @@ A living folder's shape is what it declares in **`instance.yaml` → `fields`**,
 
 `open_fields: true` on `type.base` means container instances may declare any registry-resolvable field beyond the type baseline. Opt-out (`open_fields: false`) is rare and must be documented on that type.
 
+## Project directory growth
+
+When extending **`type.project`**, prefer a **project directory** — typed subdirectories — over a flat file repo.
+
+- Each logical section or part → grown field subdirectory (`program/`, `program-design/`) with `instance.yaml`
+- Each database row → entry folder under a `type.directory` container (`fellowship/<person>/`)
+- Support markdown for a container → files inside that container, not a project-wide `documents/` dump
+- External references and workflows → baseline `sources/` and `workflows/` containers
+
+See `system/bootstrap/types/project/README.md` for the full protocol. Do not use `personal/documents/` patterns for project extension.
+
 ## Minimal baseline
 
 Container types (`project`, `personal`, `principal`, `type_package`) declare **`fields`** as the **minimum structure** — not an exhaustive allow-list.

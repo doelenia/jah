@@ -14,7 +14,7 @@ Discovery is not optional search after the fact. It starts with **scope expansio
 |------------|--------|
 | After compilation | Read Operation Checklist; run scope expansion; write Session plan in `trace.md` |
 | Before implementation writes | Confirm plan lists files to read/update; types resolved |
-| During work | Follow references; search when a claim needs a source |
+| During work | Follow references; search when a claim needs a source; **rule checkpoints** on scope shift or principal writes |
 | Before session end | Diff plan vs outcome; complete discovery log and reference checklist |
 
 ## Scope expansion (mandatory before implementation)
@@ -88,8 +88,41 @@ When a task uses an external service, orient on `users/<id>/connectors/README.md
 
 When auto-updating, cite the source path in the session `trace.md` and record what changed.
 
+## Rule checkpoints
+
+When scope changes or before writes outside the session folder, resolve applicable rules and attest in `trace.md`. See `constitution.md` C1–C6.
+
+### When to checkpoint
+
+| Trigger | Run when |
+|---------|----------|
+| `topic_shift` | Write target moves to a new project field, principal subtree, or instance type |
+| `pre_write` | Before writing to any principal path (L3) outside the current resolved scope |
+| `pre_approval` | Before L4+ actions: profile, new registry entry, `system/` edit, publish |
+
+### How to checkpoint
+
+1. Run resolve-rules:
+   ```bash
+   python3 system/engines/cli.py resolve-rules <session-path> \
+     --trigger <trigger> --target <path>
+   ```
+2. Read matched rules; resolve types for the write target (`instance.yaml` → type → README).
+3. Append to `trace.md`:
+
+```markdown
+## Rule checkpoint
+
+| Field | Value |
+|-------|-------|
+| trigger | pre_write |
+| target | users/katakuchi/projects/jah/design/foo.md |
+| rule_ids | rule.general.require_references |
+```
+
 ## Related docs
 
+- `constitution.md` — meta-rules and triggers
 - `protocol.md` — operation model (Orient → Plan → Act → Capture)
 - `knowledge_base.md` — knowledge entry protocol
 - `context_compilation.md` — what compile loads automatically

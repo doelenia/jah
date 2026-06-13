@@ -14,7 +14,7 @@ python3 system/engines/cli.py compile-context users/<id>/projects/<project>/sess
 
 The script loads (via active principal from `jah.yaml`):
 
-1. **Agent protocol** — `discovery_protocol.md`, `knowledge_base.md`, `proactive_capture.md`, `open_structure.md`, `connectors.md`
+1. **Agent protocol** — `constitution.md`, `discovery_protocol.md`, `knowledge_base.md`, `proactive_capture.md`, `open_structure.md`, `connectors.md`
 2. **System principles** — glossary, protocol, type_system
 3. **Scoped types** — types referenced by the project, session, workflows, and linked task (not the full registry)
 4. Personal profile and **all** personal preferences
@@ -28,7 +28,7 @@ The script loads (via active principal from `jah.yaml`):
 12. **Resolved workflows** — selective (see below)
 13. Session `input.md`
 
-Output sections: Session Goal, **Operation Checklist**, Agent Protocol, System Principles, Scoped Types, Personal Profile, Personal Preferences, Active Rules, Project Context, Project Instance, Grown Project Fields, Linked Task, Related Tasks, Related Sessions, Matched Knowledge, Directory Boundaries, **Principal Connectors**, Resolved Workflows, Available Workflows, Session Input, Required Output Files, Approval Boundaries.
+Output sections: Session Goal, **Operation Checklist**, **Constitution**, Agent Protocol, System Principles, Scoped Types, Personal Profile, Personal Preferences, **Rule Index**, **Session-start Rules**, Project Context, Project Instance, Grown Project Fields, Linked Task, Related Tasks, Related Sessions, Matched Knowledge, Directory Boundaries, **Principal Connectors**, Resolved Workflows, Available Workflows, Session Input, Required Output Files, Approval Boundaries.
 
 ## Operation Checklist
 
@@ -84,7 +84,15 @@ Workflow discovery searches:
 
 ## How rules propagate
 
-Global rules under `users/<id>/personal/rules/` compile into every session. Project rules compile when the project has a `rules/` container. Workflows declare `dependencies` on preferences and rules; `evaluation.md` checks compliance.
+Global rules under `users/<id>/personal/rules/` appear in the **Rule Index** (metadata) for every session. **Session-start Rules** loads bodies for rules matching `session_start` and the session goal. Other triggers use `resolve-rules`.
+
+```bash
+python3 system/engines/cli.py resolve-rules users/<id>/projects/<project>/sessions/<session-id> \
+  --trigger pre_write --target <path>
+python3 system/engines/cli.py check-write <session-path> --target <path>
+```
+
+Workflows declare `dependencies` on preferences and rules; `evaluation.md` checks compliance.
 
 ## Matched Knowledge
 

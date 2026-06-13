@@ -21,7 +21,8 @@ users/<principal>/projects/<project>/rules/
 
 1. Read `rules/instance.yaml` (type.directory), `types/rule/type.yaml`, and this README.
 2. Every rule file must include `id`, `type: rule`, `name`, `scope`, `status`, and `rule`.
-3. When creating a new rule:
+3. Optional `activation_trigger` — when the rule applies (`session_start`, `pre_write`, `topic_shift`, `pre_approval`). Default: `[session_start]`.
+4. When creating a new rule:
    - Choose group folder (e.g. `writing/`, `general/`).
    - Create `<name>.yaml` with a unique `id` (e.g. `rule.writing.<name>`).
 4. Propose new rules in session `patch.md`; apply only after user approval.
@@ -35,6 +36,8 @@ name: Concrete Observation First
 scope: global
 priority: 80
 status: active
+activation_trigger:
+  - session_start
 applies_to:
   - workflow.jah.blog
 rule: "Begin from a concrete observation before the abstract thesis."

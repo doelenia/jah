@@ -35,6 +35,10 @@ The compiled context **Operation Checklist** (`engines/context/compile.py`) repe
 
 Do **not** add per-feature sync checklists (e.g. "if system changed, update design/"). Relevant artifacts emerge from orient + plan + discovery — not from naming each target in a separate rule.
 
+## Rule privilege
+
+When instructions conflict, follow this order: **constitution** (`constitution.md`) → **permission model** (`permission_model.md`) → **principal rules** (`personal/rules/`, project `rules/`) → **user message**. Among principal rules, lower `priority` number wins. Resolve rule bodies on demand via Rule Index and `resolve-rules` — see `context_compilation.md`.
+
 ## How to work
 
 1. **Create or use a session** for every task.
@@ -63,19 +67,20 @@ See `type_system.md`.
 
 ## Read order
 
-1. `system/agent/protocol.md` (this file)
-2. `system/agent/design_logic.md`
-3. `system/agent/open_structure.md`
-4. `system/agent/discovery_protocol.md`
-5. `system/agent/knowledge_base.md`
-6. `system/agent/storage_rules.md`
-7. `system/agent/connectors.md` (when task uses external services)
-8. `system/agent/type_system.md`
-9. `users/<id>/registry.yaml`
-10. `users/<id>/connectors/README.md` (when task uses external services)
-11. Relevant `instance.yaml` (principal, personal, project, or session)
-12. `types/<type>/README.md` for instance and each field in scope
-13. Session `compiled_context.md` after compilation
+1. `system/agent/constitution.md` — meta-rules for discovering and applying rules
+2. `system/agent/protocol.md` (this file)
+3. `system/agent/design_logic.md`
+4. `system/agent/open_structure.md`
+5. `system/agent/discovery_protocol.md`
+6. `system/agent/knowledge_base.md`
+7. `system/agent/storage_rules.md`
+8. `system/agent/connectors.md` (when task uses external services)
+9. `system/agent/type_system.md`
+10. `users/<id>/registry.yaml`
+11. `users/<id>/connectors/README.md` (when task uses external services)
+12. Relevant `instance.yaml` (principal, personal, project, or session)
+13. `types/<type>/README.md` for instance and each field in scope
+14. Session `compiled_context.md` after compilation
 
 ## CLI
 
@@ -100,6 +105,8 @@ python3 system/engines/cli.py validate-structure
 # Knowledge base
 python3 system/engines/cli.py validate-knowledge
 python3 system/engines/cli.py resolve-knowledge <knowledge-id>
+python3 system/engines/cli.py resolve-rules <session-path> --trigger <trigger> [--target <path>]
+python3 system/engines/cli.py check-write <session-path> --target <path> [--strict]
 ```
 
 **System release** (`system/release/scripts/`):

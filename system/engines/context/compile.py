@@ -20,6 +20,13 @@ from env import (
     type_yaml_paths,
 )
 from knowledge.lib import knowledge_base_dir, match_entries
+from rules.lib import (
+    format_rule_bundle,
+    format_rule_index_table,
+    load_rules,
+    project_id_from_path,
+    resolve_bundle,
+)
 
 WORKFLOW_DOCS = ("requirements.md", "workflow.md", "evaluation.md", "examples.md", "common_failures.md")
 TASK_DOCS = ("description.md",)
@@ -429,24 +436,6 @@ def compile_personal_preferences(principal: Path) -> str:
     return "\n".join(parts) if parts else "*No preferences found.*\n"
 
 
-def compile_rules_tree(rules_root: Path, heading: str) -> str:
-    if not rules_root.is_dir():
-        return ""
-    rule_files = sorted(
-        path for path in rules_root.rglob("*")
-        if path.is_file() and path.suffix in (".yaml", ".yml")
-        and path.name != "instance.yaml"
-    )
-    if not rule_files:
-        return ""
-    parts = [f"### {heading}\n"]
-    container_instance = rules_root / "instance.yaml"
-    if container_instance.is_file():
-        parts.append(load_yaml_block(container_instance))
-    parts.extend(load_yaml_block(rule_file) for rule_file in rule_files)
-    return "\n".join(parts)
-
-
 def compile_grown_project_fields(
     project_path: Path,
     project_instance: dict,
@@ -548,8 +537,21 @@ def parse_session(session_path: Path) -> tuple[Path, Path, str, dict]:
     return session_path, project_path, goal, session
 
 
-def compile_personal_rules(principal: Path) -> str:
-    return compile_rules_tree(principal / "personal" / "rules", "Personal rules") or "*No active rules found.*\n"
+def compile_session_start_bundle(
+    principal: Path,
+    project_path: Path,
+    goal: str,
+    session: dict,
+) -> str:
+    all_rules = load_rules(principal, project_path)
+    matched = resolve_bundle(
+        all_rules,
+        trigger="session_start",
+        goal=goal,
+        project_id=project_id_from_path(project_path),
+        workflow_id=str(session.get("workflow_id") or ""),
+    )
+    return format_rule_bundle(matched)
 
 
 def compile_directory_boundaries(principal: Path, project_path: Path) -> str:
@@ -644,7 +646,7 @@ def compile_operation_preamble(project_path: Path, goal: str) -> str:
 
 ### 1. Orient (mandatory before writes)
 
-- Read this compiled context — Agent Protocol, project instance, grown fields, matched knowledge.
+- Read **Constitution** and this compiled context — Agent Protocol, project instance, grown fields, matched knowledge.
 - Run **scope expansion** for project `{project_name}` (`system/agent/discovery_protocol.md` § Scope expansion).
 - Resolve types for every instance you will touch (`system/agent/type_system.md`).
 
@@ -664,6 +666,8 @@ The plan defines what **relevant** means. Do not limit scope to the first path n
 ### 3. Act
 
 Execute against the plan. Session folder = L2 (write freely). Principal updates = L3 when plan and capture agree — log in `trace.md`.
+
+Before principal writes or scope shifts: `resolve-rules --trigger pre_write` or `topic_shift`; attest in `trace.md` (`discovery_protocol.md` § Rule checkpoints).
 
 ### 4. Capture (session end)
 
@@ -714,6 +718,9 @@ def main() -> int:
         goal or "*(no goal in instance.yaml)*",
         "",
         compile_operation_preamble(project_path, goal),
+        "## Constitution",
+        "",
+        load_md_block(agent_dir() / "constitution.md", "Constitution"),
         "## Agent Protocol",
         "",
         load_md_block(agent_dir() / "discovery_protocol.md", "Discovery Protocol"),
@@ -737,10 +744,16 @@ def main() -> int:
         "## Personal Preferences",
         "",
         compile_personal_preferences(principal),
-        "## Active Rules",
+        "## Rule Index",
         "",
-        compile_personal_rules(principal),
-        compile_rules_tree(project_path / "rules", f"{project_path.name} — project rules"),
+        "Metadata for all active rules. Resolve bodies on demand — see Constitution C7.",
+        "",
+        format_rule_index_table(load_rules(principal, project_path)),
+        "## Session-start Rules",
+        "",
+        "Rules matching `session_start` for this goal. Resolve others on demand — see Rule Index.",
+        "",
+        compile_session_start_bundle(principal, project_path, goal, session),
         "## Project Context",
         "",
         load_md_block(project_path / "context.md", project_path.name),

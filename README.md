@@ -4,7 +4,7 @@ A local-first, AI-native personal OS. Jah turns repeated work into stable, prefe
 
 The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current system version: **0.4.2** (see [system/release/VERSION](system/release/VERSION)).
+Current system version: **0.6.1** (see [system/release/VERSION](system/release/VERSION)).
 
 ## What you get from GitHub
 
@@ -42,31 +42,22 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 0.6.1 (2026-06-13)
+- Slim compile to session-start rules; add advisory check-write CLI
+
+### 0.6.0 (2026-06-13)
+- Add resolve-rules CLI and rule checkpoint protocol
+
+### 0.5.0 (2026-06-13)
+- Add constitution, rules lib, and Rule Index in compile-context
+
+### 0.4.3 (2026-06-11)
+- `type.project` — extend projects as a **project directory** (typed subdirs, one folder per database row), not a flat `documents/` file repo
+- `types/project/README.md` — project directory vs file repo table, migration mapping, agent protocol, and anti-patterns
+- `open_structure.md`, `type_system.md` — cross-reference project-directory growth
+
 ### 0.4.2 (2026-06-11)
 - Document connector access methods (MCP vs native CLI) and compile connectors index
-
-### 0.4.1 (2026-06-10)
-- Rename principal `tools` field and folder to `connectors` — external services, devices, MCP, custom glue (`type.principal`, agent docs, engines)
-- Add `system/release/scripts/migrate_tools_to_connectors.py` for local principal migration
-
-### 0.4.0 (2026-06-10)
-- `system/instance.yaml` — declared system layers (agent, bootstrap, engines, release, interface)
-- `system/README.md` and per-layer READMEs
-- `system/engines/` — protocol runtime grouped by domain (knowledge, context, registry, structure, session, instances)
-- `system/engines/cli.py` — unified CLI for all protocol engines
-- …and 2 more (see changelog)
-
-### 0.3.1 (2026-06-10)
-- **Operation model** (Orient → Plan → Act → Capture) as top-priority default in `protocol.md`
-- **Operation Checklist** preamble in `compile_context.py` — first section after Session Goal in every compiled context
-- **Scope expansion** mandatory step in `discovery_protocol.md` — enumerate relevant paths before implementation; Session plan in `trace.md`
-
-### 0.3.0 (2026-06-10)
-- `system/knowledge_base.md` — curated IP engine: OECD FORD field topics, entry schema, facet separation, agent create/update/find/audit protocol
-- `system/bootstrap/knowledge-base/` — topics.yaml (full FORD L1+L2 + `general.uncategorized`), index.yaml, instance.yaml scaffold
-- Bootstrap tool scripts: `knowledge_lib.py`, `resolve_knowledge.py`, `validate_knowledge.py`
-- `compile_context.py` — **Matched Knowledge** section; loads `knowledge_base.md` in agent protocol
-- …and 1 more (see changelog)
 <!-- recent-updates:end -->
 
 Full history: [system/release/CHANGELOG.md](system/release/CHANGELOG.md).

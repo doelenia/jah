@@ -7,6 +7,36 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-06-13
+
+### Added
+
+- Slim compile to session-start rules; add advisory check-write CLI
+
+
+## [0.6.0] - 2026-06-13
+
+### Added
+
+- Add resolve-rules CLI and rule checkpoint protocol
+
+
+## [0.5.0] - 2026-06-13
+
+### Added
+
+- Add constitution, rules lib, and Rule Index in compile-context
+
+
+## [0.4.3] - 2026-06-11
+
+### Changed
+
+- `type.project` — extend projects as a **project directory** (typed subdirs, one folder per database row), not a flat `documents/` file repo
+- `types/project/README.md` — project directory vs file repo table, migration mapping, agent protocol, and anti-patterns
+- `open_structure.md`, `type_system.md` — cross-reference project-directory growth
+
+
 ## [0.4.2] - 2026-06-11
 
 ### Added

@@ -38,6 +38,7 @@ Agent or human executes the task using compiled context. Writes stay inside the 
 
 During work:
 
+- **Re-orient on scope shift** — when write target or instance type changes, run `resolve-rules` and log a rule checkpoint in `trace.md` (`discovery_protocol.md` § Rule checkpoints).
 - **Watch for capture signals** — stable facts, audited wisdom, workflows, type shapes, tool opportunities, or system friction.
 - **Auto-update existing principal instances and types** when capture targets are clear (including `knowledge-base/`); log in `trace.md`.
 - **Ask** before profile updates, new registry entries, or `system/` changes.
@@ -57,6 +58,7 @@ Fill `evaluation.md`:
 Fill `trace.md`:
 
 - **Session plan** — files to read, likely updates, open questions (written before implementation)
+- **Rule checkpoints** — trigger, target, active rule ids (on scope shift or principal writes)
 - **Discovery log** — paths searched/read and whether used
 - Steps taken
 - **References** behind key decisions
