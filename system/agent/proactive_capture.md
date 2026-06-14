@@ -64,6 +64,7 @@ Flag protocol friction. Apply principal workarounds directly when safe. Offer sy
 
 ## Do not
 
+- Use agent memory tools (Cursor memory, Claude memory, `update_memory`) for durable facts — use principal paths in the classification table above
 - Auto-write profile or register new types without approval
 - Edit `system/` without explicit user request
 - Invent stable facts

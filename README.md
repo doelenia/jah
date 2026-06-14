@@ -4,7 +4,7 @@ A local-first, AI-native personal OS. Jah turns repeated work into stable, prefe
 
 The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current system version: **0.6.1** (see [system/release/VERSION](system/release/VERSION)).
+Current system version: **0.6.2** (see [system/release/VERSION](system/release/VERSION)).
 
 ## What you get from GitHub
 
@@ -42,6 +42,9 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 0.6.2 (2026-06-14)
+- Forbid agent memory for durable facts in proactive capture
+
 ### 0.6.1 (2026-06-13)
 - Slim compile to session-start rules; add advisory check-write CLI
 
@@ -55,9 +58,6 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 - `type.project` — extend projects as a **project directory** (typed subdirs, one folder per database row), not a flat `documents/` file repo
 - `types/project/README.md` — project directory vs file repo table, migration mapping, agent protocol, and anti-patterns
 - `open_structure.md`, `type_system.md` — cross-reference project-directory growth
-
-### 0.4.2 (2026-06-11)
-- Document connector access methods (MCP vs native CLI) and compile connectors index
 <!-- recent-updates:end -->
 
 Full history: [system/release/CHANGELOG.md](system/release/CHANGELOG.md).
