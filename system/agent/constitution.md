@@ -40,6 +40,8 @@ Lower `priority` number on a rule = higher privilege among principal rules.
 python3 system/engines/cli.py resolve-rules <session-path> --trigger pre_write --target <path>
 ```
 
+**Type-system paths** (`registry.yaml`, `types/`, principal `instance.yaml`, session `patch.md`) — always run `resolve-rules` before acting; substantive review protocol lives in principal rules (e.g. `rule.general.type_coherence`) and `type_system.md`, not here.
+
 ## Related
 
 - `protocol.md` — full operation model

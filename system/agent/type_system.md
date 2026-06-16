@@ -79,6 +79,72 @@ Do not infer behavior from folder names alone. See `open_structure.md` for the o
 
 Propose via session `patch.md`; apply after user approval (L4).
 
+## Type coherence review (required)
+
+**Whenever** you create, register, extend, patch, or design a type **or** create or reshape a typed instance (container fields, `instance.yaml`, `content_type`), run this review **before** writing. Enforced by principal rule `rule.general.type_coherence` (seeded at bootstrap; editable or replaceable under `personal/rules/`).
+
+This is not optional discovery — it prevents duplicate types, overlapping abstractions, and designs that do not scale.
+
+### When to run
+
+| Situation | Review before |
+|-----------|---------------|
+| New registry entry (`registry.yaml`) | Any write to `registry.yaml` or new `types/<name>/` |
+| Extend or patch a type | Edits to `type.yaml`, type README, or type package |
+| Add or change container fields | Instance `fields` blocks, directory `content_type` |
+| Design session (no write yet) | Proposing a type in `design/`, `patch.md`, or plan |
+| Instance type change | Changing `type:` on any `instance.yaml` |
+
+### How to run
+
+1. **Survey the registry** — read `users/<id>/registry.yaml` and run:
+   ```bash
+   python3 system/engines/cli.py list-types
+   python3 system/engines/cli.py validate-registry   # optional sanity check
+   ```
+2. **Resolve rules** for the write target:
+   ```bash
+   python3 system/engines/cli.py resolve-rules <session-path> \
+     --trigger pre_write --target <path>
+   ```
+   Use `pre_approval` when registering a new type; use `topic_shift` when scope moves to a different type subtree.
+3. **Compare** the planned change against every related type:
+   - same or similar `extends` parent?
+   - overlapping purpose or fields with an existing type?
+   - could this be a field, alias, workflow, or patch instead of a new type?
+   - naming clear and distinct from siblings and `aliases`?
+   - right level of abstraction (not skipping parent types, not over-specializing)?
+   - fields reuse registry types instead of ad-hoc scalars?
+4. **Decide** — proceed, revise, merge with an existing type, or deprecate the weaker duplicate.
+5. **Proactively surface issues** — if you find duplication, confusion, or unsustainable design, tell the user and propose a fix **before** applying L4 registry changes or large L3 type patches.
+6. **Log** in `trace.md`:
+
+```markdown
+## Type coherence review
+
+| Field | Value |
+|-------|-------|
+| trigger | pre_write |
+| target | users/<id>/types/foo/type.yaml |
+| action | extend | register | patch | design | instance_field |
+| related_types | document, context |
+| rationale | One sentence — why this type/field exists and why this shape |
+| issues_found | none — or: overlaps with X; suggest merge / rename / extend Y |
+| resolution | proceed | revise | defer — and what changed |
+```
+
+### Review checklist
+
+- [ ] Full registry surveyed (`list-types` or `registry.yaml`)
+- [ ] Closest existing types read (`type.yaml` + README + extends chain)
+- [ ] Clear rationale — not "we might need this later"
+- [ ] No duplicate purpose with an existing type unless deprecated
+- [ ] `extends` points at the narrowest correct parent
+- [ ] Field types resolve in registry; no parallel informal schemas
+- [ ] Names and storage paths are predictable and documented
+- [ ] Change is sustainable — instances can grow without breaking the model
+- [ ] User informed of any issues found; L4 proposals in `patch.md`
+
 ## Conventions
 
 Every type has:

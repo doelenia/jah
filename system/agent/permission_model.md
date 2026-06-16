@@ -40,6 +40,8 @@ Record what changed in session `trace.md` with source paths.
 - `users/<id>/personal/profile.md`
 - new entries in `registry.yaml` (registering a type that did not exist)
 
+Type-system writes (L3 patches and L4 registry registration) must follow the review protocol in `type_system.md` and matching principal rules — resolve with `resolve-rules` before acting.
+
 ## System boundary (L5)
 
 Changes to `system/` require explicit user request and a GitHub PR. Never auto-edit `system/` during ordinary work.

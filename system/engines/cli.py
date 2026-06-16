@@ -16,6 +16,7 @@ COMMANDS: dict[str, tuple[str, str]] = {
     "new-session": ("session.new", "main"),
     "list-instances": ("instances.list", "main"),
     "validate-registry": ("registry.validate", "main"),
+    "list-types": ("registry.list_types", "main"),
     "validate-structure": ("structure.validate", "main"),
     "validate-knowledge": ("knowledge.validate", "main"),
     "resolve-knowledge": ("knowledge.resolve", "main"),

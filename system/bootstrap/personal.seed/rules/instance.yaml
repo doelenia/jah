@@ -1,0 +1,8 @@
+id: directory.rules.personal
+type: directory
+name: Personal Rules
+description: Global rules for this principal.
+role: container
+content_type: rule
+instances: "<group>/<name>.yaml"
+protocol: types/rule/README.md

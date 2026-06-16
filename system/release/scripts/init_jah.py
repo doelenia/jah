@@ -83,6 +83,17 @@ def main() -> int:
             encoding="utf-8",
         )
 
+    personal_seed = bootstrap / "personal.seed"
+    if personal_seed.is_dir():
+        for item in personal_seed.iterdir():
+            dst = personal_dir / item.name
+            if item.is_dir():
+                if dst.exists():
+                    shutil.rmtree(dst)
+                shutil.copytree(item, dst)
+            elif item.is_file() and not dst.is_file():
+                shutil.copy2(item, dst)
+
     (principal_dir / "projects").mkdir(exist_ok=True)
 
     kb_src = bootstrap / "knowledge-base"

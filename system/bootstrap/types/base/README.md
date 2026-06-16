@@ -2,7 +2,7 @@
 
 Root schema for all Jah types. Every other type extends this.
 
-**Agents:** read this file when creating a new type or any `instance.yaml`. See `system/agent/open_structure.md` for the open structure strategy.
+**Agents:** read this file when creating a new type or any `instance.yaml`. Run **Type coherence review** (`system/agent/type_system.md`) before any type or instance shape change.
 
 ## Required on every instance
 

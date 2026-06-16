@@ -1,0 +1,22 @@
+id: rule.general.type_coherence
+type: rule
+name: Type Coherence Review
+scope: global
+priority: 15
+status: active
+activation_trigger:
+  - pre_write
+  - topic_shift
+  - pre_approval
+applies_to:
+  - types/
+  - registry.yaml
+  - type.
+  - instance.yaml
+rule: |
+  Before any type-system write or design, survey the full registry (`list-types`, `registry.yaml`).
+  Read closest existing types (extends chain + README). Justify why this type, field, or instance
+  shape is needed — prefer extend, patch, alias, or workflow over a new type when purpose overlaps.
+  Flag duplication, naming confusion, wrong extends parent, ad-hoc scalars, and unsustainable growth.
+  Propose fixes proactively. Log `## Type coherence review` in trace.md before proceeding.
+  New registry entries require L4 approval via patch.md after review.

@@ -649,6 +649,7 @@ def compile_operation_preamble(project_path: Path, goal: str) -> str:
 - Read **Constitution** and this compiled context — Agent Protocol, project instance, grown fields, matched knowledge.
 - Run **scope expansion** for project `{project_name}` (`system/agent/discovery_protocol.md` § Scope expansion).
 - Resolve types for every instance you will touch (`system/agent/type_system.md`).
+- For type-system work (create, register, patch, design types or typed instances): survey full registry (`list-types`); log `## Type coherence review` in `trace.md` before writes.
 
 ### 2. Plan (mandatory before implementation)
 

@@ -14,11 +14,12 @@ python3 system/engines/cli.py <command> [args...]
 | `new-session` | Create a session folder |
 | `list-instances` | List all `instance.yaml` paths |
 | `validate-registry` | Check registry and type references |
+| `list-types` | Survey all registered types (extends, description) |
 | `validate-structure` | Check declared fields vs disk |
 | `validate-knowledge` | Check knowledge-base index and entries |
 | `resolve-knowledge` | Look up knowledge entries |
 | `resolve-rules` | Resolve active rules for a session trigger |
-| `check-write` | Advisory L4+ write check (optional `--strict`) |
+| `check-write` | Advisory L4+ and type-coherence write check (optional `--strict`) |
 
 ## Layout
 

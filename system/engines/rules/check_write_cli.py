@@ -10,7 +10,13 @@ from pathlib import Path
 from env import repo_root
 
 from context.compile import parse_session
-from rules.check_write import advisory_message, classify_write_level, has_pre_approval_checkpoint
+from rules.check_write import (
+    advisory_message,
+    classify_write_level,
+    has_pre_approval_checkpoint,
+    has_type_coherence_review,
+    type_coherence_advisory,
+)
 
 
 def main() -> int:
@@ -37,14 +43,25 @@ def main() -> int:
     trace_path = session_path / "trace.md"
     trace_text = trace_path.read_text(encoding="utf-8") if trace_path.is_file() else ""
     has_checkpoint = has_pre_approval_checkpoint(trace_text)
+    has_review = has_type_coherence_review(trace_text, args.target)
 
     print(f"target: {args.target}")
     print(f"level: {level}")
     print(f"pre_approval_checkpoint: {'yes' if has_checkpoint else 'no'}")
+    print(f"type_coherence_review: {'yes' if has_review else 'no'}")
 
-    warning = advisory_message(level, args.target, has_checkpoint)
-    if warning:
+    warnings: list[str] = []
+    approval_warning = advisory_message(level, args.target, has_checkpoint)
+    if approval_warning:
+        warnings.append(approval_warning)
+    coherence_warning = type_coherence_advisory(args.target, has_review)
+    if coherence_warning:
+        warnings.append(coherence_warning)
+
+    for warning in warnings:
         print(f"warning: {warning}", file=sys.stderr)
+
+    if warnings:
         return 1 if args.strict else 0
 
     return 0

@@ -7,6 +7,20 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.6.4] - 2026-06-15
+
+### Added
+
+- Move type coherence out of constitution into extendable rules
+
+
+## [0.6.3] - 2026-06-15
+
+### Added
+
+- Require type coherence review before type-system work
+
+
 ## [0.6.2] - 2026-06-14
 
 ### Added

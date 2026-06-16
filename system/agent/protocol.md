@@ -43,7 +43,7 @@ When instructions conflict, follow this order: **constitution** (`constitution.m
 
 1. **Create or use a session** for every task.
 2. **Compile context** before execution.
-3. **Orient** — read compiled context; scope expansion; resolve types (`discovery_protocol.md`, `type_system.md`).
+3. **Orient** — read compiled context; scope expansion; resolve types (`discovery_protocol.md`, `type_system.md`). For any type-system work, run **Type coherence review** before writes.
 4. **Plan** — write Session plan in `trace.md` before implementation writes.
 5. **Act** — work inside the session folder; auto-update principal when the plan and capture say so; log in `trace.md`.
 6. **Capture** — session end: evaluation, discovery log, plan vs outcome (`proactive_capture.md`).
@@ -98,6 +98,9 @@ python3 system/engines/cli.py list-instances
 
 # Validate registry
 python3 system/engines/cli.py validate-registry
+
+# Survey all registered types (type coherence review)
+python3 system/engines/cli.py list-types
 
 # Validate structure (baseline + disk parity)
 python3 system/engines/cli.py validate-structure

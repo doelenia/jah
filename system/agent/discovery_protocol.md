@@ -99,6 +99,7 @@ When scope changes or before writes outside the session folder, resolve applicab
 | `topic_shift` | Write target moves to a new project field, principal subtree, or instance type |
 | `pre_write` | Before writing to any principal path (L3) outside the current resolved scope |
 | `pre_approval` | Before L4+ actions: profile, new registry entry, `system/` edit, publish |
+| Type-system work | Before create/register/patch/design of types or typed instances — log `## Type coherence review` (`type_system.md`) |
 
 ### How to checkpoint
 
