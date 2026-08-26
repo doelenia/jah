@@ -22,6 +22,8 @@ COMMANDS: dict[str, tuple[str, str]] = {
     "resolve-knowledge": ("knowledge.resolve", "main"),
     "resolve-rules": ("rules.resolve", "main"),
     "check-write": ("rules.check_write_cli", "main"),
+    "archive-project": ("archive.project", "archive_main"),
+    "unarchive-project": ("archive.project", "unarchive_main"),
 }
 
 

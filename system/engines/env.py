@@ -129,6 +129,99 @@ def all_registry_type_names(principal: str | None = None) -> list[str]:
     return sorted((reg.get("types") or {}).keys())
 
 
+def _load_instance_yaml(path: Path) -> dict[str, Any]:
+    instance = path / "instance.yaml" if path.is_dir() else path
+    if not instance.is_file():
+        return {}
+    data = yaml.safe_load(instance.read_text(encoding="utf-8"))
+    return data if isinstance(data, dict) else {}
+
+
+def is_project_instance(path: Path) -> bool:
+    t = str(_load_instance_yaml(path).get("type") or "")
+    return t in ("project", "type.project")
+
+
+def is_project_archive_container(path: Path) -> bool:
+    data = _load_instance_yaml(path)
+    return str(data.get("kind") or "") == "project_archive"
+
+
+def project_archive_path(principal: str | None = None) -> Path:
+    """Declared archive container under projects/ (kind: project_archive)."""
+    projects = principal_root(principal) / "projects"
+    meta = _load_instance_yaml(projects)
+    fields = meta.get("fields") if isinstance(meta.get("fields"), dict) else {}
+    spec = fields.get("archive") if isinstance(fields, dict) else {}
+    storage = "archive/"
+    if isinstance(spec, dict) and spec.get("storage"):
+        storage = str(spec["storage"])
+    return (projects / storage.rstrip("/")).resolve()
+
+
+def project_name_candidates(name: str) -> list[str]:
+    raw = name.strip().removeprefix("project.")
+    variants = [raw, raw.replace("_", "-"), raw.replace("-", "_")]
+    seen: list[str] = []
+    for item in variants:
+        if item and item not in seen:
+            seen.append(item)
+    return seen
+
+
+def find_project_path(
+    name_or_path: str,
+    principal: str | None = None,
+    *,
+    include_archived: bool = True,
+) -> Path | None:
+    """Resolve a project folder from a path, folder name, or project id.
+
+    Only returns folders whose instance.yaml type is project — never the
+    project-archive container (type: directory, kind: project_archive).
+    """
+    raw = name_or_path.strip().replace("\\", "/").rstrip("/")
+    if not raw:
+        return None
+
+    root = repo_root()
+    direct = Path(raw) if Path(raw).is_absolute() else root / raw
+    if (direct / "instance.yaml").is_file():
+        resolved = direct.resolve()
+        if not is_project_instance(resolved):
+            return None
+        if not include_archived and is_archived_project(resolved):
+            return None
+        return resolved
+
+    proot = principal_root(principal)
+    projects = proot / "projects"
+    archive_dir = project_archive_path(principal)
+    name = Path(raw).name
+    for folder in project_name_candidates(name):
+        candidate = projects / folder
+        if is_project_instance(candidate) and not is_archived_project(candidate):
+            return candidate.resolve()
+        if include_archived:
+            archived = archive_dir / folder
+            if is_project_instance(archived):
+                return archived.resolve()
+    return None
+
+
+def is_archived_project(project_path: Path) -> bool:
+    if not is_project_instance(project_path):
+        return False
+    data = _load_instance_yaml(project_path)
+    if str(data.get("status") or "").lower() == "archived":
+        return True
+    try:
+        project_path.resolve().relative_to(project_archive_path())
+    except ValueError:
+        return False
+    return True
+
+
 def _fail_uninitialized() -> None:
     print(
         "Error: jah.yaml not found. See system/bootstrap/SETUP.md or run:\n"

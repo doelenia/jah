@@ -39,6 +39,14 @@ fields:
     type: scalar
     cardinality: one
     description: "Path to content-type README (e.g. users/<principal>/types/source/README.md)."
+  kind:
+    type: scalar
+    cardinality: one
+    optional: true
+    description: >
+      Optional container kind. project_archive = this directory holds archived
+      projects; it is not itself a project instance. Engines must not treat it
+      as type: project.
 content_type_layouts:
   source:
     catalog: index.md

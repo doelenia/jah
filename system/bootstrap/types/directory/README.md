@@ -30,6 +30,8 @@ protocol: users/<principal>/types/source/README.md
 requires_approval: true
 ```
 
+`kind: project_archive` (optional) marks a directory that **holds** projects but **is not** a project. `projects/archive/` uses this. Engines and agents must read `instance.yaml` — never treat a `kind: project_archive` folder as `type: project`.
+
 **Reference layouts** (see content type README for authoritative rules):
 
 | content_type | Typical container fields | See |
@@ -41,6 +43,7 @@ requires_approval: true
 | `session` | `instances`, `protocol` | `types/session/README.md` |
 | `task` | `catalog`, `instances`, `protocol` | `types/task/README.md` |
 | `document` | `instances`, `protocol` | `types/document/README.md` |
+| `project` | `instances`, `protocol` | `types/project/README.md` — used by `projects/` and `projects/archive/` (`kind: project_archive`) |
 
 Defaults in `users/<principal>/types/directory/type.yaml` under `content_type_layouts` supplement READMEs — they do not restrict which `content_type` values are valid.
 

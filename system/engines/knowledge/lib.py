@@ -9,7 +9,7 @@ from typing import Any
 
 import yaml
 
-from env import principal_root, repo_root
+from env import find_project_path, principal_root, repo_root
 
 
 def knowledge_base_dir(principal: str | None = None) -> Path:
@@ -219,6 +219,11 @@ def source_catalog_path(scope: str, principal: str | None = None) -> Path | None
     scope = scope.strip()
     if scope.startswith("project."):
         project = scope.split(".", 1)[1]
+        found = find_project_path(project, principal, include_archived=True)
+        if found is not None:
+            catalog = found / "sources" / "index.md"
+            if catalog.is_file():
+                return catalog
         return root / "projects" / project / "sources" / "index.md"
     if scope in ("personal", "personal.main"):
         return root / "personal" / "sources" / "index.md"
@@ -226,9 +231,11 @@ def source_catalog_path(scope: str, principal: str | None = None) -> Path | None
         p = repo_root() / scope / "sources" / "index.md"
         if p.is_file():
             return p
-    project_path = root / "projects" / scope / "sources" / "index.md"
-    if project_path.is_file():
-        return project_path
+    found = find_project_path(scope, principal, include_archived=True)
+    if found is not None:
+        catalog = found / "sources" / "index.md"
+        if catalog.is_file():
+            return catalog
     return None
 
 

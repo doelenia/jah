@@ -7,6 +7,7 @@ Stages of a Jah session.
 ```bash
 python3 system/engines/cli.py new-session users/<id>/projects/jah "Goal here"
 # optional: --workflow-id workflow.jah.blog
+# archived projects: unarchive first, or pass --force
 ```
 
 Creates `users/<id>/projects/jah/sessions/YYYY-MM-DD-NNN/` with:

@@ -12,7 +12,7 @@ users/<id>/
   registry.yaml       # type registry — authoritative type index
   types/              # registered type definitions
   personal/           # type: personal — cross-project instances
-  projects/           # project instances
+  projects/           # project instances (archive/ is kind: project_archive — not a project)
   knowledge-base/     # curated knowledge index — see system/agent/knowledge_base.md
   connectors/         # optional — how external services are accessed (MCP + CLI); see system/agent/connectors.md
 ```

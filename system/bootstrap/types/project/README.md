@@ -84,6 +84,19 @@ Register every grown field in the project `instance.yaml` `fields` block with `s
 4. Add grown parts as subdirectories (`design/`, `program/`, …) — project-directory shape from the start.
 5. Register each child instance in the `fields` block as it is created.
 
+## Archive
+
+Finished or inactive projects **move** to `projects/archive/` — a directory with `kind: project_archive`, not a project. They are not deleted and do not stay as siblings in `projects/` with only a flag.
+
+```bash
+python3 system/engines/cli.py archive-project users/<principal>/projects/<name>
+python3 system/engines/cli.py unarchive-project users/<principal>/projects/archive/<name>
+```
+
+On archive, the engine sets root keys on `instance.yaml`: `status: archived`, `archived_at`, `archived_from`. Unarchive sets `status: active` and clears the archive keys. Full protocol: `system/agent/archive.md`.
+
+Do not start new sessions on an archived project unless the user is resuming that work (`unarchive-project`, or `new-session --force` for a historical follow-up).
+
 ## Do not
 
 - Default to a top-level `documents/` folder for project pages or migrations

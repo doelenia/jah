@@ -74,13 +74,14 @@ See `type_system.md`.
 5. `system/agent/discovery_protocol.md`
 6. `system/agent/knowledge_base.md`
 7. `system/agent/storage_rules.md`
-8. `system/agent/connectors.md` (when task uses external services)
-9. `system/agent/type_system.md`
-10. `users/<id>/registry.yaml`
-11. `users/<id>/connectors/README.md` (when task uses external services)
-12. Relevant `instance.yaml` (principal, personal, project, or session)
-13. `types/<type>/README.md` for instance and each field in scope
-14. Session `compiled_context.md` after compilation
+8. `system/agent/archive.md` (when archiving or working with archived projects)
+9. `system/agent/connectors.md` (when task uses external services)
+10. `system/agent/type_system.md`
+11. `users/<id>/registry.yaml`
+12. `users/<id>/connectors/README.md` (when task uses external services)
+13. Relevant `instance.yaml` (principal, personal, project, or session)
+14. `types/<type>/README.md` for instance and each field in scope
+15. Session `compiled_context.md` after compilation
 
 ## CLI
 
@@ -110,6 +111,10 @@ python3 system/engines/cli.py validate-knowledge
 python3 system/engines/cli.py resolve-knowledge <knowledge-id>
 python3 system/engines/cli.py resolve-rules <session-path> --trigger <trigger> [--target <path>]
 python3 system/engines/cli.py check-write <session-path> --target <path> [--strict]
+
+# Archive / unarchive a project
+python3 system/engines/cli.py archive-project users/<id>/projects/<name>
+python3 system/engines/cli.py unarchive-project users/<id>/projects/archive/<name>
 ```
 
 **System release** (`system/release/scripts/`):

@@ -9,6 +9,14 @@ Where things live and what not to move.
 | System | `system/` | Protocol, bootstrap, design docs, release scripts | **Tracked** |
 | Principal | `users/<id>/` | Registry, types, instances, optional connectors | Local |
 
+## Default creation target — local jah repo
+
+**New sessions, documents, and any regular files are created inside this repo under `users/<active_principal>/…` by default.** This is the home for created content unless the user explicitly names an external surface *for that item*.
+
+- Do **not** create or write content in an external surface (Notion, Google Docs, Drive, etc.) unless the user names it for the thing being created ("put this in Notion", "make a Google Doc"). "Create a session in `<project>`" means the **local** project, even when a same-named page exists externally.
+- A local instance **may reference** an external page without the content living there — e.g. a `notion_url:` field on the instance (see `users/<id>/projects/*/instance.yaml`). Referencing ≠ authoring there.
+- External surfaces reached through `connectors/` are **read-first**. Writing/publishing to them is an external action that requires explicit user direction (`permission_model.md`).
+
 ## Active principal
 
 Repo root `jah.yaml`:
@@ -29,7 +37,7 @@ users/<id>/
   registry.yaml       # type registry
   types/              # registered type definitions
   personal/           # cross-project instances
-  projects/           # project instances
+  projects/           # project instances (archive/ field is not a project — see archive.md)
   knowledge-base/     # curated knowledge index (see knowledge_base.md)
   connectors/         # optional — external services, devices, MCP configs
 ```
@@ -70,7 +78,14 @@ Do not nest them under `users/`.
 
 ## Sessions
 
-Sessions live under `users/<id>/projects/<project>/sessions/YYYY-MM-DD-NNN/`.
+Sessions live under the parent project's `sessions/` folder:
+
+| Project state | Path |
+|---------------|------|
+| Active | `users/<id>/projects/<project>/sessions/YYYY-MM-DD-NNN/` |
+| Archived | `users/<id>/projects/archive/<project>/sessions/YYYY-MM-DD-NNN/` |
+
+See `archive.md`.
 
 ## Reusable resources (files)
 

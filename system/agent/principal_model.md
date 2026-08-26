@@ -19,6 +19,7 @@ users/<id>/
     documents/
   knowledge-base/     # curated IP index — see system/agent/knowledge_base.md
   projects/
+    instance.yaml     # fields.archive → archive/ (kind: project_archive; not a project)
     <project>/
       instance.yaml
       context.md
@@ -27,6 +28,10 @@ users/<id>/
       workflows/
       sessions/
       tasks/
+    archive/          # optional — archived projects (`archive.md`)
+      instance.yaml   # type: directory, kind: project_archive
+      <project>/
+        instance.yaml   # type: project, status: archived
   connectors/         # optional — external services, devices, MCP, custom glue
 ```
 

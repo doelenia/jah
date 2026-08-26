@@ -19,7 +19,7 @@ Customization stays private. The protocol stays portable via GitHub.
 
 | Layer | Path | Role |
 |-------|------|------|
-| **Agent** | `system/agent/` | Behavioral protocol — what agents should do (markdown only) |
+| **Agent** | `system/agent/` | Behavioral protocol — what agents should do (markdown only), including `archive.md` |
 | **Bootstrap** | `system/bootstrap/` | Copy-once starter kit — seeds principal data, not runtime code |
 | **Engines** | `system/engines/` | Protocol runtime — Python that operates on principal data |
 | **Release** | `system/release/` | Version, changelog, init and bump scripts |

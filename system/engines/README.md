@@ -20,6 +20,8 @@ python3 system/engines/cli.py <command> [args...]
 | `resolve-knowledge` | Look up knowledge entries |
 | `resolve-rules` | Resolve active rules for a session trigger |
 | `check-write` | Advisory L4+ and type-coherence write check (optional `--strict`) |
+| `archive-project` | Move a project to `projects/archive/` (`kind: project_archive`) |
+| `unarchive-project` | Restore a project from `projects/archive/` to `projects/<name>/` |
 
 ## Layout
 
@@ -34,6 +36,7 @@ engines/
   structure/       # pairs with agent/open_structure.md
   session/         # pairs with agent/session_lifecycle.md
   instances/       # instance discovery
+  archive/         # pairs with agent/archive.md
 ```
 
 ## Adding an engine

@@ -1,8 +1,10 @@
 # Session Type
 
-One temporary workspace under a project. Example: `users/<principal>/projects/jah/sessions/YYYY-MM-DD-001/`.
+One temporary workspace under a project. Example: `users/<principal>/projects/jah/sessions/YYYY-MM-DD-001/` (archived: `users/<principal>/projects/archive/<project>/sessions/…`).
 
 **Agents:** read this file before creating or working in a session.
+
+> **Default location — local repo.** Sessions (and their artifacts, and any regular files a session produces) are created **here in the local jah repo**, never on an external surface. "Create a session in `<project>`" always means the local `users/<principal>/projects/<project>/`, even when a same-named page exists in Notion or elsewhere. Only write to an external surface when the user names it for that specific item. See `system/agent/storage_rules.md` § *Default creation target*.
 
 ## Structure
 

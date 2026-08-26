@@ -48,6 +48,7 @@ Use this vocabulary consistently across Jah. **One term per concept** — do not
 | **Workflow** | Callable procedure (`type.workflow`); invoked by sessions via `workflow_id` |
 | **System version** | Semver in `system/release/VERSION` for tracked system releases on GitHub |
 | **Changelog** | Release history in `system/release/CHANGELOG.md` |
+| **Archive** | `projects/archive/` — directory (`kind: project_archive`) of archived project instances; not itself a project (`archive.md`) |
 | **Open structure** | Declared folder meaning via `instance.yaml` `fields`; default open growth (`open_structure.md`) |
 | **System layer** | Declared field under `system/instance.yaml` (agent, bootstrap, engines, release, interface) |
 | **Baseline fields** | Minimal `fields` on a container type — every instance must scaffold from this |

@@ -6,7 +6,12 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from env import repo_root
+from env import (
+    find_project_path,
+    is_archived_project,
+    is_project_archive_container,
+    repo_root,
+)
 
 
 def next_session_id(sessions_dir: Path, date_prefix: str) -> str:
@@ -28,12 +33,37 @@ def main() -> int:
         "--workflow-id",
         help="Explicit workflow id to invoke, e.g. workflow.us_taxes.tax_filing",
     )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Allow creating a session on an archived project",
+    )
     args = parser.parse_args()
 
     root = repo_root()
-    project_path = root / args.project_path
-    if not project_path.is_dir():
-        print(f"Error: project path not found: {project_path}", file=sys.stderr)
+    given = root / args.project_path
+    if is_project_archive_container(given):
+        rel = given.resolve().relative_to(root).as_posix()
+        print(
+            f"Error: {rel} is the project archive container "
+            "(type: directory, kind: project_archive), not a project.\n"
+            "Pick an archived project inside it, e.g. "
+            f"{rel}/<name>, or unarchive first.",
+            file=sys.stderr,
+        )
+        return 1
+    project_path = find_project_path(args.project_path, include_archived=True)
+    if project_path is None:
+        print(f"Error: project path not found: {args.project_path}", file=sys.stderr)
+        return 1
+    if is_archived_project(project_path) and not args.force:
+        rel = project_path.resolve().relative_to(root).as_posix()
+        print(
+            f"Error: project is archived: {rel}\n"
+            "Unarchive first, or pass --force for historical follow-up:\n"
+            f"  python3 system/engines/cli.py unarchive-project {rel}",
+            file=sys.stderr,
+        )
         return 1
 
     sessions_dir = project_path / "sessions"
@@ -45,7 +75,7 @@ def main() -> int:
     session_dir.mkdir()
 
     created_at = datetime.now(timezone.utc).isoformat()
-    rel_project = args.project_path.replace("\\", "/")
+    rel_project = project_path.resolve().relative_to(root).as_posix()
 
     workflow_id_line = ""
     if args.workflow_id:

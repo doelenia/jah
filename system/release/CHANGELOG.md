@@ -7,6 +7,13 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-08-25
+
+### Added
+
+- Add project archive under `projects/archive/` (`kind: project_archive` — not a project instance)
+
+
 ## [0.6.4] - 2026-06-15
 
 ### Added

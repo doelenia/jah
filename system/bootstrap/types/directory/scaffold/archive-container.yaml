@@ -1,0 +1,10 @@
+id: directory.archive.{principal}
+type: directory
+kind: project_archive
+name: Project Archive
+description: "Archived project instances. This folder is not a project — type: directory, kind: project_archive. Each child is a project with status: archived."
+role: container
+content_type: project
+instances: "<name>/instance.yaml"
+protocol: users/<principal>/types/project/README.md
+requires_approval: true

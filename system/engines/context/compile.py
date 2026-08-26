@@ -534,6 +534,10 @@ def parse_session(session_path: Path) -> tuple[Path, Path, str, dict]:
     goal = str(session.get("goal") or "")
     main_instance = str(session.get("main_instance") or "")
     project_path = root / main_instance if main_instance else session_path.parent.parent
+    if not (project_path / "instance.yaml").is_file():
+        fallback = session_path.parent.parent
+        if (fallback / "instance.yaml").is_file():
+            project_path = fallback
     return session_path, project_path, goal, session
 
 

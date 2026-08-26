@@ -40,6 +40,8 @@ python3 system/engines/cli.py validate-structure
 python3 system/engines/cli.py validate-knowledge
 python3 system/engines/cli.py new-session users/<id>/projects/<project> "Smoke test goal"
 python3 system/engines/cli.py compile-context users/<id>/projects/<project>/sessions/YYYY-MM-DD-NNN
+python3 system/engines/cli.py archive-project users/<id>/projects/<project>   # optional
+python3 system/engines/cli.py unarchive-project users/<id>/projects/archive/<project>
 ```
 
 New projects should scaffold **baseline fields** from `type.project` `fields` in `type.yaml`, then add grown fields in `instance.yaml` as needed (`system/agent/open_structure.md`).
