@@ -27,6 +27,8 @@ active_principal: <id>
 
 Scripts and agents resolve `users/<active_principal>/` for all local work.
 
+**Path portability:** treat Jah root as the only stable prefix for in-repo files. Engines use `repo_root()` from `system/engines/env.py` (derived from the engine file location, not `$PWD` or `/Users/…`). Connector CLIs use `Path(__file__)` / `dirname "$0"`. MCP local servers use launchers under `users/<id>/connectors/` (see `connectors.md`). Machine-only secrets stay under `$HOME/.config/jah/`.
+
 Declared instance `fields` must match on-disk layout — run `python3 system/engines/cli.py validate-structure` (`open_structure.md`).
 
 ## Principal layout

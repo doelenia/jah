@@ -4,7 +4,7 @@ A local-first, AI-native personal OS. Jah turns repeated work into stable, prefe
 
 The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current system version: **0.7.0** (see [system/release/VERSION](system/release/VERSION)).
+Current system version: **0.7.1** (see [system/release/VERSION](system/release/VERSION)).
 
 ## What you get from GitHub
 
@@ -42,6 +42,9 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 0.7.1 (2026-09-09)
+- Require Jah-root-relative connector and MCP paths (no machine /Users/ prefixes).
+
 ### 0.7.0 (2026-08-25)
 - Add project archive under `projects/archive/` (`kind: project_archive` — not a project instance)
 
@@ -53,9 +56,6 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 
 ### 0.6.2 (2026-06-14)
 - Forbid agent memory for durable facts in proactive capture
-
-### 0.6.1 (2026-06-13)
-- Slim compile to session-start rules; add advisory check-write CLI
 <!-- recent-updates:end -->
 
 Full history: [system/release/CHANGELOG.md](system/release/CHANGELOG.md).

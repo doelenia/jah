@@ -11,6 +11,7 @@ import yaml
 
 
 def repo_root() -> Path:
+    """Jah root (directory that contains jah.yaml). Derived from this file, not cwd or /Users/…."""
     return Path(__file__).resolve().parents[2]
 
 
