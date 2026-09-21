@@ -9,7 +9,8 @@ import sys
 from pathlib import Path
 
 
-TRACKED_PREFIXES = ("system/", "README.md", ".gitignore")
+TRACKED_PREFIXES = ("system/", ".github/")
+TRACKED_FILES = frozenset({"README.md", ".gitignore", "LICENSE", "CONTRIBUTING.md"})
 
 
 def repo_root() -> Path:
@@ -44,10 +45,11 @@ def changed_tracked_files() -> list[str]:
             path = path.split(" -> ", 1)[1]
         diff_names.add(path)
 
-    return sorted(
-        p for p in diff_names
-        if p.startswith(TRACKED_PREFIXES) or p in TRACKED_PREFIXES
-    )
+    return sorted(p for p in diff_names if is_public_path(p))
+
+
+def is_public_path(path: str) -> bool:
+    return path.startswith(TRACKED_PREFIXES) or path in TRACKED_FILES
 
 
 def version_changelog_touched(files: list[str]) -> bool:
@@ -86,9 +88,7 @@ def main() -> int:
 
     release_files = {"system/release/VERSION", "system/release/CHANGELOG.md"}
     only_release = set(changed).issubset(release_files)
-    system_changed = any(
-        f.startswith("system/") and f not in release_files for f in changed
-    ) or any(f in changed for f in ("README.md", ".gitignore"))
+    system_changed = any(is_public_path(f) and f not in release_files for f in changed)
 
     if system_changed and not version_changelog_touched(changed):
         print(

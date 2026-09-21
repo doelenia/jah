@@ -4,11 +4,13 @@ A local-first, AI-native personal OS. Jah turns repeated work into stable, prefe
 
 The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current system version: **0.7.1** (see [system/release/VERSION](system/release/VERSION)).
+Current system version: **0.7.2** (see [system/release/VERSION](system/release/VERSION)).
 
 ## What you get from GitHub
 
 - `system/` — declared layers: agent protocol, bootstrap, engines, release (`system/instance.yaml`)
+- `LICENSE` — MIT license
+- `CONTRIBUTING.md` — issues and pull requests
 - `.gitignore` — keeps principals local
 - This `README.md`
 
@@ -42,6 +44,9 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 0.7.2 (2026-09-21)
+- License the public repository under MIT and document issue and pull request contributions.
+
 ### 0.7.1 (2026-09-09)
 - Require Jah-root-relative connector and MCP paths (no machine /Users/ prefixes).
 
@@ -53,18 +58,17 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 
 ### 0.6.3 (2026-06-15)
 - Require type coherence review before type-system work
-
-### 0.6.2 (2026-06-14)
-- Forbid agent memory for durable facts in proactive capture
 <!-- recent-updates:end -->
 
 Full history: [system/release/CHANGELOG.md](system/release/CHANGELOG.md).
 
-## Contributing to the system
+## Contributing
 
-System changes live in `system/` and ship via GitHub PR.
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-**Before every commit** that changes tracked system files, bump the version and add a changelog entry:
+System changes live in `system/` and ship via GitHub pull request.
+
+**Before every commit** that changes tracked public files, bump the version and add a changelog entry:
 
 ```bash
 python3 system/release/scripts/bump_release.py --bump patch -m "Short summary of the change"
@@ -75,4 +79,6 @@ Details: [system/release/versioning.md](system/release/versioning.md) · Improve
 
 ## License
 
-License not yet specified — add one when you open the repository publicly.
+[MIT](LICENSE). Copyright (c) 2026 Allen Chen.
+
+The license covers the files in this repository. A principal under `users/<id>/` stays on your machine and is not part of this public tree.

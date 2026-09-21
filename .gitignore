@@ -1,6 +1,11 @@
-# GitHub tracks the kernel and open-source landing page. Everything else is local.
+# GitHub tracks the kernel, the license, and the contribution docs.
+# Everything else is local.
 *
 !.gitignore
 !README.md
+!LICENSE
+!CONTRIBUTING.md
+!.github/
+!.github/**
 !system/
 !system/**
