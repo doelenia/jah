@@ -4,7 +4,7 @@ A local-first, AI-native personal OS. Jah turns repeated work into stable, prefe
 
 The **system** in `system/` is shared and versioned on GitHub. Your **principal** — `users/<id>/` — stays on your machine and private.
 
-Current system version: **0.7.2** (see [system/release/VERSION](system/release/VERSION)).
+Current system version: **0.7.3** (see [system/release/VERSION](system/release/VERSION)).
 
 ## What you get from GitHub
 
@@ -44,6 +44,12 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 ## Recent updates
 
 <!-- recent-updates:start -->
+### 0.7.3 (2026-10-11)
+- Connector route map: users/<id>/connectors/routes.yaml records every route per service and host (repo MCP, user MCP, host connector, native CLI, direct API, browser) with preferred_on, discover, and auth hints
+- Availability rule: agents check the route map and try the preferred route for their host before reporting a service unavailable; a host auth notice about one MCP server name is not the service
+- New engine command check-connectors: validates the route map and flags drift against .mcp.json, .cursor/mcp.json, ~/.cursor/mcp.json; compiled context renders a Connector Routes table
+- Versioning: patch by default; minor/major only on the principal's explicit instruction (bump_release.py requires --principal-approved)
+
 ### 0.7.2 (2026-09-21)
 - License the public repository under MIT and document issue and pull request contributions.
 
@@ -55,9 +61,6 @@ Full workflow: [system/agent/protocol.md](system/agent/protocol.md) · Session l
 
 ### 0.6.4 (2026-06-15)
 - Move type coherence out of constitution into extendable rules
-
-### 0.6.3 (2026-06-15)
-- Require type coherence review before type-system work
 <!-- recent-updates:end -->
 
 Full history: [system/release/CHANGELOG.md](system/release/CHANGELOG.md).

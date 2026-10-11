@@ -53,7 +53,7 @@ When instructions conflict, follow this order: **constitution** (`constitution.m
 10. **Cite sources** in session artifacts (`evaluation.md` reference checklist).
 11. **Store reusable files** under `sources/files/` with catalog entries.
 12. **Curate knowledge** — audited wisdom in `users/<id>/knowledge-base/` (`knowledge_base.md`).
-13. **Change the system** only when explicitly asked — GitHub PR on `system/`. Bump `system/release/VERSION` before every system commit (`../release/versioning.md`).
+13. **Change the system** only when explicitly asked — GitHub PR on `system/`. Bump `system/release/VERSION` before every system commit (`../release/versioning.md`). Always `--bump patch`; minor/major only when the principal explicitly asks.
 
 ## Type resolution (required)
 

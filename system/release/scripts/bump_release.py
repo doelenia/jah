@@ -176,11 +176,29 @@ def main() -> int:
         help="Changelog bullet (repeatable)",
     )
     parser.add_argument(
+        "--principal-approved",
+        default=None,
+        metavar="REASON",
+        help=(
+            "Required for --bump minor/major: cite the principal's explicit instruction "
+            "(e.g. 'principal: bump minor, 2026-10-11'). Agents never choose minor/major on their own."
+        ),
+    )
+    parser.add_argument(
         "--date",
         default=date.today().isoformat(),
         help="Release date YYYY-MM-DD (default: today)",
     )
     args = parser.parse_args()
+
+    if args.bump in ("minor", "major") and not (args.principal_approved or "").strip():
+        print(
+            f"Error: --bump {args.bump} needs the principal's explicit instruction.\n"
+            "Default is patch (last digit). Only bump minor/major when the principal says so, then pass\n"
+            "  --principal-approved \"<their instruction, with date>\"",
+            file=sys.stderr,
+        )
+        return 1
 
     root = repo_root()
     version_path = root / "system" / "release" / "VERSION"

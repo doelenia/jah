@@ -638,7 +638,35 @@ def compile_connectors(principal: Path) -> str:
         parts.append(load_md_block(index, "Connectors Index"))
     else:
         parts.append("*Missing connectors index: `users/<id>/connectors/README.md`*\n")
+    parts.append(compile_connector_routes(connectors_dir / "routes.yaml"))
     return "\n".join(parts)
+
+
+def compile_connector_routes(routes: Path) -> str:
+    """Render the route map so agents pick the right route per host before declaring a service unavailable."""
+    if not routes.is_file():
+        return "*No connector route map (`users/<id>/connectors/routes.yaml`).*\n"
+    import yaml
+
+    data = yaml.safe_load(routes.read_text(encoding="utf-8")) or {}
+    lines = [
+        "### Connector Routes",
+        "",
+        "Before reporting a service unavailable: find its preferred route for this host and try it "
+        "(use `discover` for deferred/host connectors). A host notice about one MCP server name is not the service.",
+        "",
+        "| Service | Route | Kind | Status | Hosts (★ preferred) | Discover / config / command |",
+        "|---------|-------|------|--------|---------------------|-----------------------------|",
+    ]
+    for svc, entry in (data.get("services") or {}).items():
+        for r in (entry or {}).get("routes") or []:
+            pref = set(r.get("preferred_on") or [])
+            hosts = ", ".join(("★" if h in pref else "") + h for h in (r.get("hosts") or []))
+            how = r.get("discover") or r.get("config") or r.get("command") or ""
+            lines.append(
+                f"| {svc} | {r.get('id', '?')} | {r.get('kind', '?')} | {r.get('status', 'active')} | {hosts} | {how} |"
+            )
+    return "\n".join(lines) + "\n"
 
 
 def compile_operation_preamble(project_path: Path, goal: str) -> str:

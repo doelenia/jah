@@ -14,7 +14,7 @@ Follow `proactive_capture.md` during every task:
 
 ### 1. System changes (`system/`)
 
-Edit `system/`, bump system version (`versioning.md`), commit, GitHub PR:
+Edit `system/`, bump system version (`versioning.md`: patch by default; minor/major only on the principal's explicit instruction), commit, GitHub PR:
 
 ```bash
 python3 system/release/scripts/bump_release.py --bump patch -m "What changed"
