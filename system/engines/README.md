@@ -20,6 +20,7 @@ python3 system/engines/cli.py <command> [args...]
 | `resolve-knowledge` | Look up knowledge entries |
 | `resolve-rules` | Resolve active rules for a session trigger |
 | `check-write` | Advisory L4+ and type-coherence write check (optional `--strict`) |
+| `check-connectors` | Validate `connectors/routes.yaml` routes and flag drift against `.mcp.json`, `.cursor/mcp.json`, `~/.cursor/mcp.json` (optional `--strict`) |
 | `archive-project` | Move a project to `projects/archive/` (`kind: project_archive`) |
 | `unarchive-project` | Restore a project from `projects/archive/` to `projects/<name>/` |
 

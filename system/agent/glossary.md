@@ -31,6 +31,8 @@ Use this vocabulary consistently across Jah. **One term per concept** — do not
 | **Connector** | Optional principal-specific wiring under `users/<id>/connectors/` — documents access method (MCP or native CLI); see `connectors.md` |
 | **Connector access (MCP)** | External service via Model Context Protocol — requires per-agent MCP config documented in connector README |
 | **Connector access (native CLI)** | External service via principal script/shell — agent-agnostic; no MCP setup |
+| **Connector route** | One way to reach a service from a given host (repo MCP, user MCP, host connector, native CLI, direct API, browser) |
+| **Route map** | `users/<id>/connectors/routes.yaml` — every connector route per service and host; checked by `check-connectors` (not the type `registry`) |
 | **Engine** | System protocol runtime under `system/engines/` |
 | **Session** | Temporary working instance under a project |
 | **Trace** | Record of what happened during a session |

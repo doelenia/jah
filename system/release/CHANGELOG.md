@@ -7,6 +7,16 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.7.3] - 2026-10-11
+
+### Added
+
+- Connector route map: users/<id>/connectors/routes.yaml records every route per service and host (repo MCP, user MCP, host connector, native CLI, direct API, browser) with preferred_on, discover, and auth hints
+- Availability rule: agents check the route map and try the preferred route for their host before reporting a service unavailable; a host auth notice about one MCP server name is not the service
+- New engine command check-connectors: validates the route map and flags drift against .mcp.json, .cursor/mcp.json, ~/.cursor/mcp.json; compiled context renders a Connector Routes table
+- Versioning: patch by default; minor/major only on the principal's explicit instruction (bump_release.py requires --principal-approved)
+
+
 ## [0.7.2] - 2026-09-21
 
 ### Added

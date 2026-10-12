@@ -26,6 +26,8 @@ One system commit = one semver entry in `CHANGELOG.md`.
 
 ## Policy
 
-- **Patch** — docs, fixes, small engine changes
-- **Minor** — new engines, layer additions, backward-compatible protocol changes
-- **Major** — breaking protocol or bootstrap contract changes
+**Default: patch (the last digit) for every release.** That covers docs, fixes, engine changes, new engines, and protocol additions alike.
+
+- **Minor (second digit) or major (first digit) only when the principal explicitly says so.** Agents never choose them on their own, however large the change looks.
+- `bump_release.py` enforces this: `--bump minor` or `--bump major` is refused unless `--principal-approved "<the principal's instruction, with date>"` is passed. The cited instruction appears in the agent's session trace.
+- If unsure, use patch and mention in the PR that the principal can request a minor/major bump.
