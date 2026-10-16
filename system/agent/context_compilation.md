@@ -14,7 +14,7 @@ python3 system/engines/cli.py compile-context users/<id>/projects/<project>/sess
 
 The script loads (via active principal from `jah.yaml`):
 
-1. **Agent protocol** — `constitution.md`, `discovery_protocol.md`, `knowledge_base.md`, `proactive_capture.md`, `open_structure.md`, `connectors.md`
+1. **Agent protocol** — `constitution.md`, `agency.md`, `discovery_protocol.md`, `knowledge_base.md`, `proactive_capture.md`, `open_structure.md`, `connectors.md`
 2. **System principles** — glossary, protocol, type_system
 3. **Scoped types** — types referenced by the project, session, workflows, and linked task (not the full registry)
 4. Personal profile and **all** personal preferences
@@ -28,11 +28,13 @@ The script loads (via active principal from `jah.yaml`):
 12. **Resolved workflows** — selective (see below)
 13. Session `input.md`
 
-Output sections: Session Goal, **Operation Checklist**, **Constitution**, Agent Protocol, System Principles, Scoped Types, Personal Profile, Personal Preferences, **Rule Index**, **Session-start Rules**, Project Context, Project Instance, Grown Project Fields, Linked Task, Related Tasks, Related Sessions, Matched Knowledge, Directory Boundaries, **Principal Connectors**, Resolved Workflows, Available Workflows, Session Input, Required Output Files, Approval Boundaries.
+Output sections: Session Goal, **Agency**, **Operation Checklist**, **Constitution**, **Agency** (full contract), Agent Protocol, System Principles, Scoped Types, Personal Profile, Personal Preferences, **Rule Index**, **Session-start Rules**, Project Context, Project Instance, Grown Project Fields, Linked Task, Related Tasks, Related Sessions, Matched Knowledge, Directory Boundaries, **Principal Connectors**, Resolved Workflows, Available Workflows, Session Input, Required Output Files, Approval Boundaries.
 
-## Operation Checklist
+## Agency and Operation Checklist
 
-The first section after Session Goal in every `compiled_context.md` restates the default operation model:
+The first section after Session Goal is **Agency**: the decision bullets from `agency.md`, verbatim. They outrank a conflicting task file, rule, or the model's own judgment. The full contract is loaded again with the constitution.
+
+The next section restates the default operation model:
 
 **Orient → Plan → Act → Capture** — no implementation writes until Orient and Plan are complete. See `protocol.md` § Operation model.
 

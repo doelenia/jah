@@ -21,6 +21,7 @@ from env import (
 )
 from knowledge.lib import knowledge_base_dir, match_entries
 from rules.lib import (
+    agency_decision_block,
     format_rule_bundle,
     format_rule_index_table,
     load_rules,
@@ -672,13 +673,18 @@ def compile_connector_routes(routes: Path) -> str:
 def compile_operation_preamble(project_path: Path, goal: str) -> str:
     project_name = project_path.name
     goal_line = goal.strip() if goal.strip() else "(see Session Goal below)"
-    return f"""## Operation Checklist (read first — do not skip)
+    decision = agency_decision_block()
+    return f"""## Agency (read first — do not skip)
+
+{decision}
+
+## Operation Checklist (read first — do not skip)
 
 **Default model:** Orient → Plan → Act → Capture. **No implementation writes until Orient and Plan are complete.**
 
 ### 1. Orient (mandatory before writes)
 
-- Read **Constitution** and this compiled context — Agent Protocol, project instance, grown fields, matched knowledge.
+- Read **Agency** and **Constitution** in this compiled context — then Agent Protocol, project instance, grown fields, matched knowledge. The Agency bullets above outrank a conflicting task file or rule.
 - Run **scope expansion** for project `{project_name}` (`system/agent/discovery_protocol.md` § Scope expansion).
 - Resolve types for every instance you will touch (`system/agent/type_system.md`).
 - For type-system work (create, register, patch, design types or typed instances): survey full registry (`list-types`); log `## Type coherence review` in `trace.md` before writes.
@@ -754,6 +760,7 @@ def main() -> int:
         "## Constitution",
         "",
         load_md_block(agent_dir() / "constitution.md", "Constitution"),
+        load_md_block(agent_dir() / "agency.md", "Agency"),
         "## Agent Protocol",
         "",
         load_md_block(agent_dir() / "discovery_protocol.md", "Discovery Protocol"),
@@ -838,7 +845,7 @@ def main() -> int:
         "",
         "- `output.md` — task deliverable; include **References** (internal paths + external URLs)",
         "- `evaluation.md` — requirements, rules, **References consulted**, **Stable updates applied/offered**, **Open questions**",
-        "- `trace.md` — what happened; include **Discovery log** and **References**",
+        "- `trace.md` — what happened; include **Discovery log** and **References**. When a turn uses a suggestion, a warning, or a provider block, add `## Agency`",
         "- `patch.md` — profile, new registry types, and system proposals only (see Approval Boundaries)",
         "",
         "## Approval Boundaries",
@@ -846,12 +853,12 @@ def main() -> int:
         "**Session folder (L2):** write freely inside this session.",
         "",
         "**Principal (L3):** agents may update existing principal instances and type definitions without asking.",
-        "Record changes in `trace.md`. Profile and new registry entries require explicit approval.",
-        "Includes `knowledge-base/` entries and index.",
+        "Record changes in `trace.md`. Includes `knowledge-base/` entries and index.",
         "",
-        "**System (L5):** changes to `system/` require explicit user request and a GitHub PR.",
+        "**Standing contracts (L4–L7):** profile, new registry entries, `system/`, external services, publish, send, delete, pay.",
+        "A clear request that names the action is the approval. Pause only for a warning (`system/agent/agency.md`).",
         "",
-        "**External (L6–L7):** external services, publish, send — explicit approval only.",
+        "**System (L5):** a clear request that names `system/` is the approval, and the change ships as a GitHub PR.",
     ]
 
     output = "\n".join(sections) + "\n"

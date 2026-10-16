@@ -70,7 +70,8 @@ def advisory_message(level: str, target: str, has_checkpoint: bool) -> str | Non
     if has_checkpoint:
         return None
     return (
-        f"Advisory: write to `{target}` is {level} (requires approval). "
+        f"Advisory: write to `{target}` is {level}. "
+        "A clear request that names this action is the approval (`agency.md`). "
         "No `pre_approval` rule checkpoint found in trace.md. "
         "Run: resolve-rules --trigger pre_approval --target <path>; attest in trace."
     )

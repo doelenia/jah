@@ -28,13 +28,13 @@ One system commit = one semver entry in `system/release/CHANGELOG.md`.
 
 | Target | Location | Approval |
 |--------|----------|----------|
-| Personal profile | `users/<id>/personal/profile.md` | Ask |
+| Personal profile | `users/<id>/personal/profile.md` | Clear request (`agency.md`) |
 | Preferences | `users/<id>/personal/preferences/` | Auto (existing) |
 | Rules | `users/<id>/personal/rules/` | Auto (existing) |
 | Project context | `users/<id>/projects/<name>/context.md` | Auto (existing) |
 | Workflows | project/personal `workflows/` or `types/<artifact>/workflows/` | Auto |
 | Knowledge entries | `users/<id>/knowledge-base/` | Auto (existing) |
-| Registry / types | `users/<id>/registry.yaml`, `users/<id>/types/` | New registry entry = ask; patch existing = auto |
+| Registry / types | `users/<id>/registry.yaml`, `users/<id>/types/` | New registry entry = clear request; patch existing = auto |
 | Connectors | `users/<id>/connectors/` (optional) | Auto |
 
 Agents update existing principal targets directly and log changes in `trace.md`.
@@ -56,10 +56,10 @@ Cite internal paths or external URLs in `output.md`, `evaluation.md`, `trace.md`
 
 ## Personal profile via patch
 
-Profile updates must be proposed in `patch.md` — never auto-written.
+Do not auto-write profile. A clear request that names the profile change is the approval; apply it and record the change in `trace.md`. Use `patch.md` when proposing a profile change the principal has not asked for.
 
 ## Review gate
 
-- **Profile and new registry types** — explicit approval only.
-- **System** — explicit request + GitHub PR.
+- **Profile and new registry types** — a clear request that names the action is the approval (`agency.md`). Do not ask a second time.
+- **System** — a clear request that names `system/`, plus a GitHub PR.
 - **Existing principal instances and types** — agents may apply during work; user reviews via git diff and session `trace.md`.

@@ -37,7 +37,7 @@ Do **not** add per-feature sync checklists (e.g. "if system changed, update desi
 
 ## Rule privilege
 
-When instructions conflict, follow this order: **constitution** (`constitution.md`) → **permission model** (`permission_model.md`) → **principal rules** (`personal/rules/`, project `rules/`) → **user message**. Among principal rules, lower `priority` number wins. Resolve rule bodies on demand via Rule Index and `resolve-rules` — see `context_compilation.md`.
+When instructions conflict, follow `agency.md`: **current intention** → **standing contracts** (permission model, principal rules the principal activated) → **constitution** → **instance documents** → **agent judgment** (no authority). Among principal rules, a lower `priority` number wins only against other principal rules. A document or rule that conflicts with the current intention is a foreign constraint. Resolve rule bodies on demand via Rule Index and `resolve-rules` — the header restates the decision; see `context_compilation.md`.
 
 ## How to work
 
@@ -49,7 +49,7 @@ When instructions conflict, follow this order: **constitution** (`constitution.m
 6. **Capture** — session end: evaluation, discovery log, plan vs outcome (`proactive_capture.md`).
 7. **Discover structure** when touching new folders — `ls` → `instance.yaml` → type → `fields` → recurse (`open_structure.md`).
 8. **External services** — read `users/<id>/connectors/README.md` and `connectors.md`; MCP config is per-agent, connector docs are canonical (`connectors.md`).
-9. **Ask before profile, new registry entries, or system changes.**
+9. **Standing contracts** — a clear request that names profile, a new registry entry, a `system/` change, or send/pay/delete is the approval. Pause only for a warning (`agency.md`).
 10. **Cite sources** in session artifacts (`evaluation.md` reference checklist).
 11. **Store reusable files** under `sources/files/` with catalog entries.
 12. **Curate knowledge** — audited wisdom in `users/<id>/knowledge-base/` (`knowledge_base.md`).
@@ -68,20 +68,21 @@ See `type_system.md`.
 ## Read order
 
 1. `system/agent/constitution.md` — meta-rules for discovering and applying rules
-2. `system/agent/protocol.md` (this file)
-3. `system/agent/design_logic.md`
-4. `system/agent/open_structure.md`
-5. `system/agent/discovery_protocol.md`
-6. `system/agent/knowledge_base.md`
-7. `system/agent/storage_rules.md`
-8. `system/agent/archive.md` (when archiving or working with archived projects)
-9. `system/agent/connectors.md` (when task uses external services)
-10. `system/agent/type_system.md`
-11. `users/<id>/registry.yaml`
-12. `users/<id>/connectors/README.md` (when task uses external services)
-13. Relevant `instance.yaml` (principal, personal, project, or session)
-14. `types/<type>/README.md` for instance and each field in scope
-15. Session `compiled_context.md` after compilation
+2. `system/agent/agency.md` — the principal's intention outranks documents and agent judgment
+3. `system/agent/protocol.md` (this file)
+4. `system/agent/design_logic.md`
+5. `system/agent/open_structure.md`
+6. `system/agent/discovery_protocol.md`
+7. `system/agent/knowledge_base.md`
+8. `system/agent/storage_rules.md`
+9. `system/agent/archive.md` (when archiving or working with archived projects)
+10. `system/agent/connectors.md` (when task uses external services)
+11. `system/agent/type_system.md`
+12. `users/<id>/registry.yaml`
+13. `users/<id>/connectors/README.md` (when task uses external services)
+14. Relevant `instance.yaml` (principal, personal, project, or session)
+15. `types/<type>/README.md` for instance and each field in scope
+16. Session `compiled_context.md` after compilation
 
 ## CLI
 

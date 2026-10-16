@@ -127,4 +127,4 @@ All of `users/` is local. Never committed to GitHub.
 - **Stable instances** — profile, preferences, rules, context, workflows, tasks, sources
 - **Session workspace** — input, output, evaluation, trace, patch, compiled_context
 
-Modify stable instances only with explicit approval (`permission_model.md`).
+L3 existing instances update directly. Profile, a new registry entry, and `system/` follow standing contracts: a clear request that names the action is the approval (`permission_model.md`, `agency.md`).

@@ -1,6 +1,6 @@
 # Versioning
 
-Semver for the tracked public tree: `system/`, plus the root license and contribution files.
+Semver for the tracked public tree: `system/`, plus the root license, contribution files, `CLAUDE.md`, and `.cursor/rules/jah-system.mdc`.
 
 ## Files
 
@@ -15,7 +15,7 @@ Semver for the tracked public tree: `system/`, plus the root license and contrib
 
 ## Bump before every system commit
 
-When you change tracked public files (`system/`, root `README.md`, `.gitignore`, `LICENSE`, `CONTRIBUTING.md`, `.github/`):
+When you change tracked public files (`system/`, root `README.md`, `.gitignore`, `LICENSE`, `CONTRIBUTING.md`, `.github/`, `CLAUDE.md`, `.cursor/rules/jah-system.mdc`):
 
 ```bash
 python3 system/release/scripts/bump_release.py --bump patch -m "Short summary"

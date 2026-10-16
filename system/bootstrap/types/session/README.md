@@ -30,7 +30,7 @@ users/<principal>/projects/<project>/sessions/
 5. Resolve `main_instance` → read parent project `instance.yaml` and relevant field type READMEs.
 6. Link tasks: set `task_id` on the session or `session` on the task when work starts.
 7. Write session artifacts freely (L2). Update existing principal instances/types directly when capture is clear (L3).
-8. Ask before profile updates, new registry entries, or `system/` changes.
+8. Profile, a new registry entry, or `system/`: a clear request that names the action is the approval (`system/agent/agency.md`). Do not ask a second time. If the agent is proposing the write, use `patch.md`.
 9. End with complete `output.md`, `evaluation.md` (reference checklist), `trace.md` (discovery log), and `patch.md` (profile/system/new-type proposals only).
 
 ## Field types

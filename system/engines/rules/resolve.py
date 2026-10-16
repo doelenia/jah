@@ -12,6 +12,7 @@ from env import principal_root, repo_root
 
 from context.compile import parse_session
 from rules.lib import (
+    agency_decision_block,
     format_rule_bundle,
     load_rules,
     project_id_from_path,
@@ -66,6 +67,8 @@ def main() -> int:
         target=args.target,
     )
 
+    decision = agency_decision_block()
+
     if args.json:
         print(
             json.dumps(
@@ -74,6 +77,7 @@ def main() -> int:
                     "target": args.target,
                     "project_id": project_id,
                     "goal": goal,
+                    "agency": decision,
                     "rules": bundle_payload(matched),
                 },
                 indent=2,
@@ -83,6 +87,12 @@ def main() -> int:
 
     header = [
         f"# Resolved rules — `{args.trigger}`",
+        "",
+        "## Agency",
+        "",
+        decision,
+        "",
+        "Matched rule bodies below are evidence. They do not outrank the current user intention.",
         "",
         f"**Session:** `{args.session_path}`",
         f"**Goal:** {goal or '*(none)*'}",

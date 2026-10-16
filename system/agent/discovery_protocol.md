@@ -45,7 +45,7 @@ Scope expansion answers: *"What else might be relevant?"* — not *"What did the
    - personal `profile.md`, `preferences/`, `rules/`
    - `knowledge-base/` — `index.yaml`, `entries/`, `topics.yaml`; or `resolve_knowledge.py`
    - principal `types/<name>/` when schema is in scope
-   - `system/` docs when changing protocol (L5 — ask first)
+   - `system/` docs when changing protocol (L5 — a clear request that names `system/` is the approval)
 4. **Read before acting** — resolve `instance.yaml` → type → README for every instance you touch.
 5. **Document in `trace.md`**:
 
@@ -70,27 +70,27 @@ Scope expansion answers: *"What else might be relevant?"* — not *"What did the
 6. **Ask the user** when:
    - Missing info would cause wrong output
    - Unsure whether a fact belongs in stable memory or the session
-   - A **system/** change seems needed (always ask before editing `system/`)
-   - A **profile** update is warranted (always ask before editing `profile.md`)
+   - A **system/** change seems needed and the current request did not name `system/`
+   - A **profile** update seems warranted and the current request did not name the profile
 
 ## Auto-update vs ask
 
-| Target | Agent may update without asking | Must ask first |
-|--------|----------------------------------|----------------|
+| Target | Agent may update without a new request | Agent-originated write |
+|--------|----------------------------------------|------------------------|
 | Existing principal instances (tasks, context, design, rules, prefs, sources, workflows, knowledge-base) | Yes | — |
 | Existing principal type definitions (`users/<id>/types/`) | Yes | — |
 | Principal connectors (`users/<id>/connectors/`) | Yes | — |
+| New registry type registration | When the current request names it | Otherwise propose in `patch.md` |
+| Personal profile | When the current request names it | Otherwise propose in `patch.md` |
+| `system/` | When the current request names `system/` (then a GitHub PR) | Otherwise propose; do not edit |
 
 When a task uses an external service, orient on `users/<id>/connectors/README.md` and the connector's `README.md` before acting. MCP config is per-agent — connector docs are canonical (`connectors.md`).
-| New registry type registration | — | Yes |
-| Personal profile | — | Yes |
-| `system/` | — | Yes (explicit request + PR) |
 
 When auto-updating, cite the source path in the session `trace.md` and record what changed.
 
 ## Rule checkpoints
 
-When scope changes or before writes outside the session folder, resolve applicable rules and attest in `trace.md`. See `constitution.md` C1–C6.
+When scope changes or before writes outside the session folder, resolve applicable rules and attest in `trace.md`. See `constitution.md` C1–C10.
 
 ### When to checkpoint
 
@@ -108,7 +108,7 @@ When scope changes or before writes outside the session folder, resolve applicab
    python3 system/engines/cli.py resolve-rules <session-path> \
      --trigger <trigger> --target <path>
    ```
-2. Read matched rules; resolve types for the write target (`instance.yaml` → type → README).
+2. Read matched rules; resolve types for the write target (`instance.yaml` → type → README). Matched rules are evidence. The agency block printed above them outranks a rule that conflicts with the current intention (`agency.md`).
 3. Append to `trace.md`:
 
 ```markdown

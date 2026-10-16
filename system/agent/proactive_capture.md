@@ -4,7 +4,7 @@ How Jah agents gather missing information and surface reusable improvements duri
 
 ## Purpose
 
-Jah improves through everyday use. Agents are active curators: gap-fill, capture, improve. Principal instances and types update proactively; profile, new registry entries, and system changes stay behind explicit approval.
+Jah improves through everyday use. Agents are active curators: gap-fill, capture, improve. Principal instances and types update proactively. Profile, a new registry entry, or `system/` is applied when the current request names that action (`agency.md`). An agent-originated write to those targets is a proposal, not a second ask after the principal already named the action.
 
 ## Three behaviors
 
@@ -21,9 +21,9 @@ Jah improves through everyday use. Agents are active curators: gap-fill, capture
 | Existing principal instances (tasks, context, design, rules, prefs, sources, workflows, knowledge-base) | Update directly; log in `trace.md` |
 | Existing principal types (`users/<id>/types/`) | Patch directly; log in `trace.md` |
 | Principal connectors (`connectors/`) | Update directly when improving MCP or custom glue |
-| Personal profile | Propose in `patch.md`; ask user |
-| New registry type | Propose in `patch.md`; ask user |
-| System (`system/`) | Ask user; GitHub PR only |
+| Personal profile | Apply when the current request names it. Otherwise propose in `patch.md` |
+| New registry type | Apply when the current request names it. Otherwise propose in `patch.md` |
+| System (`system/`) | Apply when the current request names `system/`; GitHub PR. Otherwise propose |
 
 When unsure: *"Should this be a stable instance or stay in this session?"*
 
@@ -39,16 +39,16 @@ After compilation, scan for gaps that would block or weaken the task. Run **acti
 
 | Signal | Target |
 |--------|--------|
-| Stable personal fact | `users/<id>/personal/profile.md` (ask first) |
+| Stable personal fact | `users/<id>/personal/profile.md` (apply if the request names it; otherwise propose) |
 | Scoped default | `users/<id>/personal/preferences/` |
 | Constraint | `users/<id>/personal/rules/` or project `rules/` |
 | Project background | `users/<id>/projects/<name>/context.md` |
 | Repeatable workflow | personal or project `workflows/`, or `types/<artifact>/workflows/` |
 | Reference material | `sources/` (catalog + `files/`) |
 | Curated wisdom (audited IP) | `users/<id>/knowledge-base/` (entry + `index.yaml`; see `knowledge_base.md`) |
-| Reusable schema | `registry.yaml` + `users/<id>/types/` (new = ask; patch existing = auto) |
+| Reusable schema | `registry.yaml` + `users/<id>/types/` (new = clear request; patch existing = auto) |
 | Connectors | `users/<id>/connectors/` (optional — external services, devices, MCP, custom automations) |
-| System gap | `system/` (via PR; ask first) |
+| System gap | `system/` (via PR when the request names `system/`) |
 
 ## 3. Improve
 

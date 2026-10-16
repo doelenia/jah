@@ -6,6 +6,8 @@ from pathlib import Path
 
 import yaml
 
+from env import agent_dir
+
 DEFAULT_PRIORITY = 100
 DEFAULT_TRIGGERS = ["session_start"]
 VALID_TRIGGERS = frozenset({"session_start", "pre_write", "topic_shift", "pre_approval"})
@@ -170,6 +172,25 @@ def format_rule_index_table(rules: list[dict]) -> str:
         "`python3 system/engines/cli.py resolve-rules <session-path> --trigger <trigger>`"
     )
     return "\n".join(lines) + "\n"
+
+
+def agency_decision_block() -> str:
+    """Verbatim bullets from system/agent/agency.md under ## Decision."""
+    path = agent_dir() / "agency.md"
+    text = path.read_text(encoding="utf-8")
+    marker = "## Decision\n"
+    if marker not in text:
+        raise RuntimeError(f"{path} is missing a ## Decision section")
+    body = text.split(marker, 1)[1]
+    lines: list[str] = []
+    for line in body.splitlines():
+        if line.startswith("## "):
+            break
+        lines.append(line)
+    block = "\n".join(lines).strip()
+    if not block:
+        raise RuntimeError(f"{path} ## Decision section is empty")
+    return block
 
 
 def format_rule_bundle(rules: list[dict]) -> str:
