@@ -7,6 +7,16 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-15
+
+### Added
+
+- Agency contract: the principal's current intention outranks task files, rules, and agent judgment
+- Suggestion versus warning: an ordinary intention mismatch is done and noted; a hard-to-undo or low-confidence mismatch waits once
+- Decision bullets are injected verbatim into the Cursor rule, CLAUDE.md, compiled context, and resolve-rules
+- A provider refusal is reported as a provider block and is not retried; a clear request that names a standing contract is the approval
+
+
 ## [0.7.3] - 2026-10-11
 
 ### Added

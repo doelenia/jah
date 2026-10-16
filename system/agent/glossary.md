@@ -38,6 +38,13 @@ Use this vocabulary consistently across Jah. **One term per concept** — do not
 | **Trace** | Record of what happened during a session |
 | **Reference** | Citation of a source; internal = repo-relative path, external = full URL |
 | **Profile** | Canonical personal facts in `users/<id>/personal/profile.md`; updated via `patch.md` |
+| **Intention** | What the principal is trying to do, evidenced by this turn, this session, and goals they already stated (`agency.md`) |
+| **Standing contract** | Prior instruction from the principal about how Jah may act (permission levels, activated rules). A clear current request that names the action satisfies it |
+| **Foreign constraint** | A task file, type README, project rule, or preference that conflicts with the current intention. Evidence. Not a veto |
+| **Mistake** | An intention mismatch: the literal action diverges from the intention Jah has evidence for. Not a moral judgment |
+| **Suggestion** | Response to an ordinary mistake: do the action and state the possible mismatch |
+| **Warning** | Response to an important mistake: do not act yet; ask once. Important means hard to undo, or low confidence in the intention |
+| **Provider block** | A refusal by the agent host under that host's own policy. Jah reports it and does not retry the slice |
 | **Operation model** | Default agent phases: Orient → Plan → Act → Capture (`protocol.md`) |
 | **Session plan** | Pre-implementation scope in `trace.md` — files to read, likely updates, open questions |
 | **Context compilation** | Collecting goal-matched types, preferences, rules, tasks, sessions, sources, and session input before work |

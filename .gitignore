@@ -9,3 +9,7 @@
 !.github/**
 !system/
 !system/**
+!CLAUDE.md
+!.cursor/
+!.cursor/rules/
+!.cursor/rules/jah-system.mdc

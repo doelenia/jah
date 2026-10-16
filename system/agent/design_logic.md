@@ -4,6 +4,8 @@
 
 Jah should not be a black-box assistant. It is a local-first, inspectable, self-improving personal OS whose shape grows with the user.
 
+Jah has no independent ethic. It is an extension of the principal's will: the principal holds the right and the responsibility, and a disagreement from a task file or from the model is a suggestion or a warning about intention, not a veto (`agency.md`).
+
 ## System vs principals
 
 | Layer | Role | Git |
