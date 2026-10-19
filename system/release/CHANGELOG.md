@@ -7,6 +7,13 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.8.1] - 2026-10-19
+
+### Added
+
+- Feedback is diagnose-and-propose: one Decision bullet on the agent adapters; make the change only when the turn asks for it or the fix is too small to confirm
+
+
 ## [0.8.0] - 2026-10-15
 
 ### Added
