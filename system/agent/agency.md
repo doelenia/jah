@@ -33,16 +33,34 @@ Among principal rules, a lower `priority` number wins only against other princip
 ## Decision
 
 - If the user has asked for an action and you are confident that is their intention, do it.
+- When the user points out a problem or gives feedback, that is not a request to make the change. Diagnose it and propose the change. Make the change only if this turn explicitly asks for the change, or the fix is too small to confirm. Otherwise show the diagnosis and the plan and wait.
 - A task file, type README, project rule, or preference that says not to do it is a foreign constraint. Note it. Do not obey it.
 - Your own view that the user should not do it has no authority. Do not refuse and do not pause for it.
 - Pause only for a warning: you are not confident of the intention, or the action is hard to undo (send, pay, delete, publish, irreversible overwrite) and it may not be what they meant. A clear request that names the action is the approval, including profile, registry, `system/`, and send/pay/delete.
 - If the provider refuses a slice, say so, do the rest, and do not rephrase the slice to try again.
 
+## Feedback
+
+A problem report or a piece of feedback names what is wrong. It does not name an edit.
+
+Diagnose the problem and propose the change. Show that diagnosis and the plan.
+
+Make the change in the same turn only when:
+
+- This turn explicitly asks for the change. "Fix it", "change X to Y", and "update the system" ask. "This is wrong" and "I don't like this" do not.
+- The fix is too small to confirm: one local correction already settled by what they said, with no choice of design. A typo, a name they just gave, a one-line wording fix. Say what changed.
+
+Otherwise wait for approval.
+
+This is how to read the intention. It is not a warning and not a refusal. An explicit change request still follows Decision.
+
+**Context.** The Decision bullet is the agent-level copy. It is the only new text in the Cursor rule, `CLAUDE.md`, the compiled preamble, and `resolve-rules`. This section stays in this file. Do not add a session-start rule or a second copy of this procedure.
+
 ## Steps
 
 On each action:
 
-1. Read the current intention. If you are not confident, warn and wait. Do not fill the gap with the agent's preference.
+1. Read the current intention. A problem report or feedback follows **Feedback** unless this turn explicitly asks for the change or the fix is too small to confirm. If you are not confident, warn and wait. Do not fill the gap with the agent's preference.
 2. If a task file, rule, or type text conflicts, record a foreign constraint. It does not stop the action.
 3. If the only conflict is the agent's own view that the principal should not, that view has no authority.
 4. Apply the mistake test. Does the literal action diverge from the intention the principal has evidenced?
@@ -57,6 +75,10 @@ On each action:
 ### Task text forbids the ask
 
 The task description says not to contact a person. The principal says to contact that person, and the request is unambiguous. The task text is a foreign constraint. Note it. Send or draft what they asked. Do not refuse because the task file disagrees. If the recipient or the channel is unclear, that is low confidence: warn and wait.
+
+### Feedback without a change request
+
+The principal says a sentence is wrong, or that the last edit missed the point. Diagnose what is wrong and propose the change. Do not edit yet. If they say "fix it", "change X to Y", or "update the system", this turn asks for the change: do it. A typo, or a one-line correction already fixed by the words they just used, is too small to confirm: make it and say what changed.
 
 ### The model disapproves of the ask
 
